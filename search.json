@@ -1,0 +1,23 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "Hi! I am Cassie, a current junior at UNL studying data science."
+  },
+  {
+    "objectID": "posts/sec-gymnastics-scoring-home-away/index.html",
+    "href": "posts/sec-gymnastics-scoring-home-away/index.html",
+    "title": "Does location actually matter for gymnastics scoring in the SEC? Is home judging bias real?",
+    "section": "",
+    "text": "Gymnastics fans have accused judges to have “home bias” for decades. According to the gymternet (the mass of internet gymnastics enthusiast), …\n\n\nCode\nlibrary(tidyverse)\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.2.0     ✔ readr     2.1.6\n✔ forcats   1.0.1     ✔ stringr   1.6.0\n✔ ggplot2   4.0.2     ✔ tibble    3.3.1\n✔ lubridate 1.9.4     ✔ tidyr     1.3.2\n✔ purrr     1.2.1     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n\nCode\nlibrary(ggplot2)\nlibrary(patchwork)\nlibrary(ggbeeswarm)\nlibrary(ggbump)\n\nsec_reg &lt;- read_csv(\"data/sec_reg_season.csv\")\n\n\nRows: 1351 Columns: 11\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (5): Team, Gymnast, Location, Opponent, Result\ndbl (6): VAULT, BARS, BEAM, FLOOR, AA, Week\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\nCode\nrankings &lt;- read_csv(\"data/rtn_rankings.csv\")\n\n\nRows: 180 Columns: 3\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (1): Team\ndbl (2): Week, Rank\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\nCode\nsec_away &lt;- sec_reg |&gt;\n  filter(Location == \"A\") |&gt;\n  pivot_longer(\n    cols = c(VAULT, BARS, BEAM, FLOOR),\n    names_to = \"Event\",\n    values_to = \"Score\"\n  ) |&gt;\n  filter(!is.na(Score), Score &lt;= 10, Score &gt;= 9)\n  \nsec_home &lt;- sec_reg |&gt;\n  filter(Location == \"H\") |&gt;\n  pivot_longer(\n    cols = c(VAULT, BARS, BEAM, FLOOR),\n    names_to = \"Event\",\n    values_to = \"Score\"\n  ) |&gt;\n  filter(!is.na(Score), Score &lt;= 10, Score &gt;= 9)\n\nsec &lt;- c(\"Georgia\", \"LSU\", \"Florida\", \"Kentucky\", \"Missouri\", \"Alabama\", \"Arkansas\", \"Auburn\", \"Oklahoma\")\n\nsec_ranks &lt;- rankings |&gt;\n  filter(\n    Team %in% sec\n  )\n\nranking_10 &lt;- rankings |&gt;\n  filter(Rank &lt;= 10)\n\nsec10_ranks &lt;- rankings |&gt;\n  filter(\n    Team %in% sec,\n    Rank &lt;= 10\n  )\n\naway_dist &lt;- ggplot(data = sec_away, aes(x = Event, y = Score)) +\n  geom_beeswarm(color = \"lightgray\") +\n  stat_summary(\n    fun = mean, geom = \"errorbar\", aes(ymax = after_stat(y), ymin = after_stat(y)),\n    width = .75, color = \"red\", linewidth = 1\n  ) +\n  theme_minimal()\nhome_dist &lt;- ggplot(data = sec_home, aes(x = Event, y = Score, group = Event)) +\n  geom_beeswarm(color = \"lightgray\") +\n  stat_summary(\n    fun = mean, geom = \"errorbar\", aes(ymax = after_stat(y), ymin = after_stat(y)),\n    width = .75, color = \"red\", linewidth = 1\n  )  +\n  theme_minimal()\n\naway_dist + home_dist +\n  plot_annotation(\n    title = \"Floor shows biggest difference in home vs away scoring\",\n    subtitle = \"While the averages show scores for gymnasts to be mostly similar when scored at home vs away, \\nfloor seems to be scored noticeably higher when teams are at home.\",\n    caption = \"Source: Virtius and RoadToNationals | By Cassie Nesheim\"\n  )  & \n  theme(\n    plot.title = element_text(size = 16, face = \"bold\"),\n    axis.title = element_text(size = 8), \n    plot.subtitle = element_text(size=10), \n    panel.grid.minor = element_blank()\n  )\n\n\n\n\n\n\n\n\n\nHere we can see…"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "gymblog",
+    "section": "",
+    "text": "Does location actually matter for gymnastics scoring in the SEC? Is home judging bias real?\n\n\n\ngymnastics\n\nncaa\n\nsec\n\n\n\n\n\n\n\n\n\nApr 10, 2026\n\n\nCassie Nesheim\n\n\n\n\n\nNo matching items"
+  }
+]
