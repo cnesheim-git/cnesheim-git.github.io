@@ -380,7 +380,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">"Event"</span>,</span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"Score"</span></span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Score), Score <span class="sc">&lt;=</span> <span class="dv">10</span>, Score <span class="sc">&gt;=</span> <span class="dv">9</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Score), Gymnast<span class="sc">==</span><span class="st">"Team Totals"</span>, Score<span class="sc">&gt;=</span><span class="dv">49</span>) <span class="sc">|&gt;</span></span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Event =</span> <span class="fu">factor</span>(Event, <span class="at">levels=</span><span class="fu">c</span>(<span class="st">"VAULT"</span>, <span class="st">"BARS"</span>, <span class="st">"BEAM"</span>, <span class="st">"FLOOR"</span>)))</span>
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>sec_home <span class="ot">&lt;-</span> sec_reg <span class="sc">|&gt;</span></span>
@@ -390,7 +390,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">"Event"</span>,</span>
 <span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"Score"</span></span>
 <span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Score), Score <span class="sc">&lt;=</span> <span class="dv">10</span>, Score <span class="sc">&gt;=</span> <span class="dv">9</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Score), Gymnast<span class="sc">==</span><span class="st">"Team Totals"</span>, Score<span class="sc">&gt;=</span><span class="dv">49</span>) <span class="sc">|&gt;</span></span>
 <span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Event =</span> <span class="fu">factor</span>(Event, <span class="at">levels=</span><span class="fu">c</span>(<span class="st">"VAULT"</span>, <span class="st">"BARS"</span>, <span class="st">"BEAM"</span>, <span class="st">"FLOOR"</span>)))</span>
 <span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>sec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Georgia"</span>, <span class="st">"LSU"</span>, <span class="st">"Florida"</span>, <span class="st">"Kentucky"</span>, <span class="st">"Missouri"</span>, <span class="st">"Alabama"</span>, <span class="st">"Arkansas"</span>, <span class="st">"Auburn"</span>, <span class="st">"Oklahoma"</span>)</span>
@@ -496,53 +496,666 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>In college gymnastics, teams compete 6 routines in each event and they count the highest scoring 5 routines, essentially dropping the lowest scoring routine.</p>
+<p>In college gymnastics, most of the scores range from 9.7-10.0, 10.0 being a perfect score. Because of this tight scoring range, it is slightly difficult to see the differences between home and away scoring at first glance. However, the red bar (each event’s average) is noticeably higher for floor at home than it is when away. The other events don’t show too big of differences, so let’s hone in on floor.</p>
+<p>Well, it sort of makes sense for floor to be scored higher at home than away. When teams are at home, they almost always compete floor last. In college gymnastics, it is also believed that as the competition goes on scores get looser. Meaning, higher scores are awarded easier for potentially worse routines than at the beginning of competition. So, as floor is last at home this makes sense.</p>
+<p>Also, if home bias is a real thing, judges may be trying to overcompensate in the last event to ensure the home team wins. I am not saying this is what judges are doing, but it does make sense for a potential reason that only floor seems to have a noticeable difference when scored away vs at home.</p>
+<p>So, essentially we have found that between the gymnasts individual scores, there is not a huge difference in home vs away scoring for every event except floor. But, are these results actually significant? Can we make actual conclusions about this data? I ran a significance test to determine if Location actually effects individual gymansts scores.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#not helpful?? likely??</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>sec_home_9<span class="fl">.5</span> <span class="ot">&lt;-</span> sec_home <span class="sc">|&gt;</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Score <span class="sc">&gt;=</span> <span class="fl">9.8</span>)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>sec_away_9<span class="fl">.5</span> <span class="ot">&lt;-</span> sec_away <span class="sc">|&gt;</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Score <span class="sc">&gt;=</span> <span class="fl">9.8</span>)</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>away_dist_9<span class="fl">.5</span> <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> sec_away_9<span class="fl">.5</span>, <span class="fu">aes</span>(<span class="at">x =</span> Event, <span class="at">y =</span> Score)) <span class="sc">+</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_beeswarm</span>(<span class="at">color =</span> <span class="st">"lightgray"</span>) <span class="sc">+</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">fun =</span> mean, <span class="at">geom =</span> <span class="st">"errorbar"</span>, <span class="fu">aes</span>(<span class="at">ymax =</span> <span class="fu">after_stat</span>(y), <span class="at">ymin =</span> <span class="fu">after_stat</span>(y)),</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">width =</span> .<span class="dv">75</span>, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linewidth =</span> <span class="dv">1</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">fun =</span> mean, <span class="at">geom =</span> <span class="st">"text"</span>, <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">sprintf</span>(<span class="st">"%.3f"</span>, <span class="fu">after_stat</span>(y))),</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.75</span>, <span class="at">color=</span><span class="st">"black"</span>, <span class="at">size =</span> <span class="dv">2</span></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">subtitle=</span><span class="st">"Away"</span>) <span class="sc">+</span></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>t_sec_team <span class="ot">&lt;-</span> sec_reg <span class="sc">|&gt;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Gymnast <span class="sc">==</span> <span class="st">"Team Totals"</span>, AA <span class="sc">&gt;=</span><span class="fl">50.01</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>fl_team <span class="ot">&lt;-</span> t_sec_team <span class="sc">|&gt;</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Team<span class="sc">==</span><span class="st">"Florida"</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>fl_team_test <span class="ot">&lt;-</span> <span class="fu">t.test</span>(AA <span class="sc">~</span> Location, <span class="at">data=</span>fl_team)<span class="sc">$</span>p.value</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>lsu_team <span class="ot">&lt;-</span> t_sec_team <span class="sc">|&gt;</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Team<span class="sc">==</span><span class="st">"LSU"</span>)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>lsu_team_test <span class="ot">&lt;-</span> <span class="fu">t.test</span>(AA <span class="sc">~</span> Location, <span class="at">data=</span>lsu_team)<span class="sc">$</span>p.value</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>ok_team <span class="ot">&lt;-</span> t_sec_team <span class="sc">|&gt;</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Team<span class="sc">==</span><span class="st">"Oklahoma"</span>)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>ok_team_test <span class="ot">&lt;-</span> <span class="fu">t.test</span>(AA <span class="sc">~</span> Location, <span class="at">data=</span>ok_team)<span class="sc">$</span>p.value</span>
 <span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>home_dist_9<span class="fl">.5</span> <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> sec_home_9<span class="fl">.5</span>, <span class="fu">aes</span>(<span class="at">x =</span> Event, <span class="at">y =</span> Score, <span class="at">group =</span> Event)) <span class="sc">+</span></span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_beeswarm</span>(<span class="at">color =</span> <span class="st">"lightgray"</span>) <span class="sc">+</span></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(</span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">fun =</span> mean, <span class="at">geom =</span> <span class="st">"errorbar"</span>, <span class="fu">aes</span>(<span class="at">ymax =</span> <span class="fu">after_stat</span>(y), <span class="at">ymin =</span> <span class="fu">after_stat</span>(y)),</span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">width =</span> .<span class="dv">75</span>, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linewidth =</span> <span class="dv">1</span></span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>  )  <span class="sc">+</span></span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(</span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">fun =</span> mean, <span class="at">geom =</span> <span class="st">"text"</span>, <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">sprintf</span>(<span class="st">"%.3f"</span>, <span class="fu">after_stat</span>(y))),</span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.75</span>, <span class="at">color=</span><span class="st">"black"</span>, <span class="at">size =</span> <span class="dv">2</span></span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">subtitle=</span><span class="st">"Home"</span>) <span class="sc">+</span></span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>aub_team <span class="ot">&lt;-</span> t_sec_team <span class="sc">|&gt;</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Team<span class="sc">==</span><span class="st">"Auburn"</span>)</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>aub_team_test <span class="ot">&lt;-</span> <span class="fu">t.test</span>(AA <span class="sc">~</span> Location, <span class="at">data=</span>aub_team)<span class="sc">$</span>p.value</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>geo_team <span class="ot">&lt;-</span> t_sec_team <span class="sc">|&gt;</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Team<span class="sc">==</span><span class="st">"Georgia"</span>)</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>geo_team_test <span class="ot">&lt;-</span> <span class="fu">t.test</span>(AA <span class="sc">~</span> Location, <span class="at">data=</span>geo_team)<span class="sc">$</span>p.value</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>ark_team <span class="ot">&lt;-</span> t_sec_team <span class="sc">|&gt;</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Team<span class="sc">==</span><span class="st">"Arkansas"</span>)</span>
 <span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>away_dist_9<span class="fl">.5</span> <span class="sc">+</span> home_dist_9<span class="fl">.5</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>ark_team_test <span class="ot">&lt;-</span> <span class="fu">t.test</span>(AA <span class="sc">~</span> Location, <span class="at">data=</span>ark_team)<span class="sc">$</span>p.value</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>miss_team <span class="ot">&lt;-</span> t_sec_team <span class="sc">|&gt;</span></span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Team<span class="sc">==</span><span class="st">"Missouri"</span>)</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>miss_team_test <span class="ot">&lt;-</span> <span class="fu">t.test</span>(AA <span class="sc">~</span> Location, <span class="at">data=</span>miss_team)<span class="sc">$</span>p.value</span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>kent_team <span class="ot">&lt;-</span> t_sec_team <span class="sc">|&gt;</span></span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Team<span class="sc">==</span><span class="st">"Kentucky"</span>)</span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>kent_team_test <span class="ot">&lt;-</span> <span class="fu">t.test</span>(AA <span class="sc">~</span> Location, <span class="at">data=</span>kent_team)<span class="sc">$</span>p.value</span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>bama_team <span class="ot">&lt;-</span> t_sec_team <span class="sc">|&gt;</span></span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Team<span class="sc">==</span><span class="st">"Alabama"</span>)</span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>bama_team_test <span class="ot">&lt;-</span> <span class="fu">t.test</span>(AA <span class="sc">~</span> Location, <span class="at">data=</span>bama_team)<span class="sc">$</span>p.value</span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>teams <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Florida"</span>, <span class="st">"LSU"</span>, <span class="st">"Oklahoma"</span>, <span class="st">"Auburn"</span>, <span class="st">"Georgia"</span>, <span class="st">"Arkansas"</span>, <span class="st">"Missouri"</span>, <span class="st">"Kentucky"</span>, <span class="st">"Alabama"</span>)</span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>team_p_values <span class="ot">&lt;-</span> <span class="fu">c</span>(fl_team_test, lsu_team_test, ok_team_test, aub_team_test, geo_team_test, ark_team_test, miss_team_test, kent_team_test, bama_team_test)</span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>team_pvalue <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(teams, team_p_values) <span class="sc">|&gt;</span></span>
+<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(team_p_values)</span>
+<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a>team_pvalue <span class="sc">|&gt;</span> </span>
+<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(</span>
+<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a>    <span class="at">team_p_values =</span> <span class="st">"P-Values"</span></span>
+<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
+<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Does Home Judging Bias Actually Have Signficance?"</span>,</span>
+<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Oklahoma is the only team in the SEC where home judging actually has a significant effect </span><span class="sc">\n</span><span class="st">on how well their team scores."</span></span>
+<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> <span class="fu">tab_style</span>(</span>
+<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">cell_text</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">weight =</span> <span class="st">"bold"</span>, <span class="at">align =</span> <span class="st">"left"</span>),</span>
+<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_title</span>(<span class="st">"title"</span>)</span>
+<span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> <span class="fu">tab_style</span>(</span>
+<span id="cb3-69"><a href="#cb3-69" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">cell_text</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">align =</span> <span class="st">"left"</span>),</span>
+<span id="cb3-70"><a href="#cb3-70" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_title</span>(<span class="st">"subtitle"</span>)</span>
+<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_source_note</span>(</span>
+<span id="cb3-73"><a href="#cb3-73" aria-hidden="true" tabindex="-1"></a>    <span class="at">source_note =</span> <span class="fu">md</span>(<span class="st">"**By:** Cassie Nesheim  |  **Source:** Virtius and RoadtoNationals"</span>)</span>
+<span id="cb3-74"><a href="#cb3-74" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb3-75"><a href="#cb3-75" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_style</span>(</span>
+<span id="cb3-76"><a href="#cb3-76" aria-hidden="true" tabindex="-1"></a>     <span class="at">locations =</span> <span class="fu">cells_column_labels</span>(<span class="at">columns =</span> <span class="fu">everything</span>()),</span>
+<span id="cb3-77"><a href="#cb3-77" aria-hidden="true" tabindex="-1"></a>     <span class="at">style =</span> <span class="fu">list</span>(</span>
+<span id="cb3-78"><a href="#cb3-78" aria-hidden="true" tabindex="-1"></a>       <span class="fu">cell_borders</span>(<span class="at">sides =</span> <span class="st">"bottom"</span>, <span class="at">weight =</span> <span class="fu">px</span>(<span class="dv">3</span>)),</span>
+<span id="cb3-79"><a href="#cb3-79" aria-hidden="true" tabindex="-1"></a>       <span class="fu">cell_text</span>(<span class="at">weight =</span> <span class="st">"bold"</span>, <span class="at">size=</span><span class="dv">12</span>)</span>
+<span id="cb3-80"><a href="#cb3-80" aria-hidden="true" tabindex="-1"></a>     )</span>
+<span id="cb3-81"><a href="#cb3-81" aria-hidden="true" tabindex="-1"></a>   ) <span class="sc">|&gt;</span></span>
+<span id="cb3-82"><a href="#cb3-82" aria-hidden="true" tabindex="-1"></a>  <span class="fu">opt_row_striping</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb3-83"><a href="#cb3-83" aria-hidden="true" tabindex="-1"></a>  <span class="fu">opt_table_lines</span>(<span class="st">"none"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb3-84"><a href="#cb3-84" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_style</span>(</span>
+<span id="cb3-85"><a href="#cb3-85" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">list</span>(</span>
+<span id="cb3-86"><a href="#cb3-86" aria-hidden="true" tabindex="-1"></a>      <span class="fu">cell_fill</span>(<span class="at">color =</span> <span class="st">"indianred1"</span>),</span>
+<span id="cb3-87"><a href="#cb3-87" aria-hidden="true" tabindex="-1"></a>      <span class="fu">cell_text</span>(<span class="at">color =</span> <span class="st">"black"</span>)</span>
+<span id="cb3-88"><a href="#cb3-88" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb3-89"><a href="#cb3-89" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_body</span>(</span>
+<span id="cb3-90"><a href="#cb3-90" aria-hidden="true" tabindex="-1"></a>      <span class="at">rows =</span> team_p_values<span class="sc">&lt;</span><span class="fl">0.05</span>)</span>
+<span id="cb3-91"><a href="#cb3-91" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div id="cefzgoicvu" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#cefzgoicvu table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#cefzgoicvu thead, #cefzgoicvu tbody, #cefzgoicvu tfoot, #cefzgoicvu tr, #cefzgoicvu td, #cefzgoicvu th {
+  border-style: none;
+}
+
+#cefzgoicvu p {
+  margin: 0;
+  padding: 0;
+}
+
+#cefzgoicvu .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: none;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#cefzgoicvu .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#cefzgoicvu .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#cefzgoicvu .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#cefzgoicvu .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#cefzgoicvu .gt_bottom_border {
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#cefzgoicvu .gt_col_headings {
+  border-top-style: none;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#cefzgoicvu .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#cefzgoicvu .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#cefzgoicvu .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#cefzgoicvu .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#cefzgoicvu .gt_column_spanner {
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#cefzgoicvu .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#cefzgoicvu .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: none;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#cefzgoicvu .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: none;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#cefzgoicvu .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#cefzgoicvu .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#cefzgoicvu .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: none;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#cefzgoicvu .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cefzgoicvu .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#cefzgoicvu .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#cefzgoicvu .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#cefzgoicvu .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cefzgoicvu .gt_first_summary_row {
+  border-top-style: none;
+  border-top-color: #D3D3D3;
+}
+
+#cefzgoicvu .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#cefzgoicvu .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#cefzgoicvu .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cefzgoicvu .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: none;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#cefzgoicvu .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: none;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#cefzgoicvu .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#cefzgoicvu .gt_table_body {
+  border-top-style: none;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#cefzgoicvu .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#cefzgoicvu .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cefzgoicvu .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#cefzgoicvu .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cefzgoicvu .gt_left {
+  text-align: left;
+}
+
+#cefzgoicvu .gt_center {
+  text-align: center;
+}
+
+#cefzgoicvu .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#cefzgoicvu .gt_font_normal {
+  font-weight: normal;
+}
+
+#cefzgoicvu .gt_font_bold {
+  font-weight: bold;
+}
+
+#cefzgoicvu .gt_font_italic {
+  font-style: italic;
+}
+
+#cefzgoicvu .gt_super {
+  font-size: 65%;
+}
+
+#cefzgoicvu .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#cefzgoicvu .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#cefzgoicvu .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#cefzgoicvu .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#cefzgoicvu .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#cefzgoicvu .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#cefzgoicvu .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#cefzgoicvu .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#cefzgoicvu div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading header">
+<td colspan="2" class="gt_heading gt_title gt_font_normal" style="text-align: left; color: #000000; font-weight: bold;">Does Home Judging Bias Actually Have Signficance?</td>
+</tr>
+<tr class="gt_heading even">
+<td colspan="2" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style="text-align: left; color: #000000;">Oklahoma is the only team in the SEC where home judging actually has a significant effect on how well their team scores.</td>
+</tr>
+<tr class="gt_col_headings header">
+<th id="teams" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: #000000; font-size: 12; font-weight: bold" scope="col">teams</th>
+<th id="team_p_values" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: #000000; font-size: 12; font-weight: bold" scope="col">P-Values</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="teams" style="background-color: #FF6A6A; color: #000000">Oklahoma</td>
+<td class="gt_row gt_right" headers="team_p_values" style="background-color: #FF6A6A; color: #000000">0.01814026</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="teams">Auburn</td>
+<td class="gt_row gt_right gt_striped" headers="team_p_values">0.10633930</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="teams">LSU</td>
+<td class="gt_row gt_right" headers="team_p_values">0.27114445</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="teams">Florida</td>
+<td class="gt_row gt_right gt_striped" headers="team_p_values">0.39650246</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="teams">Arkansas</td>
+<td class="gt_row gt_right" headers="team_p_values">0.43451478</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="teams">Georgia</td>
+<td class="gt_row gt_right gt_striped" headers="team_p_values">0.53097723</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="teams">Missouri</td>
+<td class="gt_row gt_right" headers="team_p_values">0.74467958</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="teams">Alabama</td>
+<td class="gt_row gt_right gt_striped" headers="team_p_values">0.90072524</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="teams">Kentucky</td>
+<td class="gt_row gt_right" headers="team_p_values">0.99440980</td>
+</tr>
+</tbody><tfoot>
+<tr class="gt_sourcenotes odd">
+<td colspan="2" class="gt_sourcenote"><strong>By:</strong> Cassie Nesheim | <strong>Source:</strong> Virtius and RoadtoNationals</td>
+</tr>
+</tfoot>
+
+</table>
+
+</div>
+</div>
+</div>
+<p>A significance test reveals that there is a 6.251% this difference in average score at away meets than at home meets is due to random chance, which is not enough significance for us to say there is an actual difference and location has an affect on scoring for teams in the SEC.</p>
+<p>However,</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#not helpful?? likely??</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>sec_home_9<span class="fl">.5</span> <span class="ot">&lt;-</span> sec_home <span class="sc">|&gt;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Score <span class="sc">&gt;=</span> <span class="fl">9.8</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>sec_away_9<span class="fl">.5</span> <span class="ot">&lt;-</span> sec_away <span class="sc">|&gt;</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Score <span class="sc">&gt;=</span> <span class="fl">9.8</span>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>away_dist_9<span class="fl">.5</span> <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> sec_away_9<span class="fl">.5</span>, <span class="fu">aes</span>(<span class="at">x =</span> Event, <span class="at">y =</span> Score)) <span class="sc">+</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_beeswarm</span>(<span class="at">color =</span> <span class="st">"lightgray"</span>) <span class="sc">+</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">fun =</span> mean, <span class="at">geom =</span> <span class="st">"errorbar"</span>, <span class="fu">aes</span>(<span class="at">ymax =</span> <span class="fu">after_stat</span>(y), <span class="at">ymin =</span> <span class="fu">after_stat</span>(y)),</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">width =</span> .<span class="dv">75</span>, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linewidth =</span> <span class="dv">1</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">fun =</span> mean, <span class="at">geom =</span> <span class="st">"text"</span>, <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">sprintf</span>(<span class="st">"%.3f"</span>, <span class="fu">after_stat</span>(y))),</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.75</span>, <span class="at">color=</span><span class="st">"black"</span>, <span class="at">size =</span> <span class="dv">2</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">subtitle=</span><span class="st">"Away"</span>) <span class="sc">+</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>home_dist_9<span class="fl">.5</span> <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> sec_home_9<span class="fl">.5</span>, <span class="fu">aes</span>(<span class="at">x =</span> Event, <span class="at">y =</span> Score, <span class="at">group =</span> Event)) <span class="sc">+</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_beeswarm</span>(<span class="at">color =</span> <span class="st">"lightgray"</span>) <span class="sc">+</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">fun =</span> mean, <span class="at">geom =</span> <span class="st">"errorbar"</span>, <span class="fu">aes</span>(<span class="at">ymax =</span> <span class="fu">after_stat</span>(y), <span class="at">ymin =</span> <span class="fu">after_stat</span>(y)),</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">width =</span> .<span class="dv">75</span>, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linewidth =</span> <span class="dv">1</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>  )  <span class="sc">+</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">fun =</span> mean, <span class="at">geom =</span> <span class="st">"text"</span>, <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">sprintf</span>(<span class="st">"%.3f"</span>, <span class="fu">after_stat</span>(y))),</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.75</span>, <span class="at">color=</span><span class="st">"black"</span>, <span class="at">size =</span> <span class="dv">2</span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">subtitle=</span><span class="st">"Home"</span>) <span class="sc">+</span></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>away_dist_9<span class="fl">.5</span> <span class="sc">+</span> home_dist_9<span class="fl">.5</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
+<p>teams compete 6 routines in each event and they count the highest scoring 5 routines, essentially dropping the lowest scoring routine</p>
 
 
 
