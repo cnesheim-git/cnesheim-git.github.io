@@ -416,24 +416,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data=</span>sec_ranks, <span class="fu">aes</span>(<span class="at">x=</span>Week, <span class="at">y=</span>Rank), <span class="at">color=</span><span class="st">"blue"</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
 <span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">data =</span> rankings <span class="sc">|&gt;</span> <span class="fu">filter</span>(Week <span class="sc">==</span> <span class="fu">min</span>(Week)), <span class="fu">aes</span>(<span class="at">x =</span> Week <span class="sc">-</span> .<span class="dv">2</span>, <span class="at">y=</span>Rank, <span class="at">label =</span> Team), <span class="at">size =</span> <span class="dv">3</span>, <span class="at">hjust =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
 <span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">data =</span> rankings <span class="sc">|&gt;</span> <span class="fu">filter</span>(Week <span class="sc">==</span> <span class="fu">max</span>(Week)), <span class="fu">aes</span>(<span class="at">x =</span> Week <span class="sc">+</span> .<span class="dv">2</span>, <span class="at">y=</span>Rank, <span class="at">label =</span> Team), <span class="at">size =</span> <span class="dv">3</span>, <span class="at">hjust =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_reverse</span>() <span class="sc">+</span></span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"SEC dominates college gymnastics."</span>, </span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle=</span><span class="st">"The top three teams for NCAA gymnastics have consistently been from the SEC throughout the 2026 Regular Season."</span>, </span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>       <span class="at">y=</span> <span class="st">"Rank"</span>, </span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Week"</span>,</span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption=</span><span class="st">"Source: RoadToNationals | By Cassie Nesheim"</span></span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> ,</span>
-<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> ,</span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title.x =</span> ,</span>
-<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title.y =</span> ,</span>
-<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.major =</span> <span class="fu">element_blank</span>()</span>
-<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>    ) </span>
-<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>ratings_bump</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits=</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">15</span>), <span class="at">breaks=</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>, <span class="dv">13</span>, <span class="dv">14</span>, <span class="dv">15</span>)) <span class="sc">+</span></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_reverse</span>() <span class="sc">+</span></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">13</span>), <span class="at">breaks=</span><span class="fu">c</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">12</span>)) <span class="sc">+</span></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"SEC dominates college gymnastics."</span>, </span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle=</span><span class="st">"The top three teams for NCAA gymnastics have consistently been from the SEC throughout the 2026 Regular Season."</span>, </span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>       <span class="at">y=</span> <span class="st">"Rank"</span>, </span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Week"</span>,</span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption=</span><span class="st">"Source: RoadToNationals | By Cassie Nesheim"</span></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> ,</span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> ,</span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title.x =</span> ,</span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title.y =</span> ,</span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.major =</span> <span class="fu">element_blank</span>()</span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>    ) </span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a>ratings_bump</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -596,23 +598,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-91"><a href="#cb3-91" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
-<div id="cefzgoicvu" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#cefzgoicvu table {
+<div id="zxsmycnjlg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#zxsmycnjlg table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#cefzgoicvu thead, #cefzgoicvu tbody, #cefzgoicvu tfoot, #cefzgoicvu tr, #cefzgoicvu td, #cefzgoicvu th {
+#zxsmycnjlg thead, #zxsmycnjlg tbody, #zxsmycnjlg tfoot, #zxsmycnjlg tr, #zxsmycnjlg td, #zxsmycnjlg th {
   border-style: none;
 }
 
-#cefzgoicvu p {
+#zxsmycnjlg p {
   margin: 0;
   padding: 0;
 }
 
-#cefzgoicvu .gt_table {
+#zxsmycnjlg .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -638,12 +640,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#cefzgoicvu .gt_caption {
+#zxsmycnjlg .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#cefzgoicvu .gt_title {
+#zxsmycnjlg .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -655,7 +657,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#cefzgoicvu .gt_subtitle {
+#zxsmycnjlg .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -667,7 +669,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#cefzgoicvu .gt_heading {
+#zxsmycnjlg .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -679,13 +681,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#cefzgoicvu .gt_bottom_border {
+#zxsmycnjlg .gt_bottom_border {
   border-bottom-style: none;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#cefzgoicvu .gt_col_headings {
+#zxsmycnjlg .gt_col_headings {
   border-top-style: none;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -700,7 +702,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#cefzgoicvu .gt_col_heading {
+#zxsmycnjlg .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -720,7 +722,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#cefzgoicvu .gt_column_spanner_outer {
+#zxsmycnjlg .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -732,15 +734,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#cefzgoicvu .gt_column_spanner_outer:first-child {
+#zxsmycnjlg .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#cefzgoicvu .gt_column_spanner_outer:last-child {
+#zxsmycnjlg .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#cefzgoicvu .gt_column_spanner {
+#zxsmycnjlg .gt_column_spanner {
   border-bottom-style: none;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -752,11 +754,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#cefzgoicvu .gt_spanner_row {
+#zxsmycnjlg .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#cefzgoicvu .gt_group_heading {
+#zxsmycnjlg .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -782,7 +784,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#cefzgoicvu .gt_empty_group_heading {
+#zxsmycnjlg .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -797,15 +799,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#cefzgoicvu .gt_from_md > :first-child {
+#zxsmycnjlg .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#cefzgoicvu .gt_from_md > :last-child {
+#zxsmycnjlg .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#cefzgoicvu .gt_row {
+#zxsmycnjlg .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -824,7 +826,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#cefzgoicvu .gt_stub {
+#zxsmycnjlg .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -837,7 +839,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#cefzgoicvu .gt_stub_row_group {
+#zxsmycnjlg .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -851,15 +853,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#cefzgoicvu .gt_row_group_first td {
+#zxsmycnjlg .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#cefzgoicvu .gt_row_group_first th {
+#zxsmycnjlg .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#cefzgoicvu .gt_summary_row {
+#zxsmycnjlg .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -869,16 +871,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#cefzgoicvu .gt_first_summary_row {
+#zxsmycnjlg .gt_first_summary_row {
   border-top-style: none;
   border-top-color: #D3D3D3;
 }
 
-#cefzgoicvu .gt_first_summary_row.thick {
+#zxsmycnjlg .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#cefzgoicvu .gt_last_summary_row {
+#zxsmycnjlg .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -888,7 +890,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#cefzgoicvu .gt_grand_summary_row {
+#zxsmycnjlg .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -898,7 +900,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#cefzgoicvu .gt_first_grand_summary_row {
+#zxsmycnjlg .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -908,7 +910,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#cefzgoicvu .gt_last_grand_summary_row_top {
+#zxsmycnjlg .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -918,11 +920,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#cefzgoicvu .gt_striped {
+#zxsmycnjlg .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#cefzgoicvu .gt_table_body {
+#zxsmycnjlg .gt_table_body {
   border-top-style: none;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -931,7 +933,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#cefzgoicvu .gt_footnotes {
+#zxsmycnjlg .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -945,7 +947,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#cefzgoicvu .gt_footnote {
+#zxsmycnjlg .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -954,7 +956,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#cefzgoicvu .gt_sourcenotes {
+#zxsmycnjlg .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -968,7 +970,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#cefzgoicvu .gt_sourcenote {
+#zxsmycnjlg .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -976,72 +978,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#cefzgoicvu .gt_left {
+#zxsmycnjlg .gt_left {
   text-align: left;
 }
 
-#cefzgoicvu .gt_center {
+#zxsmycnjlg .gt_center {
   text-align: center;
 }
 
-#cefzgoicvu .gt_right {
+#zxsmycnjlg .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#cefzgoicvu .gt_font_normal {
+#zxsmycnjlg .gt_font_normal {
   font-weight: normal;
 }
 
-#cefzgoicvu .gt_font_bold {
+#zxsmycnjlg .gt_font_bold {
   font-weight: bold;
 }
 
-#cefzgoicvu .gt_font_italic {
+#zxsmycnjlg .gt_font_italic {
   font-style: italic;
 }
 
-#cefzgoicvu .gt_super {
+#zxsmycnjlg .gt_super {
   font-size: 65%;
 }
 
-#cefzgoicvu .gt_footnote_marks {
+#zxsmycnjlg .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#cefzgoicvu .gt_asterisk {
+#zxsmycnjlg .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#cefzgoicvu .gt_indent_1 {
+#zxsmycnjlg .gt_indent_1 {
   text-indent: 5px;
 }
 
-#cefzgoicvu .gt_indent_2 {
+#zxsmycnjlg .gt_indent_2 {
   text-indent: 10px;
 }
 
-#cefzgoicvu .gt_indent_3 {
+#zxsmycnjlg .gt_indent_3 {
   text-indent: 15px;
 }
 
-#cefzgoicvu .gt_indent_4 {
+#zxsmycnjlg .gt_indent_4 {
   text-indent: 20px;
 }
 
-#cefzgoicvu .gt_indent_5 {
+#zxsmycnjlg .gt_indent_5 {
   text-indent: 25px;
 }
 
-#cefzgoicvu .katex-display {
+#zxsmycnjlg .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#cefzgoicvu div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#zxsmycnjlg div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
