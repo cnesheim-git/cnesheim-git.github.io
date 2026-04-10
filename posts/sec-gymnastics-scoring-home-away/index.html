@@ -361,8 +361,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p>Gymnastics fans have long speculated about “home bias” in judging. According to the gymternet (the mass of gymnastics enthusiasts on social media), judges are noticeably more lax with their judging and often award “gifts,” or scores that are higher than deserved for the home team. For instance, a step on the landing in a routine is almost always an automatic 0.1 deduction. A routine with only one step and no other errors should score around a 9.85 or a 9.9, but at home that routine might score a 9.95, which is an impossible score.</p>
 <p>The question then becomes: do gymnasts actually score better when competing at home, and if so, which teams benefit most?</p>
-<p>To understand whether bias could exist, it helps to start in the most dominant conference in college gymnastics, the SEC. Because of its position in the sport, this conference draws intense scrutiny, with fans regularly criticize the conference for rampant home judging bias.</p>
-<p>A look at the rankings confirms the SEC’s dominance. Rankings start at week 2 for college gymnastics, as this is first week of the season every team has competed. Since week 2, at least seven of the nine SEC teams have been in the top 10 in all of women’s college gymnastics, demonstrating their powerful command of the sport. If home judging bias exists, it would certainly show up in the SEC.</p>
+<p>To understand whether bias could exist, it helps to start in the most dominant conference in college gymnastics, the SEC. Because of its position in the sport, this conference draws intense scrutiny, with fans regularly criticizing the conference for rampant home judging bias.</p>
+<p>A look at the rankings confirms the SEC’s dominance. Rankings start at week 2 for college gymnastics, as this is first week of the season every team has competed. Since week 2, at least seven of the nine SEC teams have been in the top 10 in all of women’s college gymnastics, demonstrating their powerful command of the sport. If home judging bias exists, we would certainly expect it to show up in the SEC.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -426,7 +426,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">name=</span><span class="st">"Conference"</span>, <span class="at">values=</span><span class="fu">c</span>(<span class="st">"SEC"</span><span class="ot">=</span><span class="st">"blue"</span>, <span class="st">"Non-SEC"</span><span class="ot">=</span><span class="st">"lightgrey"</span>), <span class="at">breaks=</span><span class="fu">c</span>(<span class="st">"SEC"</span>, <span class="st">"Non-SEC"</span>)) <span class="sc">+</span></span>
 <span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_reverse</span>(<span class="at">limits=</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">10</span>), <span class="at">breaks=</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)) <span class="sc">+</span></span>
 <span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="fl">13.5</span>), <span class="at">breaks=</span><span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">12</span>)) <span class="sc">+</span></span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"SEC Teams Control Women's College Gymnastics."</span>, </span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"The SEC Controls Women's College Gymnastics."</span>, </span>
 <span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle=</span><span class="st">"Since week 2, nearly every top 10 team has been from the SEC, leaving litle room for outsiders."</span>, </span>
 <span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>       <span class="at">y=</span> <span class="st">"Rank"</span>, </span>
 <span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Week"</span>,</span>
@@ -454,7 +454,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>Most scores in college gymnastics fall between 9.7 and 10.0, a very small range, making differences hard to detect at first glance. Though, each event does have a higher average at home than it does away, especially floor.</p>
+<p>Most scores in college gymnastics fall between 9.7 and 10.0, a very small range, making differences hard to detect at first glance. Though, when home and away event scores are compared, it becomes evident that each event has a higher average at home than it does away, especially on floor.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -550,11 +550,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>Home floor scores are an entire 1.5 points above away floor scores. In gymnastics, this difference is huge. A standard statistical test confirmed that the floor scoring gap between home and away meets is not random chance, it is a real, meaningful difference. No other event showed significance, meaning that their differences between home and away meets could be due to random chance.</p>
-<p>Only floor being significant does make some sense when put into context. When teams are at home, they typically compete floor last, and scores tend to loosen as competitions progress, conceivably benefiting the home team in the final event. So, potentially, higher scores are awarded for routines worse than those at the beginning of competition.</p>
-<p>Also, if home bias is a real thing, judges may be trying to overcompensate in the last event to ensure the home team wins. While this does not prove intentional bias, it is a plausible reason that only floor has a noticeable difference when scored away vs at home.</p>
-<p>As mentioned, this significant difference in home vs away scoring on floor could be for a multitude of reasons, but if it is just simply that they are more comfortable at home, this home scoring bump would show up significantly in the other events.</p>
-<p>These floor differences suggest something may be happening late in meets, but the bigger picture lies in total team scores. Floor might be where it shows up, but that is not the whole story. If home judging bias exists, it should impact entire meets, not just one rotation.</p>
+<p>Home floor scores are a almost 1.5 points above away floor scores. In gymnastics, this difference is huge. A standard statistical test confirmed that the floor scoring gap between home and away meets is not due to random chance, it is a real, meaningful difference. No other event showed significance, so the differences between home and away meets on the other events could be due to random chance.</p>
+<p>Only floor being significant does make some sense when put into context. When teams are at home, they typically compete floor last, and scores tend to loosen as competitions progress, conceivably benefiting the home team in the final event. So, higher scores are potentially awarded for routines worse than those at the beginning of competition.</p>
+<p>Additionally, assuming home judging bias exists, judges may be trying to overcompensate in the last event to ensure the home team wins. While this does not prove intentional bias, it is a plausible reason that only floor has a noticeable difference when scored away versus at home.</p>
+<p>As mentioned, this significant difference in home vs away scoring on floor could be for a multitude of reasons, but if it is just simply that they are more comfortable at home, this home scoring bump would show up significantly in the other events too.</p>
+<p>These floor differences suggest something may be happening late in meets, but the bigger picture lies in total team scores. Floor might be where it shows up, but that is not the whole story. If home judging bias exists, it should impact entire meets, not just one rotation. Do certain teams in the SEC experience more of a boost at home than others?</p>
 <p>To answer that, team scoring averages at home and away were compared across the SEC. The gap between those two numbers reveals which programs gain the most from competing at home.</p>
 <div class="cell">
 <details class="code-fold">
@@ -587,7 +587,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"rect"</span>, <span class="at">xmin=</span><span class="fl">197.74</span>, <span class="at">xmax=</span><span class="fl">198.25</span>, <span class="at">ymin=</span><span class="dv">1</span>, <span class="at">ymax=</span><span class="dv">2</span>, <span class="at">fill=</span><span class="st">"lightgrey"</span>, <span class="at">color=</span><span class="st">"grey"</span>, <span class="at">alpha=</span><span class="fl">0.7</span>) <span class="sc">+</span></span>
 <span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="dv">198</span>, <span class="at">y =</span> <span class="fl">1.5</span>, <span class="at">label=</span><span class="st">"Values represent home </span><span class="sc">\n</span><span class="st">minus away averages"</span>, <span class="at">size=</span><span class="dv">3</span>, <span class="at">color=</span><span class="st">"black"</span>) <span class="sc">+</span></span>
 <span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">name=</span><span class="st">"Location"</span>, <span class="at">values=</span><span class="fu">c</span>(<span class="st">"A"</span><span class="ot">=</span><span class="st">"blue"</span>, <span class="st">"H"</span><span class="ot">=</span><span class="st">"purple"</span>), <span class="at">labels=</span><span class="fu">c</span>(<span class="st">"A"</span><span class="ot">=</span><span class="st">"Away"</span>, <span class="st">"H"</span><span class="ot">=</span><span class="st">"Home"</span>)) <span class="sc">+</span></span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"All SEC Teams Benefit from Home Judging Advantage."</span>, </span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"All SEC Teams Benefit from Home Judging Advantage"</span>, </span>
 <span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle=</span><span class="st">"Oklahoma, LSU, and Florida see a stronger boost, though all other teams score higher at home."</span>, </span>
 <span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>       <span class="at">y=</span> <span class="st">"Team"</span>, </span>
 <span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Scores"</span>,</span>
@@ -611,8 +611,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Top SEC teams receive noticeably higher scores at home than when away, whereas teams in the middle or bottom of the conference (with the exception of Auburn) see minimal differences.</p>
-<p>Fans often criticize Oklahoma, LSU, and Florida for egregious home scoring, claiming those teams are being wildly over scored. It is important to keep in mind, these are also the top three teams in all of NCAA women’s gymnastics, so they have the most eyes on them. Also, those at the top often receive the most hate, like people rooting against Tom Brady in the Super Bowl year after year. Fans like the underdog and get frustrated when the top teams continue to perform well.</p>
-<p>Though the data for Oklahoma, LSU, and Florida does demonstrate differences in average, when tested for significance using a standard statistical cutoff, where any number below -2 is considered significant, it is revealed that only Oklahoma receives a significant bump in scores at home. Meaning that whether Sooners are at home or away has an impact on how well they will score. Rather, Oklahoma experiences home judging bias.</p>
+<p>Fans often criticize Oklahoma, LSU, and Florida for egregious home scoring, claiming those teams are being wildly over scored. It is important to keep in mind, these are also the top three teams in all of NCAA women’s gymnastics, so they have the most eyes on them. Also, those at the top often receive the most hate. Fans like the underdog and get frustrated when the top teams continue to perform well. So, while fans complain about these teams most, it doesn’t necessarily mean that their higher scores at home are actually due to a judging bias.</p>
+<p>Using a standard statistical cutoff, where any number below -2 is considered significant, we can test teams to see if the difference between their home and away averages is due to random chance or could actually be representative of home judging bias. Though the data for Oklahoma, LSU, and Florida does demonstrate differences in average, when tested for significance, it is revealed that only one team in the SEC experiences a meaningful bump in scores at home, Oklahoma. Whether the Sooners compete away or at home has an impact on their scores, showing signs that they experience home judging bias.</p>
 <p>For all other SEC teams, the differences in home and away scores exist but they are not significant and we cannot say that home judging is affecting how well those teams do.</p>
 <div class="cell">
 <details class="code-fold">
@@ -638,7 +638,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
 <span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
 <span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Only Oklahoma's Home Scores Demonstrate Bias"</span>,</span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"While most SEC teams see insignificant differences, only the Sooners gain a measureable advantage at home."</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"While most SEC teams see insignificant differences, the Sooners gain a measureable advantage at home."</span></span>
 <span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> <span class="fu">tab_style</span>(</span>
 <span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">cell_text</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">weight =</span> <span class="st">"bold"</span>, <span class="at">align =</span> <span class="st">"left"</span>),</span>
 <span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_title</span>(<span class="st">"title"</span>)</span>
@@ -668,23 +668,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
-<div id="ilaoyselix" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ilaoyselix table {
+<div id="ecwohsyzsi" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ecwohsyzsi table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ilaoyselix thead, #ilaoyselix tbody, #ilaoyselix tfoot, #ilaoyselix tr, #ilaoyselix td, #ilaoyselix th {
+#ecwohsyzsi thead, #ecwohsyzsi tbody, #ecwohsyzsi tfoot, #ecwohsyzsi tr, #ecwohsyzsi td, #ecwohsyzsi th {
   border-style: none;
 }
 
-#ilaoyselix p {
+#ecwohsyzsi p {
   margin: 0;
   padding: 0;
 }
 
-#ilaoyselix .gt_table {
+#ecwohsyzsi .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -710,12 +710,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#ilaoyselix .gt_caption {
+#ecwohsyzsi .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ilaoyselix .gt_title {
+#ecwohsyzsi .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -727,7 +727,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#ilaoyselix .gt_subtitle {
+#ecwohsyzsi .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -739,7 +739,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#ilaoyselix .gt_heading {
+#ecwohsyzsi .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -751,13 +751,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#ilaoyselix .gt_bottom_border {
+#ecwohsyzsi .gt_bottom_border {
   border-bottom-style: none;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ilaoyselix .gt_col_headings {
+#ecwohsyzsi .gt_col_headings {
   border-top-style: none;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -772,7 +772,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#ilaoyselix .gt_col_heading {
+#ecwohsyzsi .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -792,7 +792,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#ilaoyselix .gt_column_spanner_outer {
+#ecwohsyzsi .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -804,15 +804,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#ilaoyselix .gt_column_spanner_outer:first-child {
+#ecwohsyzsi .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ilaoyselix .gt_column_spanner_outer:last-child {
+#ecwohsyzsi .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ilaoyselix .gt_column_spanner {
+#ecwohsyzsi .gt_column_spanner {
   border-bottom-style: none;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -824,11 +824,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#ilaoyselix .gt_spanner_row {
+#ecwohsyzsi .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ilaoyselix .gt_group_heading {
+#ecwohsyzsi .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -854,7 +854,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#ilaoyselix .gt_empty_group_heading {
+#ecwohsyzsi .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -869,15 +869,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#ilaoyselix .gt_from_md > :first-child {
+#ecwohsyzsi .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ilaoyselix .gt_from_md > :last-child {
+#ecwohsyzsi .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ilaoyselix .gt_row {
+#ecwohsyzsi .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -896,7 +896,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#ilaoyselix .gt_stub {
+#ecwohsyzsi .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -909,7 +909,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#ilaoyselix .gt_stub_row_group {
+#ecwohsyzsi .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -923,15 +923,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#ilaoyselix .gt_row_group_first td {
+#ecwohsyzsi .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ilaoyselix .gt_row_group_first th {
+#ecwohsyzsi .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ilaoyselix .gt_summary_row {
+#ecwohsyzsi .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -941,16 +941,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#ilaoyselix .gt_first_summary_row {
+#ecwohsyzsi .gt_first_summary_row {
   border-top-style: none;
   border-top-color: #D3D3D3;
 }
 
-#ilaoyselix .gt_first_summary_row.thick {
+#ecwohsyzsi .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ilaoyselix .gt_last_summary_row {
+#ecwohsyzsi .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -960,7 +960,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#ilaoyselix .gt_grand_summary_row {
+#ecwohsyzsi .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -970,7 +970,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#ilaoyselix .gt_first_grand_summary_row {
+#ecwohsyzsi .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -980,7 +980,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#ilaoyselix .gt_last_grand_summary_row_top {
+#ecwohsyzsi .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -990,11 +990,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#ilaoyselix .gt_striped {
+#ecwohsyzsi .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ilaoyselix .gt_table_body {
+#ecwohsyzsi .gt_table_body {
   border-top-style: none;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1003,7 +1003,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#ilaoyselix .gt_footnotes {
+#ecwohsyzsi .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1017,7 +1017,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#ilaoyselix .gt_footnote {
+#ecwohsyzsi .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1026,7 +1026,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#ilaoyselix .gt_sourcenotes {
+#ecwohsyzsi .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1040,7 +1040,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#ilaoyselix .gt_sourcenote {
+#ecwohsyzsi .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1048,72 +1048,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#ilaoyselix .gt_left {
+#ecwohsyzsi .gt_left {
   text-align: left;
 }
 
-#ilaoyselix .gt_center {
+#ecwohsyzsi .gt_center {
   text-align: center;
 }
 
-#ilaoyselix .gt_right {
+#ecwohsyzsi .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ilaoyselix .gt_font_normal {
+#ecwohsyzsi .gt_font_normal {
   font-weight: normal;
 }
 
-#ilaoyselix .gt_font_bold {
+#ecwohsyzsi .gt_font_bold {
   font-weight: bold;
 }
 
-#ilaoyselix .gt_font_italic {
+#ecwohsyzsi .gt_font_italic {
   font-style: italic;
 }
 
-#ilaoyselix .gt_super {
+#ecwohsyzsi .gt_super {
   font-size: 65%;
 }
 
-#ilaoyselix .gt_footnote_marks {
+#ecwohsyzsi .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ilaoyselix .gt_asterisk {
+#ecwohsyzsi .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ilaoyselix .gt_indent_1 {
+#ecwohsyzsi .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ilaoyselix .gt_indent_2 {
+#ecwohsyzsi .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ilaoyselix .gt_indent_3 {
+#ecwohsyzsi .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ilaoyselix .gt_indent_4 {
+#ecwohsyzsi .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ilaoyselix .gt_indent_5 {
+#ecwohsyzsi .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ilaoyselix .katex-display {
+#ecwohsyzsi .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ilaoyselix div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#ecwohsyzsi div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1124,7 +1124,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td colspan="2" class="gt_heading gt_title gt_font_normal" style="text-align: left; color: #000000; font-weight: bold;">Only Oklahoma's Home Scores Demonstrate Bias</td>
 </tr>
 <tr class="gt_heading even">
-<td colspan="2" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style="text-align: left; color: #000000;">While most SEC teams see insignificant differences, only the Sooners gain a measureable advantage at home.</td>
+<td colspan="2" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style="text-align: left; color: #000000;">While most SEC teams see insignificant differences, the Sooners gain a measureable advantage at home.</td>
 </tr>
 <tr class="gt_col_headings header">
 <th id="teams" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: #000000; font-size: 12; font-weight: bold" scope="col">Team</th>
