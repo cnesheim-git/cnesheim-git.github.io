@@ -498,26 +498,49 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a><span class="co">#to test the significance of floor</span></span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>t_sec_team <span class="ot">&lt;-</span> sec_reg <span class="sc">|&gt;</span></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>t_sec_floor <span class="ot">&lt;-</span> sec_reg <span class="sc">|&gt;</span></span>
 <span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Gymnast <span class="sc">==</span> <span class="st">"Team Totals"</span>, AA <span class="sc">&gt;=</span><span class="fl">50.01</span>) <span class="sc">|&gt;</span></span>
 <span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols=</span><span class="fu">c</span>(<span class="st">"VAULT"</span>, <span class="st">"BARS"</span>, <span class="st">"BEAM"</span>, <span class="st">"FLOOR"</span>), <span class="at">names_to =</span> <span class="st">"Event"</span>, <span class="at">values_to=</span><span class="st">"Score"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Event <span class="sc">==</span> <span class="st">"FLOOR"</span>)</span>
 <span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>team_t <span class="ot">&lt;-</span> <span class="fu">t.test</span>(Score <span class="sc">~</span> Location, <span class="at">data=</span>t_sec_team)</span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>floor_t <span class="ot">&lt;-</span> <span class="fu">t.test</span>(Score <span class="sc">~</span> Location, <span class="at">data=</span>t_sec_floor)</span>
 <span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>away_dist <span class="sc">+</span> home_dist <span class="sc">+</span></span>
-<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_annotation</span>(</span>
-<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Home Judging Bias Emerges Most Clearly on Floor"</span>,</span>
-<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"While the averages show scores for teams to be mostly similar when scored at home vs away, </span><span class="sc">\n</span><span class="st"> scores for the last event are noticeably higher when teams are at home."</span>,</span>
-<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Source: Virtius and RoadToNationals | By: Cassie Nesheim"</span></span>
-<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>  )  <span class="sc">&amp;</span> </span>
-<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">16</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
-<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>), </span>
-<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">10</span>), </span>
-<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title.position =</span> <span class="st">"plot"</span></span>
-<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>t_sec_bars <span class="ot">&lt;-</span> sec_reg <span class="sc">|&gt;</span></span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Gymnast <span class="sc">==</span> <span class="st">"Team Totals"</span>, AA <span class="sc">&gt;=</span><span class="fl">50.01</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols=</span><span class="fu">c</span>(<span class="st">"VAULT"</span>, <span class="st">"BARS"</span>, <span class="st">"BEAM"</span>, <span class="st">"FLOOR"</span>), <span class="at">names_to =</span> <span class="st">"Event"</span>, <span class="at">values_to=</span><span class="st">"Score"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Event <span class="sc">==</span> <span class="st">"BARS"</span>)</span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>bars_t <span class="ot">&lt;-</span> <span class="fu">t.test</span>(Score <span class="sc">~</span> Location, <span class="at">data=</span>t_sec_bars)</span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>t_sec_beam <span class="ot">&lt;-</span> sec_reg <span class="sc">|&gt;</span></span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Gymnast <span class="sc">==</span> <span class="st">"Team Totals"</span>, AA <span class="sc">&gt;=</span><span class="fl">50.01</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols=</span><span class="fu">c</span>(<span class="st">"VAULT"</span>, <span class="st">"BARS"</span>, <span class="st">"BEAM"</span>, <span class="st">"FLOOR"</span>), <span class="at">names_to =</span> <span class="st">"Event"</span>, <span class="at">values_to=</span><span class="st">"Score"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Event <span class="sc">==</span> <span class="st">"BEAM"</span>)</span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>beam_t <span class="ot">&lt;-</span> <span class="fu">t.test</span>(Score <span class="sc">~</span> Location, <span class="at">data=</span>t_sec_beam)</span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a>t_sec_vault <span class="ot">&lt;-</span> sec_reg <span class="sc">|&gt;</span></span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Gymnast <span class="sc">==</span> <span class="st">"Team Totals"</span>, AA <span class="sc">&gt;=</span><span class="fl">50.01</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols=</span><span class="fu">c</span>(<span class="st">"VAULT"</span>, <span class="st">"BARS"</span>, <span class="st">"BEAM"</span>, <span class="st">"FLOOR"</span>), <span class="at">names_to =</span> <span class="st">"Event"</span>, <span class="at">values_to=</span><span class="st">"Score"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Event <span class="sc">==</span> <span class="st">"VAULT"</span>)</span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a>vault_t <span class="ot">&lt;-</span> <span class="fu">t.test</span>(Score <span class="sc">~</span> Location, <span class="at">data=</span>t_sec_vault)</span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a>score_distribution <span class="ot">&lt;-</span> away_dist <span class="sc">+</span> home_dist <span class="sc">+</span></span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_annotation</span>(</span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Home Judging Bias Emerges Most Clearly on Floor"</span>,</span>
+<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"While the averages show scores for teams to be mostly similar when scored at home vs away, </span><span class="sc">\n</span><span class="st"> scores for the last event are noticeably higher when teams are at home."</span>,</span>
+<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Source: Virtius and RoadToNationals | By: Cassie Nesheim"</span></span>
+<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a>  )  <span class="sc">&amp;</span> </span>
+<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">16</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>), </span>
+<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">10</span>), </span>
+<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title.position =</span> <span class="st">"plot"</span></span>
+<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a>score_distribution</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -527,8 +550,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>Home floor scores are an entire 1.5 points above away floor scores. In gymnastics, this difference is huge. A standard statistical test determined that whether teams are at home or away actually has a significant effect on scores.</p>
-<p>Only floor being noticeably higher does make some sense when put into context. When teams are at home, they typically compete floor last, and scores tend to loosen as competitions progress, conceivably benefiting the home team in the final event. So, potentially, higher scores are awarded for routines worse than those at the beginning of competition.</p>
+<p>Home floor scores are an entire 1.5 points above away floor scores. In gymnastics, this difference is huge. A standard statistical test confirmed that the floor scoring gap between home and away meets is not random chance, it is a real, meaningful difference. No other event showed significance, meaning that their differences between home and away meets could be due to random chance.</p>
+<p>Only floor being significant does make some sense when put into context. When teams are at home, they typically compete floor last, and scores tend to loosen as competitions progress, conceivably benefiting the home team in the final event. So, potentially, higher scores are awarded for routines worse than those at the beginning of competition.</p>
 <p>Also, if home bias is a real thing, judges may be trying to overcompensate in the last event to ensure the home team wins. While this does not prove intentional bias, it is a plausible reason that only floor has a noticeable difference when scored away vs at home.</p>
 <p>As mentioned, this significant difference in home vs away scoring on floor could be for a multitude of reasons, but if it is just simply that they are more comfortable at home, this home scoring bump would show up significantly in the other events.</p>
 <p>These floor differences suggest something may be happening late in meets, but the bigger picture lies in total team scores. Floor might be where it shows up, but that is not the whole story. If home judging bias exists, it should impact entire meets, not just one rotation.</p>
@@ -645,23 +668,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
-<div id="htljhycwaw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#htljhycwaw table {
+<div id="knawvcrsfx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#knawvcrsfx table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#htljhycwaw thead, #htljhycwaw tbody, #htljhycwaw tfoot, #htljhycwaw tr, #htljhycwaw td, #htljhycwaw th {
+#knawvcrsfx thead, #knawvcrsfx tbody, #knawvcrsfx tfoot, #knawvcrsfx tr, #knawvcrsfx td, #knawvcrsfx th {
   border-style: none;
 }
 
-#htljhycwaw p {
+#knawvcrsfx p {
   margin: 0;
   padding: 0;
 }
 
-#htljhycwaw .gt_table {
+#knawvcrsfx .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -687,12 +710,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#htljhycwaw .gt_caption {
+#knawvcrsfx .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#htljhycwaw .gt_title {
+#knawvcrsfx .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -704,7 +727,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#htljhycwaw .gt_subtitle {
+#knawvcrsfx .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -716,7 +739,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#htljhycwaw .gt_heading {
+#knawvcrsfx .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -728,13 +751,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#htljhycwaw .gt_bottom_border {
+#knawvcrsfx .gt_bottom_border {
   border-bottom-style: none;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#htljhycwaw .gt_col_headings {
+#knawvcrsfx .gt_col_headings {
   border-top-style: none;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -749,7 +772,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#htljhycwaw .gt_col_heading {
+#knawvcrsfx .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -769,7 +792,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#htljhycwaw .gt_column_spanner_outer {
+#knawvcrsfx .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -781,15 +804,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#htljhycwaw .gt_column_spanner_outer:first-child {
+#knawvcrsfx .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#htljhycwaw .gt_column_spanner_outer:last-child {
+#knawvcrsfx .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#htljhycwaw .gt_column_spanner {
+#knawvcrsfx .gt_column_spanner {
   border-bottom-style: none;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -801,11 +824,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#htljhycwaw .gt_spanner_row {
+#knawvcrsfx .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#htljhycwaw .gt_group_heading {
+#knawvcrsfx .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -831,7 +854,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#htljhycwaw .gt_empty_group_heading {
+#knawvcrsfx .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -846,15 +869,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#htljhycwaw .gt_from_md > :first-child {
+#knawvcrsfx .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#htljhycwaw .gt_from_md > :last-child {
+#knawvcrsfx .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#htljhycwaw .gt_row {
+#knawvcrsfx .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -873,7 +896,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#htljhycwaw .gt_stub {
+#knawvcrsfx .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -886,7 +909,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#htljhycwaw .gt_stub_row_group {
+#knawvcrsfx .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -900,15 +923,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#htljhycwaw .gt_row_group_first td {
+#knawvcrsfx .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#htljhycwaw .gt_row_group_first th {
+#knawvcrsfx .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#htljhycwaw .gt_summary_row {
+#knawvcrsfx .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -918,16 +941,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#htljhycwaw .gt_first_summary_row {
+#knawvcrsfx .gt_first_summary_row {
   border-top-style: none;
   border-top-color: #D3D3D3;
 }
 
-#htljhycwaw .gt_first_summary_row.thick {
+#knawvcrsfx .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#htljhycwaw .gt_last_summary_row {
+#knawvcrsfx .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -937,7 +960,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#htljhycwaw .gt_grand_summary_row {
+#knawvcrsfx .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -947,7 +970,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#htljhycwaw .gt_first_grand_summary_row {
+#knawvcrsfx .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -957,7 +980,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#htljhycwaw .gt_last_grand_summary_row_top {
+#knawvcrsfx .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -967,11 +990,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#htljhycwaw .gt_striped {
+#knawvcrsfx .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#htljhycwaw .gt_table_body {
+#knawvcrsfx .gt_table_body {
   border-top-style: none;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -980,7 +1003,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#htljhycwaw .gt_footnotes {
+#knawvcrsfx .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -994,7 +1017,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#htljhycwaw .gt_footnote {
+#knawvcrsfx .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1003,7 +1026,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#htljhycwaw .gt_sourcenotes {
+#knawvcrsfx .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1017,7 +1040,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#htljhycwaw .gt_sourcenote {
+#knawvcrsfx .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1025,72 +1048,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#htljhycwaw .gt_left {
+#knawvcrsfx .gt_left {
   text-align: left;
 }
 
-#htljhycwaw .gt_center {
+#knawvcrsfx .gt_center {
   text-align: center;
 }
 
-#htljhycwaw .gt_right {
+#knawvcrsfx .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#htljhycwaw .gt_font_normal {
+#knawvcrsfx .gt_font_normal {
   font-weight: normal;
 }
 
-#htljhycwaw .gt_font_bold {
+#knawvcrsfx .gt_font_bold {
   font-weight: bold;
 }
 
-#htljhycwaw .gt_font_italic {
+#knawvcrsfx .gt_font_italic {
   font-style: italic;
 }
 
-#htljhycwaw .gt_super {
+#knawvcrsfx .gt_super {
   font-size: 65%;
 }
 
-#htljhycwaw .gt_footnote_marks {
+#knawvcrsfx .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#htljhycwaw .gt_asterisk {
+#knawvcrsfx .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#htljhycwaw .gt_indent_1 {
+#knawvcrsfx .gt_indent_1 {
   text-indent: 5px;
 }
 
-#htljhycwaw .gt_indent_2 {
+#knawvcrsfx .gt_indent_2 {
   text-indent: 10px;
 }
 
-#htljhycwaw .gt_indent_3 {
+#knawvcrsfx .gt_indent_3 {
   text-indent: 15px;
 }
 
-#htljhycwaw .gt_indent_4 {
+#knawvcrsfx .gt_indent_4 {
   text-indent: 20px;
 }
 
-#htljhycwaw .gt_indent_5 {
+#knawvcrsfx .gt_indent_5 {
   text-indent: 25px;
 }
 
-#htljhycwaw .katex-display {
+#knawvcrsfx .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#htljhycwaw div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#knawvcrsfx div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
