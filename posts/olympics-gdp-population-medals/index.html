@@ -786,7 +786,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>While breadth may not be a good indicator of why certain countries exceeded expectations and others failed to reach their potential, using GDP and population is an accurate way to discover the countries who over and under performed at the Paris 2024 Olympic Games.</p>
 <p>Let’s zoom back out and discover which countries under and over performed according to their GDP at the Paris 2024 Olympic Games when we consider every country with GDP data.</p>
 <p>After fitting all of the countries to a linear regression model, we find that France overperformed the most, earning about 42 more medals than they should have according to its GDP. Again, this is with a caveat that France had more opportunities to medal than typical as they were the host country. And, on the other end, India underperformed the most, earning about 19 fewer medals than they should have according to their GDP.</p>
-<p>Notably, though, when the United States is included, it comes out as a UNDER perfoming country. Yes, that’s right. Even though the U.S. came out on top and earned the most medals in across all countries in Paris, according to its GDP, they should have earned about 13 more medals than they did.</p>
+<p>Notably, though, when the United States is included, it comes out as a UNDER performing country. Yes, that’s right. Even though the U.S. came out on top and earned the most medals in across all countries in Paris, according to its GDP, they should have earned about 13 more medals than they did. However, because the U.S. GDP is so high, and their medal output is also so high, the expected medals earned is significantly higher than any other country. According to GDP, the U.S. should have earned 139 medals at the Paris Games. 139 medals would have put them even further ahead of all other countries than they already were. So, while the United States technically underperformed, since they are already so far ahead of all other countries, this finding is less impactful than the other countries who under and over performed.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -819,7 +819,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_title</span>(<span class="st">"subtitle"</span>)</span>
 <span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
 <span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_source_note</span>(</span>
-<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">source_note =</span> <span class="st">"Source: World Bank Group and ___ via Olympics.com | By: Cassie Nesheim"</span></span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">source_note =</span> <span class="st">"Source: World Bank Group and Petro Ivaniuk via Olympics.com | By: Cassie Nesheim"</span></span>
 <span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
 <span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_style</span>(</span>
 <span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>     <span class="at">locations =</span> <span class="fu">cells_column_labels</span>(<span class="at">columns =</span> <span class="fu">everything</span>()),</span>
@@ -866,23 +866,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-74"><a href="#cb8-74" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
-<div id="opzttjsacj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#opzttjsacj table {
+<div id="ufmpztogeg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ufmpztogeg table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#opzttjsacj thead, #opzttjsacj tbody, #opzttjsacj tfoot, #opzttjsacj tr, #opzttjsacj td, #opzttjsacj th {
+#ufmpztogeg thead, #ufmpztogeg tbody, #ufmpztogeg tfoot, #ufmpztogeg tr, #ufmpztogeg td, #ufmpztogeg th {
   border-style: none;
 }
 
-#opzttjsacj p {
+#ufmpztogeg p {
   margin: 0;
   padding: 0;
 }
 
-#opzttjsacj .gt_table {
+#ufmpztogeg .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -908,12 +908,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#opzttjsacj .gt_caption {
+#ufmpztogeg .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#opzttjsacj .gt_title {
+#ufmpztogeg .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -925,7 +925,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#opzttjsacj .gt_subtitle {
+#ufmpztogeg .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -937,7 +937,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#opzttjsacj .gt_heading {
+#ufmpztogeg .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -949,13 +949,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#opzttjsacj .gt_bottom_border {
+#ufmpztogeg .gt_bottom_border {
   border-bottom-style: none;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#opzttjsacj .gt_col_headings {
+#ufmpztogeg .gt_col_headings {
   border-top-style: none;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -970,7 +970,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#opzttjsacj .gt_col_heading {
+#ufmpztogeg .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -990,7 +990,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#opzttjsacj .gt_column_spanner_outer {
+#ufmpztogeg .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1002,15 +1002,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#opzttjsacj .gt_column_spanner_outer:first-child {
+#ufmpztogeg .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#opzttjsacj .gt_column_spanner_outer:last-child {
+#ufmpztogeg .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#opzttjsacj .gt_column_spanner {
+#ufmpztogeg .gt_column_spanner {
   border-bottom-style: none;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1022,11 +1022,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#opzttjsacj .gt_spanner_row {
+#ufmpztogeg .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#opzttjsacj .gt_group_heading {
+#ufmpztogeg .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1052,7 +1052,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#opzttjsacj .gt_empty_group_heading {
+#ufmpztogeg .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1067,15 +1067,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#opzttjsacj .gt_from_md > :first-child {
+#ufmpztogeg .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#opzttjsacj .gt_from_md > :last-child {
+#ufmpztogeg .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#opzttjsacj .gt_row {
+#ufmpztogeg .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1094,7 +1094,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#opzttjsacj .gt_stub {
+#ufmpztogeg .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1107,7 +1107,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#opzttjsacj .gt_stub_row_group {
+#ufmpztogeg .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1121,15 +1121,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#opzttjsacj .gt_row_group_first td {
+#ufmpztogeg .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#opzttjsacj .gt_row_group_first th {
+#ufmpztogeg .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#opzttjsacj .gt_summary_row {
+#ufmpztogeg .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1139,16 +1139,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#opzttjsacj .gt_first_summary_row {
+#ufmpztogeg .gt_first_summary_row {
   border-top-style: none;
   border-top-color: #D3D3D3;
 }
 
-#opzttjsacj .gt_first_summary_row.thick {
+#ufmpztogeg .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#opzttjsacj .gt_last_summary_row {
+#ufmpztogeg .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1158,7 +1158,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#opzttjsacj .gt_grand_summary_row {
+#ufmpztogeg .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1168,7 +1168,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#opzttjsacj .gt_first_grand_summary_row {
+#ufmpztogeg .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1178,7 +1178,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#opzttjsacj .gt_last_grand_summary_row_top {
+#ufmpztogeg .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1188,11 +1188,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#opzttjsacj .gt_striped {
+#ufmpztogeg .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#opzttjsacj .gt_table_body {
+#ufmpztogeg .gt_table_body {
   border-top-style: none;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1201,7 +1201,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#opzttjsacj .gt_footnotes {
+#ufmpztogeg .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1215,7 +1215,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#opzttjsacj .gt_footnote {
+#ufmpztogeg .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1224,7 +1224,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#opzttjsacj .gt_sourcenotes {
+#ufmpztogeg .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1238,7 +1238,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#opzttjsacj .gt_sourcenote {
+#ufmpztogeg .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1246,72 +1246,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#opzttjsacj .gt_left {
+#ufmpztogeg .gt_left {
   text-align: left;
 }
 
-#opzttjsacj .gt_center {
+#ufmpztogeg .gt_center {
   text-align: center;
 }
 
-#opzttjsacj .gt_right {
+#ufmpztogeg .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#opzttjsacj .gt_font_normal {
+#ufmpztogeg .gt_font_normal {
   font-weight: normal;
 }
 
-#opzttjsacj .gt_font_bold {
+#ufmpztogeg .gt_font_bold {
   font-weight: bold;
 }
 
-#opzttjsacj .gt_font_italic {
+#ufmpztogeg .gt_font_italic {
   font-style: italic;
 }
 
-#opzttjsacj .gt_super {
+#ufmpztogeg .gt_super {
   font-size: 65%;
 }
 
-#opzttjsacj .gt_footnote_marks {
+#ufmpztogeg .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#opzttjsacj .gt_asterisk {
+#ufmpztogeg .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#opzttjsacj .gt_indent_1 {
+#ufmpztogeg .gt_indent_1 {
   text-indent: 5px;
 }
 
-#opzttjsacj .gt_indent_2 {
+#ufmpztogeg .gt_indent_2 {
   text-indent: 10px;
 }
 
-#opzttjsacj .gt_indent_3 {
+#ufmpztogeg .gt_indent_3 {
   text-indent: 15px;
 }
 
-#opzttjsacj .gt_indent_4 {
+#ufmpztogeg .gt_indent_4 {
   text-indent: 20px;
 }
 
-#opzttjsacj .gt_indent_5 {
+#ufmpztogeg .gt_indent_5 {
   text-indent: 25px;
 }
 
-#opzttjsacj .katex-display {
+#ufmpztogeg .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#opzttjsacj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#ufmpztogeg div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1372,7 +1372,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody><tfoot>
 <tr class="gt_sourcenotes odd">
-<td colspan="2" class="gt_sourcenote">Source: World Bank Group and ___ via Olympics.com | By: Cassie Nesheim</td>
+<td colspan="2" class="gt_sourcenote">Source: World Bank Group and Petro Ivaniuk via Olympics.com | By: Cassie Nesheim</td>
 </tr>
 </tfoot>
 
