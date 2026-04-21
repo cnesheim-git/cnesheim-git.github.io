@@ -1175,9 +1175,6 @@ font-style: inherit;">"plot"</span></span>
 <span id="cb4-39"></span>
 <span id="cb4-40">medals_gdp_less_1_tril</span></code></pre></div></div>
 </details>
-<div class="cell-output cell-output-stderr">
-<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
-</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1191,12 +1188,12 @@ font-style: inherit;">"plot"</span></span>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1">dumbbell_data <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">dumbbell_data <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> medal_gdp_pop_less_1_tril <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb6-2">  <span class="fu" style="color: #4758AB;
+<span id="cb5-2">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">slice_max</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -1207,18 +1204,18 @@ background-color: null;
 font-style: inherit;">n=</span><span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">15</span>)</span>
-<span id="cb6-3"></span>
-<span id="cb6-4">dumbbell_plot <span class="ot" style="color: #003B4F;
+<span id="cb5-3"></span>
+<span id="cb5-4">dumbbell_plot <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ggplot</span>() <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span> </span>
-<span id="cb6-5">  <span class="fu" style="color: #4758AB;
+<span id="cb5-5">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">geom_segment</span>(</span>
-<span id="cb6-6">    <span class="at" style="color: #657422;
+<span id="cb5-6">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">data=</span>dumbbell_data, <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -1241,13 +1238,13 @@ background-color: null;
 font-style: inherit;">linewidth =</span> <span class="fl" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1.5</span></span>
-<span id="cb6-7">  )  <span class="sc" style="color: #5E5E5E;
+<span id="cb5-7">  )  <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span> </span>
-<span id="cb6-8">  <span class="fu" style="color: #4758AB;
+<span id="cb5-8">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">geom_point</span>(</span>
-<span id="cb6-9">    <span class="at" style="color: #657422;
+<span id="cb5-9">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">data=</span>dumbbell_data, <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -1266,13 +1263,13 @@ background-color: null;
 font-style: inherit;">size=</span><span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">2</span></span>
-<span id="cb6-10">  ) <span class="sc" style="color: #5E5E5E;
+<span id="cb5-10">  ) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span> </span>
-<span id="cb6-11">  <span class="fu" style="color: #4758AB;
+<span id="cb5-11">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">geom_point</span>(</span>
-<span id="cb6-12">    <span class="at" style="color: #657422;
+<span id="cb5-12">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">data=</span>dumbbell_data, <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -1291,10 +1288,10 @@ background-color: null;
 font-style: inherit;">size=</span><span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">2</span></span>
-<span id="cb6-13">  ) <span class="sc" style="color: #5E5E5E;
+<span id="cb5-13">  ) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span> </span>
-<span id="cb6-14">  <span class="fu" style="color: #4758AB;
+<span id="cb5-14">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">scale_color_manual</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -1319,7 +1316,7 @@ background-color: null;
 font-style: inherit;">"purple"</span>)) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb6-15">  <span class="fu" style="color: #4758AB;
+<span id="cb5-15">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">annotate</span>(<span class="st" style="color: #20794D;
 background-color: null;
@@ -1354,7 +1351,7 @@ background-color: null;
 font-style: inherit;">0.5</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb6-16">  <span class="fu" style="color: #4758AB;
+<span id="cb5-16">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">annotate</span>(<span class="st" style="color: #20794D;
 background-color: null;
@@ -1385,7 +1382,7 @@ background-color: null;
 font-style: inherit;">"black"</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb6-17">  <span class="fu" style="color: #4758AB;
+<span id="cb5-17">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">annotate</span>(<span class="st" style="color: #20794D;
 background-color: null;
@@ -1416,14 +1413,14 @@ background-color: null;
 font-style: inherit;">"black"</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb6-18">  <span class="fu" style="color: #4758AB;
+<span id="cb5-18">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">title=</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Hungary and New Zealand Made the Most of Limited Resources"</span>, </span>
-<span id="cb6-19">       <span class="at" style="color: #657422;
+<span id="cb5-19">       <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">subtitle=</span><span class="st" style="color: #20794D;
 background-color: null;
@@ -1432,17 +1429,17 @@ background-color: null;
 font-style: inherit;">\n</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">purple dot (actual medals) shows how much each country over or underperformed their GDP prediction.*"</span>, </span>
-<span id="cb6-20">       <span class="at" style="color: #657422;
+<span id="cb5-20">       <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">y=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Country"</span>, </span>
-<span id="cb6-21">       <span class="at" style="color: #657422;
+<span id="cb5-21">       <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Total Medals Earned"</span>,</span>
-<span id="cb6-22">    <span class="at" style="color: #657422;
+<span id="cb5-22">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">caption=</span><span class="st" style="color: #20794D;
 background-color: null;
@@ -1451,18 +1448,18 @@ background-color: null;
 font-style: inherit;">\n</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">Source: World Bank Group and Petro Ivaniuk via Olympics.com | By: Cassie Nesheim"</span></span>
-<span id="cb6-23">    ) <span class="sc" style="color: #5E5E5E;
+<span id="cb5-23">    ) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb6-24">  <span class="fu" style="color: #4758AB;
+<span id="cb5-24">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">theme_minimal</span>() <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb6-25">  <span class="fu" style="color: #4758AB;
+<span id="cb5-25">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">theme</span>(</span>
-<span id="cb6-26">    <span class="at" style="color: #657422;
+<span id="cb5-26">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">plot.title =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -1475,7 +1472,7 @@ background-color: null;
 font-style: inherit;">face =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"bold"</span>),</span>
-<span id="cb6-27">    <span class="at" style="color: #657422;
+<span id="cb5-27">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">plot.subtitle =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -1488,7 +1485,7 @@ background-color: null;
 font-style: inherit;">face =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"plain"</span>),</span>
-<span id="cb6-28">    <span class="at" style="color: #657422;
+<span id="cb5-28">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">axis.title.x =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -1501,7 +1498,7 @@ background-color: null;
 font-style: inherit;">face =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"bold"</span>),</span>
-<span id="cb6-29">    <span class="at" style="color: #657422;
+<span id="cb5-29">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">axis.title.y =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -1514,14 +1511,14 @@ background-color: null;
 font-style: inherit;">face =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"bold"</span>),</span>
-<span id="cb6-30">    <span class="at" style="color: #657422;
+<span id="cb5-30">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">plot.title.position =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"plot"</span></span>
-<span id="cb6-31">  )</span>
-<span id="cb6-32"></span>
-<span id="cb6-33">dumbbell_plot</span></code></pre></div></div>
+<span id="cb5-31">  )</span>
+<span id="cb5-32"></span>
+<span id="cb5-33">dumbbell_plot</span></code></pre></div></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -1537,7 +1534,7 @@ font-style: inherit;">"plot"</span></span>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1">best_overperformers <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1">best_overperformers <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -1554,25 +1551,25 @@ background-color: null;
 font-style: inherit;">"Hungary"</span>, <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Uzbekistan"</span>)</span>
-<span id="cb7-2"></span>
-<span id="cb7-3">best_events <span class="ot" style="color: #003B4F;
+<span id="cb6-2"></span>
+<span id="cb6-3">best_events <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> event_medals <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb7-4">  <span class="fu" style="color: #4758AB;
+<span id="cb6-4">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">filter</span>(country <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%in%</span> best_overperformers) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb7-5">  <span class="fu" style="color: #4758AB;
+<span id="cb6-5">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">group_by</span>(country, discipline) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb7-6">  <span class="fu" style="color: #4758AB;
+<span id="cb6-6">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -1581,17 +1578,17 @@ background-color: null;
 font-style: inherit;">n</span>()) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb7-7">  <span class="fu" style="color: #4758AB;
+<span id="cb6-7">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ungroup</span>() <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb7-8">  <span class="fu" style="color: #4758AB;
+<span id="cb6-8">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">group_by</span>(country) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb7-9">  <span class="fu" style="color: #4758AB;
+<span id="cb6-9">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -1610,7 +1607,7 @@ background-color: null;
 font-style: inherit;">"Other"</span>, discipline)) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
-<span id="cb7-10">  <span class="fu" style="color: #4758AB;
+<span id="cb6-10">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -1619,12 +1616,12 @@ background-color: null;
 font-style: inherit;">n</span>()) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb7-11">  <span class="fu" style="color: #4758AB;
+<span id="cb6-11">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ungroup</span>() <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb7-12">  <span class="fu" style="color: #4758AB;
+<span id="cb6-12">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -1633,14 +1630,14 @@ background-color: null;
 font-style: inherit;">reorder</span>(country, country_total)) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb7-13">  <span class="fu" style="color: #4758AB;
+<span id="cb6-13">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">discipline =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">factor</span>(discipline, </span>
-<span id="cb7-14">                             <span class="at" style="color: #657422;
+<span id="cb6-14">                             <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">levels =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -1705,240 +1702,240 @@ background-color: null;
 font-style: inherit;">"Badminton"</span>, <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Table Tennis"</span>)))</span>
-<span id="cb7-15"></span>
-<span id="cb7-16"><span class="co" style="color: #5E5E5E;
+<span id="cb6-15"></span>
+<span id="cb6-16"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#cycling mountain bike, archery, </span></span>
-<span id="cb7-17"></span>
-<span id="cb7-18"><span class="co" style="color: #5E5E5E;
+<span id="cb6-17"></span>
+<span id="cb6-18"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#rugby sevens, triathlon, cycling bmx racking, cycling road, sailing, #surfing, taekwondo, marathon swimming, golf, basketball</span></span>
-<span id="cb7-19"></span>
-<span id="cb7-20">discipline_colors <span class="ot" style="color: #003B4F;
+<span id="cb6-19"></span>
+<span id="cb6-20">discipline_colors <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">c</span>(</span>
-<span id="cb7-21">  <span class="st" style="color: #20794D;
+<span id="cb6-21">  <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Other"</span> <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"#989898"</span>,</span>
-<span id="cb7-22">  <span class="st" style="color: #20794D;
+<span id="cb6-22">  <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Artistic Gymnastics"</span> <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"#e63995"</span>,</span>
-<span id="cb7-23">  <span class="st" style="color: #20794D;
+<span id="cb6-23">  <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Track &amp; Field"</span> <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"#c1121f"</span>,</span>
-<span id="cb7-24">  <span class="st" style="color: #20794D;
+<span id="cb6-24">  <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Swimming"</span> <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"#1a78c2"</span>,</span>
-<span id="cb7-25">  <span class="st" style="color: #20794D;
+<span id="cb6-25">  <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Diving"</span> <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"#90e0ef"</span>,</span>
-<span id="cb7-26">  <span class="st" style="color: #20794D;
+<span id="cb6-26">  <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Marathon Swimming"</span> <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"#5ba4cf"</span>,</span>
-<span id="cb7-27">  <span class="st" style="color: #20794D;
+<span id="cb6-27">  <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Triathlon"</span> <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"#2166ac"</span>,</span>
-<span id="cb7-28">  <span class="st" style="color: #20794D;
+<span id="cb6-28">  <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Cycling Track"</span> <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"#2d6a4f"</span>,</span>
-<span id="cb7-29">  <span class="st" style="color: #20794D;
+<span id="cb6-29">  <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Cycling Mountain Bike"</span> <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"#52b788"</span>,</span>
-<span id="cb7-30">  <span class="st" style="color: #20794D;
+<span id="cb6-30">  <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Cycling BMX Racing"</span> <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"#95d5b2"</span>,</span>
-<span id="cb7-31">  <span class="st" style="color: #20794D;
+<span id="cb6-31">  <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Cycling Road"</span> <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"#b7e4c7"</span>,</span>
-<span id="cb7-32">  <span class="st" style="color: #20794D;
+<span id="cb6-32">  <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Canoe Slalom"</span> <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"#0a9396"</span>,</span>
-<span id="cb7-33">  <span class="st" style="color: #20794D;
+<span id="cb6-33">  <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Canoe Sprint"</span> <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"#94d2bd"</span>,</span>
-<span id="cb7-34">  <span class="st" style="color: #20794D;
+<span id="cb6-34">  <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Rowing"</span> <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"#005f73"</span>,</span>
-<span id="cb7-35">  <span class="st" style="color: #20794D;
+<span id="cb6-35">  <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Sailing"</span> <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"#0e7c7b"</span>,</span>
-<span id="cb7-36">  <span class="st" style="color: #20794D;
+<span id="cb6-36">  <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Surfing"</span> <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"#48cae4"</span>, </span>
-<span id="cb7-37">  <span class="st" style="color: #20794D;
+<span id="cb6-37">  <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Shooting"</span> <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"#6d4c41"</span>,</span>
-<span id="cb7-38">  <span class="st" style="color: #20794D;
+<span id="cb6-38">  <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Archery"</span> <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"#a47148"</span>,</span>
-<span id="cb7-39">  <span class="st" style="color: #20794D;
+<span id="cb6-39">  <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Equestrian"</span> <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"#8b6c5c"</span>,</span>
-<span id="cb7-40">  <span class="st" style="color: #20794D;
+<span id="cb6-40">  <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Judo"</span> <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"#7b2d8b"</span>,</span>
-<span id="cb7-41">  <span class="st" style="color: #20794D;
+<span id="cb6-41">  <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Fencing"</span> <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"#c77dff"</span>,</span>
-<span id="cb7-42">  <span class="st" style="color: #20794D;
+<span id="cb6-42">  <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Taekwondo"</span> <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"#e040fb"</span>,</span>
-<span id="cb7-43">  <span class="st" style="color: #20794D;
+<span id="cb6-43">  <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Boxing"</span> <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"#ff8fab"</span>,</span>
-<span id="cb7-44">  <span class="st" style="color: #20794D;
+<span id="cb6-44">  <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Weightlifting"</span> <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"#457b9d"</span>,</span>
-<span id="cb7-45">  <span class="st" style="color: #20794D;
+<span id="cb6-45">  <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Wrestling"</span> <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"#ff2800"</span>,</span>
-<span id="cb7-46">  <span class="st" style="color: #20794D;
+<span id="cb6-46">  <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Golf"</span> <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"#606c38"</span>,</span>
-<span id="cb7-47">  <span class="st" style="color: #20794D;
+<span id="cb6-47">  <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Basketball"</span> <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"#fb8500"</span>,</span>
-<span id="cb7-48">  <span class="st" style="color: #20794D;
+<span id="cb6-48">  <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Rugby Sevens"</span> <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"#e76f51"</span>,</span>
-<span id="cb7-49">  <span class="st" style="color: #20794D;
+<span id="cb6-49">  <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Badminton"</span> <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"#ffd166"</span>,</span>
-<span id="cb7-50">  <span class="st" style="color: #20794D;
+<span id="cb6-50">  <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Table Tennis"</span> <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"#ffef00"</span></span>
-<span id="cb7-51">)</span>
-<span id="cb7-52"></span>
-<span id="cb7-53">overperformers_bar_chart <span class="ot" style="color: #003B4F;
+<span id="cb6-51">)</span>
+<span id="cb6-52"></span>
+<span id="cb6-53">overperformers_bar_chart <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ggplot</span>() <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span> </span>
-<span id="cb7-54">  <span class="fu" style="color: #4758AB;
+<span id="cb6-54">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">geom_bar</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -1951,19 +1948,19 @@ background-color: null;
 font-style: inherit;">fill=</span>discipline)) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb7-55">  <span class="fu" style="color: #4758AB;
+<span id="cb6-55">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">coord_flip</span>() <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb7-56">  <span class="fu" style="color: #4758AB;
+<span id="cb6-56">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">title=</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Countries who Overperform Use Breadth to Their Advantage"</span>, </span>
-<span id="cb7-57">       <span class="at" style="color: #657422;
+<span id="cb6-57">       <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">subtitle=</span><span class="st" style="color: #20794D;
 background-color: null;
@@ -1972,22 +1969,22 @@ background-color: null;
 font-style: inherit;">\n</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">Australia is the exception, relying heavily on Swimming to earn their medals."</span>, </span>
-<span id="cb7-58">       <span class="at" style="color: #657422;
+<span id="cb6-58">       <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">y=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Total Olympic Medals Earned, Split by Discipline"</span>, </span>
-<span id="cb7-59">       <span class="at" style="color: #657422;
+<span id="cb6-59">       <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Countries"</span>,</span>
-<span id="cb7-60">    <span class="at" style="color: #657422;
+<span id="cb6-60">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">caption=</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Source: Petro Ivaniuk via Olympics.com | By: Cassie Nesheim"</span>,</span>
-<span id="cb7-61">    <span class="at" style="color: #657422;
+<span id="cb6-61">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">fill=</span><span class="st" style="color: #20794D;
 background-color: null;
@@ -2000,25 +1997,25 @@ background-color: null;
 font-style: inherit;">\n</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">grouped together)"</span></span>
-<span id="cb7-62">    ) <span class="sc" style="color: #5E5E5E;
+<span id="cb6-62">    ) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb7-63">  <span class="fu" style="color: #4758AB;
+<span id="cb6-63">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">scale_fill_manual</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">values =</span> discipline_colors) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb7-64">  <span class="fu" style="color: #4758AB;
+<span id="cb6-64">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">theme_minimal</span>() <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb7-65">  <span class="fu" style="color: #4758AB;
+<span id="cb6-65">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">theme</span>(</span>
-<span id="cb7-66">    <span class="at" style="color: #657422;
+<span id="cb6-66">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">plot.title =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -2031,7 +2028,7 @@ background-color: null;
 font-style: inherit;">face =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"bold"</span>),</span>
-<span id="cb7-67">    <span class="at" style="color: #657422;
+<span id="cb6-67">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">plot.subtitle =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -2040,7 +2037,7 @@ background-color: null;
 font-style: inherit;">size=</span><span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">10</span>),</span>
-<span id="cb7-68">    <span class="at" style="color: #657422;
+<span id="cb6-68">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">axis.title.x =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -2053,7 +2050,7 @@ background-color: null;
 font-style: inherit;">face =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"bold"</span>),</span>
-<span id="cb7-69">    <span class="at" style="color: #657422;
+<span id="cb6-69">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">axis.title.y =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -2066,12 +2063,12 @@ background-color: null;
 font-style: inherit;">face =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"bold"</span>),</span>
-<span id="cb7-70">    <span class="at" style="color: #657422;
+<span id="cb6-70">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">panel.grid.major =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">element_blank</span>(),</span>
-<span id="cb7-71">    <span class="at" style="color: #657422;
+<span id="cb6-71">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">legend.key.size =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -2080,7 +2077,7 @@ background-color: null;
 font-style: inherit;">0.75</span>, <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"cm"</span>),</span>
-<span id="cb7-72">    <span class="at" style="color: #657422;
+<span id="cb6-72">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">legend.title =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -2089,7 +2086,7 @@ background-color: null;
 font-style: inherit;">size=</span><span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">9</span>),</span>
-<span id="cb7-73">    <span class="at" style="color: #657422;
+<span id="cb6-73">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">legend.text =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -2098,20 +2095,20 @@ background-color: null;
 font-style: inherit;">size=</span><span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">8</span>),</span>
-<span id="cb7-74">    <span class="at" style="color: #657422;
+<span id="cb6-74">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">legend.position =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"right"</span>,</span>
-<span id="cb7-75">    <span class="at" style="color: #657422;
+<span id="cb6-75">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">plot.title.position =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"plot"</span></span>
-<span id="cb7-76">    )</span>
-<span id="cb7-77"></span>
-<span id="cb7-78"></span>
-<span id="cb7-79">overperformers_bar_chart</span></code></pre></div></div>
+<span id="cb6-76">    )</span>
+<span id="cb6-77"></span>
+<span id="cb6-78"></span>
+<span id="cb6-79">overperformers_bar_chart</span></code></pre></div></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -2126,7 +2123,7 @@ font-style: inherit;">"plot"</span></span>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1">worst_underperformers <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1">worst_underperformers <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -2143,25 +2140,25 @@ background-color: null;
 font-style: inherit;">"Pakistan"</span>, <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Singapore"</span>)</span>
-<span id="cb8-2"></span>
-<span id="cb8-3">worst_events <span class="ot" style="color: #003B4F;
+<span id="cb7-2"></span>
+<span id="cb7-3">worst_events <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> event_medals <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb8-4">  <span class="fu" style="color: #4758AB;
+<span id="cb7-4">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">filter</span>(country <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%in%</span> worst_underperformers) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb8-5">  <span class="fu" style="color: #4758AB;
+<span id="cb7-5">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">group_by</span>(country) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb8-6">  <span class="fu" style="color: #4758AB;
+<span id="cb7-6">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -2170,12 +2167,12 @@ background-color: null;
 font-style: inherit;">n</span>()) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb8-7">  <span class="fu" style="color: #4758AB;
+<span id="cb7-7">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ungroup</span>() <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb8-8">  <span class="fu" style="color: #4758AB;
+<span id="cb7-8">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -2184,14 +2181,14 @@ background-color: null;
 font-style: inherit;">reorder</span>(country, country_total)) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb8-9">  <span class="fu" style="color: #4758AB;
+<span id="cb7-9">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">discipline =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">factor</span>(discipline, </span>
-<span id="cb8-10">                             <span class="at" style="color: #657422;
+<span id="cb7-10">                             <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">levels =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -2214,93 +2211,93 @@ background-color: null;
 font-style: inherit;">"Wrestling"</span>, <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Hockey"</span>)))</span>
-<span id="cb8-11"></span>
-<span id="cb8-12"><span class="co" style="color: #5E5E5E;
+<span id="cb7-11"></span>
+<span id="cb7-12"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#cycling mountain bike, archery, </span></span>
-<span id="cb8-13"></span>
-<span id="cb8-14"><span class="co" style="color: #5E5E5E;
+<span id="cb7-13"></span>
+<span id="cb7-14"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#rugby sevens, triathlon, cycling bmx racking, cycling road, sailing, #surfing, taekwondo, marathon swimming, golf, basketball</span></span>
-<span id="cb8-15"></span>
-<span id="cb8-16">worst_discipline_colors <span class="ot" style="color: #003B4F;
+<span id="cb7-15"></span>
+<span id="cb7-16">worst_discipline_colors <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">c</span>(</span>
-<span id="cb8-17">  <span class="st" style="color: #20794D;
+<span id="cb7-17">  <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Track &amp; Field"</span> <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"#c1121f"</span>,</span>
-<span id="cb8-18">  <span class="st" style="color: #20794D;
+<span id="cb7-18">  <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Diving"</span> <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"#90e0ef"</span>,</span>
-<span id="cb8-19">  <span class="st" style="color: #20794D;
+<span id="cb7-19">  <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Sailing"</span> <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"#0e7c7b"</span>,</span>
-<span id="cb8-20">  <span class="st" style="color: #20794D;
+<span id="cb7-20">  <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Shooting"</span> <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"#6d4c41"</span>,</span>
-<span id="cb8-21">  <span class="st" style="color: #20794D;
+<span id="cb7-21">  <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Archery"</span> <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"#a47148"</span>,</span>
-<span id="cb8-22">  <span class="st" style="color: #20794D;
+<span id="cb7-22">  <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Judo"</span> <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"#7b2d8b"</span>,</span>
-<span id="cb8-23">  <span class="st" style="color: #20794D;
+<span id="cb7-23">  <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Boxing"</span> <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"#ff8fab"</span>,</span>
-<span id="cb8-24">  <span class="st" style="color: #20794D;
+<span id="cb7-24">  <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Wrestling"</span> <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"#ff2800"</span>,</span>
-<span id="cb8-25">  <span class="st" style="color: #20794D;
+<span id="cb7-25">  <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Hockey"</span> <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"#007efc"</span></span>
-<span id="cb8-26">)</span>
-<span id="cb8-27"></span>
-<span id="cb8-28">underperformers_bar_chart <span class="ot" style="color: #003B4F;
+<span id="cb7-26">)</span>
+<span id="cb7-27"></span>
+<span id="cb7-28">underperformers_bar_chart <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ggplot</span>() <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb8-29">  <span class="fu" style="color: #4758AB;
+<span id="cb7-29">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">geom_bar</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -2313,19 +2310,19 @@ background-color: null;
 font-style: inherit;">fill=</span>discipline)) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb8-30">  <span class="fu" style="color: #4758AB;
+<span id="cb7-30">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">coord_flip</span>() <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb8-31">  <span class="fu" style="color: #4758AB;
+<span id="cb7-31">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">title=</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Countries Who Fail to Live Up to Expectations Surprisingly Maintain Breadth"</span>, </span>
-<span id="cb8-32">       <span class="at" style="color: #657422;
+<span id="cb7-32">       <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">subtitle=</span><span class="st" style="color: #20794D;
 background-color: null;
@@ -2334,22 +2331,22 @@ background-color: null;
 font-style: inherit;">\n</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">India and Mexico fail to deliever yet they remain as diverse as overperforming countries."</span>, </span>
-<span id="cb8-33">       <span class="at" style="color: #657422;
+<span id="cb7-33">       <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">y=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Total Olympic Medals Earned, Split by Discipline"</span>, </span>
-<span id="cb8-34">       <span class="at" style="color: #657422;
+<span id="cb7-34">       <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Countries"</span>,</span>
-<span id="cb8-35">    <span class="at" style="color: #657422;
+<span id="cb7-35">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">caption=</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Source: Petro Ivaniuk via Olympics.com | By: Cassie Nesheim"</span>,</span>
-<span id="cb8-36">    <span class="at" style="color: #657422;
+<span id="cb7-36">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">fill=</span><span class="st" style="color: #20794D;
 background-color: null;
@@ -2362,25 +2359,25 @@ background-color: null;
 font-style: inherit;">\n</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">grouped together)"</span></span>
-<span id="cb8-37">    ) <span class="sc" style="color: #5E5E5E;
+<span id="cb7-37">    ) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb8-38">  <span class="fu" style="color: #4758AB;
+<span id="cb7-38">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">scale_fill_manual</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">values =</span> worst_discipline_colors) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb8-39">  <span class="fu" style="color: #4758AB;
+<span id="cb7-39">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">theme_minimal</span>() <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb8-40">  <span class="fu" style="color: #4758AB;
+<span id="cb7-40">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">theme</span>(</span>
-<span id="cb8-41">    <span class="at" style="color: #657422;
+<span id="cb7-41">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">plot.title =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -2393,7 +2390,7 @@ background-color: null;
 font-style: inherit;">face =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"bold"</span>),</span>
-<span id="cb8-42">    <span class="at" style="color: #657422;
+<span id="cb7-42">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">plot.subtitle =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -2402,7 +2399,7 @@ background-color: null;
 font-style: inherit;">size=</span><span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">10</span>),</span>
-<span id="cb8-43">    <span class="at" style="color: #657422;
+<span id="cb7-43">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">axis.title.x =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -2415,7 +2412,7 @@ background-color: null;
 font-style: inherit;">face =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"bold"</span>),</span>
-<span id="cb8-44">    <span class="at" style="color: #657422;
+<span id="cb7-44">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">axis.title.y =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -2428,12 +2425,12 @@ background-color: null;
 font-style: inherit;">face =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"bold"</span>),</span>
-<span id="cb8-45">    <span class="at" style="color: #657422;
+<span id="cb7-45">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">panel.grid.major =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">element_blank</span>(),</span>
-<span id="cb8-46">    <span class="at" style="color: #657422;
+<span id="cb7-46">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">legend.key.size =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -2442,7 +2439,7 @@ background-color: null;
 font-style: inherit;">0.75</span>, <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"cm"</span>),</span>
-<span id="cb8-47">    <span class="at" style="color: #657422;
+<span id="cb7-47">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">legend.title =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -2451,7 +2448,7 @@ background-color: null;
 font-style: inherit;">size=</span><span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">9</span>),</span>
-<span id="cb8-48">    <span class="at" style="color: #657422;
+<span id="cb7-48">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">legend.text =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -2460,19 +2457,19 @@ background-color: null;
 font-style: inherit;">size=</span><span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">8</span>),</span>
-<span id="cb8-49">    <span class="at" style="color: #657422;
+<span id="cb7-49">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">legend.position =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"right"</span>,</span>
-<span id="cb8-50">    <span class="at" style="color: #657422;
+<span id="cb7-50">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">plot.title.position =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"plot"</span></span>
-<span id="cb8-51">    )</span>
-<span id="cb8-52"></span>
-<span id="cb8-53">underperformers_bar_chart</span></code></pre></div></div>
+<span id="cb7-51">    )</span>
+<span id="cb7-52"></span>
+<span id="cb7-53">underperformers_bar_chart</span></code></pre></div></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -2491,7 +2488,7 @@ font-style: inherit;">"plot"</span></span>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1">gdp_pop_model <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1">gdp_pop_model <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -2500,13 +2497,13 @@ background-color: null;
 font-style: inherit;">~</span> tril_gdp, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">data=</span>medal_gdp_pop_scaled)</span>
-<span id="cb9-2"></span>
-<span id="cb9-3">gdp_pop_full <span class="ot" style="color: #003B4F;
+<span id="cb8-2"></span>
+<span id="cb8-3">gdp_pop_full <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> medal_gdp_pop_scaled <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb9-4">  <span class="fu" style="color: #4758AB;
+<span id="cb8-4">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -2519,13 +2516,13 @@ background-color: null;
 font-style: inherit;">fitted</span>(gdp_pop_model)) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb9-5">  <span class="fu" style="color: #4758AB;
+<span id="cb8-5">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">arrange</span>(<span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">desc</span>(resids_full))</span>
-<span id="cb9-6"></span>
-<span id="cb9-7">top5_countries_overall <span class="ot" style="color: #003B4F;
+<span id="cb8-6"></span>
+<span id="cb8-7">top5_countries_overall <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> gdp_pop_full <span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -2538,7 +2535,7 @@ background-color: null;
 font-style: inherit;">n=</span><span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">5</span>)</span>
-<span id="cb9-8">bottom5_countries_overall <span class="ot" style="color: #003B4F;
+<span id="cb8-8">bottom5_countries_overall <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> gdp_pop_full <span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -2551,57 +2548,57 @@ background-color: null;
 font-style: inherit;">n=</span><span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">5</span>)</span>
-<span id="cb9-9">labeled_countries <span class="ot" style="color: #003B4F;
+<span id="cb8-9">labeled_countries <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">bind_rows</span>(top5_countries_overall, bottom5_countries_overall) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb9-10">  <span class="fu" style="color: #4758AB;
+<span id="cb8-10">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">select</span>(country, resids_full) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb9-11">  <span class="fu" style="color: #4758AB;
+<span id="cb8-11">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">arrange</span>(<span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">desc</span>(resids_full))</span>
-<span id="cb9-12"></span>
-<span id="cb9-13">labeled_countries <span class="sc" style="color: #5E5E5E;
+<span id="cb8-12"></span>
+<span id="cb8-13">labeled_countries <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
-<span id="cb9-14">  <span class="fu" style="color: #4758AB;
+<span id="cb8-14">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">gt</span>() <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
-<span id="cb9-15">  <span class="fu" style="color: #4758AB;
+<span id="cb8-15">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">cols_label</span>(</span>
-<span id="cb9-16">    <span class="at" style="color: #657422;
+<span id="cb8-16">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">country =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Country"</span>,</span>
-<span id="cb9-17">    <span class="at" style="color: #657422;
+<span id="cb8-17">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">resids_full =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Medals Away From Expected"</span></span>
-<span id="cb9-18">  ) <span class="sc" style="color: #5E5E5E;
+<span id="cb8-18">  ) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb9-19">  <span class="fu" style="color: #4758AB;
+<span id="cb8-19">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">tab_header</span>(</span>
-<span id="cb9-20">    <span class="at" style="color: #657422;
+<span id="cb8-20">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"The United States Actually Underperformed at Paris 2024 According to its GDP"</span>,</span>
-<span id="cb9-21">    <span class="at" style="color: #657422;
+<span id="cb8-21">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">subtitle =</span> <span class="st" style="color: #20794D;
 background-color: null;
@@ -2610,12 +2607,12 @@ background-color: null;
 font-style: inherit;">\n</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">The bottom 5 underperformers from Paris (earned fewer medals than predicted) in red."</span></span>
-<span id="cb9-22">  ) <span class="sc" style="color: #5E5E5E;
+<span id="cb8-22">  ) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">tab_style</span>(</span>
-<span id="cb9-23">    <span class="at" style="color: #657422;
+<span id="cb8-23">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">style =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -2632,19 +2629,19 @@ background-color: null;
 font-style: inherit;">align =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"left"</span>),</span>
-<span id="cb9-24">    <span class="at" style="color: #657422;
+<span id="cb8-24">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">locations =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">cells_title</span>(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"title"</span>)</span>
-<span id="cb9-25">  ) <span class="sc" style="color: #5E5E5E;
+<span id="cb8-25">  ) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">tab_style</span>(</span>
-<span id="cb9-26">    <span class="at" style="color: #657422;
+<span id="cb8-26">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">style =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -2657,31 +2654,31 @@ background-color: null;
 font-style: inherit;">align =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"left"</span>),</span>
-<span id="cb9-27">    <span class="at" style="color: #657422;
+<span id="cb8-27">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">locations =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">cells_title</span>(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"subtitle"</span>)</span>
-<span id="cb9-28">  ) <span class="sc" style="color: #5E5E5E;
+<span id="cb8-28">  ) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb9-29">  <span class="fu" style="color: #4758AB;
+<span id="cb8-29">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">tab_source_note</span>(</span>
-<span id="cb9-30">    <span class="at" style="color: #657422;
+<span id="cb8-30">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">source_note =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Source: World Bank Group and ___ via Olympics.com | By: Cassie Nesheim"</span></span>
-<span id="cb9-31">  ) <span class="sc" style="color: #5E5E5E;
+<span id="cb8-31">  ) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb9-32">  <span class="fu" style="color: #4758AB;
+<span id="cb8-32">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">tab_style</span>(</span>
-<span id="cb9-33">     <span class="at" style="color: #657422;
+<span id="cb8-33">     <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">locations =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -2690,12 +2687,12 @@ background-color: null;
 font-style: inherit;">columns =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">everything</span>()),</span>
-<span id="cb9-34">     <span class="at" style="color: #657422;
+<span id="cb8-34">     <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">style =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">list</span>(</span>
-<span id="cb9-35">       <span class="fu" style="color: #4758AB;
+<span id="cb8-35">       <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">cell_borders</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -2708,7 +2705,7 @@ background-color: null;
 font-style: inherit;">px</span>(<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">3</span>)),</span>
-<span id="cb9-36">       <span class="fu" style="color: #4758AB;
+<span id="cb8-36">       <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">cell_text</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -2719,183 +2716,183 @@ background-color: null;
 font-style: inherit;">size=</span><span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">12</span>)</span>
-<span id="cb9-37">     )</span>
-<span id="cb9-38">   ) <span class="sc" style="color: #5E5E5E;
+<span id="cb8-37">     )</span>
+<span id="cb8-38">   ) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb9-39">  <span class="fu" style="color: #4758AB;
+<span id="cb8-39">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">opt_row_striping</span>() <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
-<span id="cb9-40">  <span class="fu" style="color: #4758AB;
+<span id="cb8-40">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">opt_table_lines</span>(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"none"</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb9-41">  <span class="fu" style="color: #4758AB;
+<span id="cb8-41">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">tab_style</span>(</span>
-<span id="cb9-42">    <span class="at" style="color: #657422;
+<span id="cb8-42">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">style =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">list</span>(</span>
-<span id="cb9-43">      <span class="fu" style="color: #4758AB;
+<span id="cb8-43">      <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">cell_text</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"darkred"</span>)</span>
-<span id="cb9-44">      ),</span>
-<span id="cb9-45">    <span class="at" style="color: #657422;
+<span id="cb8-44">      ),</span>
+<span id="cb8-45">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">locations =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">cells_body</span>(</span>
-<span id="cb9-46">      <span class="at" style="color: #657422;
+<span id="cb8-46">      <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">columns =</span> resids_full,</span>
-<span id="cb9-47">      <span class="at" style="color: #657422;
+<span id="cb8-47">      <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">rows =</span> resids_full <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">&lt;</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">0</span>)</span>
-<span id="cb9-48">  ) <span class="sc" style="color: #5E5E5E;
+<span id="cb8-48">  ) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb9-49">  <span class="fu" style="color: #4758AB;
+<span id="cb8-49">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">tab_style</span>(</span>
-<span id="cb9-50">    <span class="at" style="color: #657422;
+<span id="cb8-50">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">style =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">list</span>(</span>
-<span id="cb9-51">      <span class="fu" style="color: #4758AB;
+<span id="cb8-51">      <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">cell_text</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"darkgreen"</span>)</span>
-<span id="cb9-52">      ),</span>
-<span id="cb9-53">    <span class="at" style="color: #657422;
+<span id="cb8-52">      ),</span>
+<span id="cb8-53">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">locations =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">cells_body</span>(</span>
-<span id="cb9-54">      <span class="at" style="color: #657422;
+<span id="cb8-54">      <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">columns =</span> resids_full,</span>
-<span id="cb9-55">      <span class="at" style="color: #657422;
+<span id="cb8-55">      <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">rows =</span> resids_full <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">&gt;</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">0</span>)</span>
-<span id="cb9-56">  ) <span class="sc" style="color: #5E5E5E;
+<span id="cb8-56">  ) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb9-57">  <span class="fu" style="color: #4758AB;
+<span id="cb8-57">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">tab_style</span>(</span>
-<span id="cb9-58">    <span class="at" style="color: #657422;
+<span id="cb8-58">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">style =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">list</span>(</span>
-<span id="cb9-59">      <span class="fu" style="color: #4758AB;
+<span id="cb8-59">      <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">cell_fill</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"lightgreen"</span>)</span>
-<span id="cb9-60">      ),</span>
-<span id="cb9-61">    <span class="at" style="color: #657422;
+<span id="cb8-60">      ),</span>
+<span id="cb8-61">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">locations =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">cells_body</span>(</span>
-<span id="cb9-62">      <span class="at" style="color: #657422;
+<span id="cb8-62">      <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">rows =</span> resids_full <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">==</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">max</span>(resids_full))</span>
-<span id="cb9-63">  ) <span class="sc" style="color: #5E5E5E;
+<span id="cb8-63">  ) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb9-64">  <span class="fu" style="color: #4758AB;
+<span id="cb8-64">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">tab_style</span>(</span>
-<span id="cb9-65">    <span class="at" style="color: #657422;
+<span id="cb8-65">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">style =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">list</span>(</span>
-<span id="cb9-66">      <span class="fu" style="color: #4758AB;
+<span id="cb8-66">      <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">cell_fill</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"indianred1"</span>)</span>
-<span id="cb9-67">      ),</span>
-<span id="cb9-68">    <span class="at" style="color: #657422;
+<span id="cb8-67">      ),</span>
+<span id="cb8-68">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">locations =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">cells_body</span>(</span>
-<span id="cb9-69">      <span class="at" style="color: #657422;
+<span id="cb8-69">      <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">rows =</span> resids_full <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">==</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">min</span>(resids_full))</span>
-<span id="cb9-70">  ) <span class="sc" style="color: #5E5E5E;
+<span id="cb8-70">  ) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb9-71">  <span class="fu" style="color: #4758AB;
+<span id="cb8-71">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">fmt_number</span>(</span>
-<span id="cb9-72">    <span class="at" style="color: #657422;
+<span id="cb8-72">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">columns =</span> resids_full,</span>
-<span id="cb9-73">    <span class="at" style="color: #657422;
+<span id="cb8-73">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">decimals =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span></span>
-<span id="cb9-74">  )</span></code></pre></div></div>
+<span id="cb8-74">  )</span></code></pre></div></div>
 </details>
 <div class="cell-output-display">
-<div id="oenmzeaeow" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#oenmzeaeow table {
+<div id="opzttjsacj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#opzttjsacj table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#oenmzeaeow thead, #oenmzeaeow tbody, #oenmzeaeow tfoot, #oenmzeaeow tr, #oenmzeaeow td, #oenmzeaeow th {
+#opzttjsacj thead, #opzttjsacj tbody, #opzttjsacj tfoot, #opzttjsacj tr, #opzttjsacj td, #opzttjsacj th {
   border-style: none;
 }
 
-#oenmzeaeow p {
+#opzttjsacj p {
   margin: 0;
   padding: 0;
 }
 
-#oenmzeaeow .gt_table {
+#opzttjsacj .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2921,12 +2918,12 @@ font-style: inherit;">1</span></span>
   border-left-color: #D3D3D3;
 }
 
-#oenmzeaeow .gt_caption {
+#opzttjsacj .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#oenmzeaeow .gt_title {
+#opzttjsacj .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2938,7 +2935,7 @@ font-style: inherit;">1</span></span>
   border-bottom-width: 0;
 }
 
-#oenmzeaeow .gt_subtitle {
+#opzttjsacj .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2950,7 +2947,7 @@ font-style: inherit;">1</span></span>
   border-top-width: 0;
 }
 
-#oenmzeaeow .gt_heading {
+#opzttjsacj .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2962,13 +2959,13 @@ font-style: inherit;">1</span></span>
   border-right-color: #D3D3D3;
 }
 
-#oenmzeaeow .gt_bottom_border {
+#opzttjsacj .gt_bottom_border {
   border-bottom-style: none;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#oenmzeaeow .gt_col_headings {
+#opzttjsacj .gt_col_headings {
   border-top-style: none;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2983,7 +2980,7 @@ font-style: inherit;">1</span></span>
   border-right-color: #D3D3D3;
 }
 
-#oenmzeaeow .gt_col_heading {
+#opzttjsacj .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3003,7 +3000,7 @@ font-style: inherit;">1</span></span>
   overflow-x: hidden;
 }
 
-#oenmzeaeow .gt_column_spanner_outer {
+#opzttjsacj .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3015,15 +3012,15 @@ font-style: inherit;">1</span></span>
   padding-right: 4px;
 }
 
-#oenmzeaeow .gt_column_spanner_outer:first-child {
+#opzttjsacj .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#oenmzeaeow .gt_column_spanner_outer:last-child {
+#opzttjsacj .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#oenmzeaeow .gt_column_spanner {
+#opzttjsacj .gt_column_spanner {
   border-bottom-style: none;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3035,11 +3032,11 @@ font-style: inherit;">1</span></span>
   width: 100%;
 }
 
-#oenmzeaeow .gt_spanner_row {
+#opzttjsacj .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#oenmzeaeow .gt_group_heading {
+#opzttjsacj .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3065,7 +3062,7 @@ font-style: inherit;">1</span></span>
   text-align: left;
 }
 
-#oenmzeaeow .gt_empty_group_heading {
+#opzttjsacj .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3080,15 +3077,15 @@ font-style: inherit;">1</span></span>
   vertical-align: middle;
 }
 
-#oenmzeaeow .gt_from_md > :first-child {
+#opzttjsacj .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#oenmzeaeow .gt_from_md > :last-child {
+#opzttjsacj .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#oenmzeaeow .gt_row {
+#opzttjsacj .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3107,7 +3104,7 @@ font-style: inherit;">1</span></span>
   overflow-x: hidden;
 }
 
-#oenmzeaeow .gt_stub {
+#opzttjsacj .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3120,7 +3117,7 @@ font-style: inherit;">1</span></span>
   padding-right: 5px;
 }
 
-#oenmzeaeow .gt_stub_row_group {
+#opzttjsacj .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3134,15 +3131,15 @@ font-style: inherit;">1</span></span>
   vertical-align: top;
 }
 
-#oenmzeaeow .gt_row_group_first td {
+#opzttjsacj .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#oenmzeaeow .gt_row_group_first th {
+#opzttjsacj .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#oenmzeaeow .gt_summary_row {
+#opzttjsacj .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3152,16 +3149,16 @@ font-style: inherit;">1</span></span>
   padding-right: 5px;
 }
 
-#oenmzeaeow .gt_first_summary_row {
+#opzttjsacj .gt_first_summary_row {
   border-top-style: none;
   border-top-color: #D3D3D3;
 }
 
-#oenmzeaeow .gt_first_summary_row.thick {
+#opzttjsacj .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#oenmzeaeow .gt_last_summary_row {
+#opzttjsacj .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3171,7 +3168,7 @@ font-style: inherit;">1</span></span>
   border-bottom-color: #D3D3D3;
 }
 
-#oenmzeaeow .gt_grand_summary_row {
+#opzttjsacj .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3181,7 +3178,7 @@ font-style: inherit;">1</span></span>
   padding-right: 5px;
 }
 
-#oenmzeaeow .gt_first_grand_summary_row {
+#opzttjsacj .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3191,7 +3188,7 @@ font-style: inherit;">1</span></span>
   border-top-color: #D3D3D3;
 }
 
-#oenmzeaeow .gt_last_grand_summary_row_top {
+#opzttjsacj .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3201,11 +3198,11 @@ font-style: inherit;">1</span></span>
   border-bottom-color: #D3D3D3;
 }
 
-#oenmzeaeow .gt_striped {
+#opzttjsacj .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#oenmzeaeow .gt_table_body {
+#opzttjsacj .gt_table_body {
   border-top-style: none;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3214,7 +3211,7 @@ font-style: inherit;">1</span></span>
   border-bottom-color: #D3D3D3;
 }
 
-#oenmzeaeow .gt_footnotes {
+#opzttjsacj .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3228,7 +3225,7 @@ font-style: inherit;">1</span></span>
   border-right-color: #D3D3D3;
 }
 
-#oenmzeaeow .gt_footnote {
+#opzttjsacj .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3237,7 +3234,7 @@ font-style: inherit;">1</span></span>
   padding-right: 5px;
 }
 
-#oenmzeaeow .gt_sourcenotes {
+#opzttjsacj .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3251,7 +3248,7 @@ font-style: inherit;">1</span></span>
   border-right-color: #D3D3D3;
 }
 
-#oenmzeaeow .gt_sourcenote {
+#opzttjsacj .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3259,72 +3256,72 @@ font-style: inherit;">1</span></span>
   padding-right: 5px;
 }
 
-#oenmzeaeow .gt_left {
+#opzttjsacj .gt_left {
   text-align: left;
 }
 
-#oenmzeaeow .gt_center {
+#opzttjsacj .gt_center {
   text-align: center;
 }
 
-#oenmzeaeow .gt_right {
+#opzttjsacj .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#oenmzeaeow .gt_font_normal {
+#opzttjsacj .gt_font_normal {
   font-weight: normal;
 }
 
-#oenmzeaeow .gt_font_bold {
+#opzttjsacj .gt_font_bold {
   font-weight: bold;
 }
 
-#oenmzeaeow .gt_font_italic {
+#opzttjsacj .gt_font_italic {
   font-style: italic;
 }
 
-#oenmzeaeow .gt_super {
+#opzttjsacj .gt_super {
   font-size: 65%;
 }
 
-#oenmzeaeow .gt_footnote_marks {
+#opzttjsacj .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#oenmzeaeow .gt_asterisk {
+#opzttjsacj .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#oenmzeaeow .gt_indent_1 {
+#opzttjsacj .gt_indent_1 {
   text-indent: 5px;
 }
 
-#oenmzeaeow .gt_indent_2 {
+#opzttjsacj .gt_indent_2 {
   text-indent: 10px;
 }
 
-#oenmzeaeow .gt_indent_3 {
+#opzttjsacj .gt_indent_3 {
   text-indent: 15px;
 }
 
-#oenmzeaeow .gt_indent_4 {
+#opzttjsacj .gt_indent_4 {
   text-indent: 20px;
 }
 
-#oenmzeaeow .gt_indent_5 {
+#opzttjsacj .gt_indent_5 {
   text-indent: 25px;
 }
 
-#oenmzeaeow .katex-display {
+#opzttjsacj .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#oenmzeaeow div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#opzttjsacj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
