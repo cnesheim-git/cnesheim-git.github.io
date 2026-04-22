@@ -1934,10 +1934,26 @@ font-style: inherit;">"plot"</span></span>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1">event_medals <span class="ot" style="color: #003B4F;
 background-color: null;
-font-style: inherit;">#CHANGE INTO TREE MAP</span></span>
-<span id="cb7-2">worst_underperformers <span class="ot" style="color: #003B4F;
+font-style: inherit;">&lt;-</span> event_medals <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb7-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">country =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">recode</span>(country, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Türkiye"</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Turkey"</span>))</span>
+<span id="cb7-3"></span>
+<span id="cb7-4">worst_underperformers <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -1950,25 +1966,25 @@ background-color: null;
 font-style: inherit;">"Turkey"</span>, <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Argentina"</span>)</span>
-<span id="cb7-3"></span>
-<span id="cb7-4">worst_events <span class="ot" style="color: #003B4F;
+<span id="cb7-5"></span>
+<span id="cb7-6">worst_events <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> event_medals <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb7-5">  <span class="fu" style="color: #4758AB;
+<span id="cb7-7">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">filter</span>(country <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%in%</span> worst_underperformers) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb7-6">  <span class="fu" style="color: #4758AB;
+<span id="cb7-8">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">group_by</span>(country, discipline) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb7-7">  <span class="fu" style="color: #4758AB;
+<span id="cb7-9">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -1977,17 +1993,17 @@ background-color: null;
 font-style: inherit;">n</span>()) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb7-8">  <span class="fu" style="color: #4758AB;
+<span id="cb7-10">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ungroup</span>() <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb7-9">  <span class="fu" style="color: #4758AB;
+<span id="cb7-11">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">group_by</span>(country) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb7-10">  <span class="fu" style="color: #4758AB;
+<span id="cb7-12">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -2006,30 +2022,30 @@ background-color: null;
 font-style: inherit;">"Other"</span>, discipline)) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb7-11">  <span class="fu" style="color: #4758AB;
+<span id="cb7-13">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">group_by</span>(country, discipline) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb7-12">  <span class="fu" style="color: #4758AB;
+<span id="cb7-14">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">summarise</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">country_dis_count =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">sum</span>(dis_count))</span>
-<span id="cb7-13"></span>
-<span id="cb7-14">worst_events <span class="ot" style="color: #003B4F;
+<span id="cb7-15"></span>
+<span id="cb7-16">worst_events <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> worst_events <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb7-15">  <span class="fu" style="color: #4758AB;
+<span id="cb7-17">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">group_by</span>(country) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb7-16">  <span class="fu" style="color: #4758AB;
+<span id="cb7-18">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -2038,22 +2054,22 @@ background-color: null;
 font-style: inherit;">/</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">sum</span>(country_dis_count),</span>
-<span id="cb7-17">         <span class="at" style="color: #657422;
+<span id="cb7-19">         <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">country_max_prop =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">max</span>(proportion)) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb7-18">  <span class="fu" style="color: #4758AB;
+<span id="cb7-20">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ungroup</span>() <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb7-19">  <span class="fu" style="color: #4758AB;
+<span id="cb7-21">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">mutate</span>(</span>
-<span id="cb7-20">    <span class="at" style="color: #657422;
+<span id="cb7-22">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">percentage =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -2068,7 +2084,7 @@ background-color: null;
 font-style: inherit;">2</span>), <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"%"</span>),</span>
-<span id="cb7-21">    <span class="at" style="color: #657422;
+<span id="cb7-23">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">label =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -2081,16 +2097,16 @@ background-color: null;
 font-style: inherit;">\n</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"</span>),</span>
-<span id="cb7-22">    <span class="at" style="color: #657422;
+<span id="cb7-24">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">country =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">reorder</span>(country, <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">-</span>country_max_prop)</span>
-<span id="cb7-23">    )</span>
-<span id="cb7-24"></span>
-<span id="cb7-25">worst_treemap <span class="ot" style="color: #003B4F;
+<span id="cb7-25">    )</span>
+<span id="cb7-26"></span>
+<span id="cb7-27">worst_treemap <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -2105,7 +2121,7 @@ background-color: null;
 font-style: inherit;">label=</span>label)) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb7-26">  <span class="fu" style="color: #4758AB;
+<span id="cb7-28">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">geom_treemap</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -2118,14 +2134,14 @@ background-color: null;
 font-style: inherit;">0.1</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb7-27">  <span class="fu" style="color: #4758AB;
+<span id="cb7-29">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">facet_wrap</span>(<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">~</span>country) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb7-28">  <span class="fu" style="color: #4758AB;
+<span id="cb7-30">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">geom_treemap_text</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -2138,7 +2154,7 @@ background-color: null;
 font-style: inherit;">"center"</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb7-29">  <span class="fu" style="color: #4758AB;
+<span id="cb7-31">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">scale_fill_gradient</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -2151,35 +2167,35 @@ background-color: null;
 font-style: inherit;">"#DB4235"</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb7-30">  <span class="fu" style="color: #4758AB;
+<span id="cb7-32">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">title=</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Countries who fail to live up to expectations also lack balance."</span>, </span>
-<span id="cb7-31">       <span class="at" style="color: #657422;
+<span id="cb7-33">       <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">subtitle=</span><span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"India and Mexico fail to deliever and also fail to diversify, though Argentina did diversity well."</span>, </span>
-<span id="cb7-32">       <span class="at" style="color: #657422;
+font-style: inherit;">"India, Mexico, and Turkey fail to deliever and also fail to diversify."</span>, </span>
+<span id="cb7-34">       <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">caption=</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Source: Petro Ivaniuk via Olympics.com | By: Cassie Nesheim"</span></span>
-<span id="cb7-33">    ) <span class="sc" style="color: #5E5E5E;
+<span id="cb7-35">    ) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb7-34">  <span class="fu" style="color: #4758AB;
+<span id="cb7-36">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">theme_minimal</span>() <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb7-35">  <span class="fu" style="color: #4758AB;
+<span id="cb7-37">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">theme</span>(</span>
-<span id="cb7-36">    <span class="at" style="color: #657422;
+<span id="cb7-38">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">plot.title =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -2192,7 +2208,7 @@ background-color: null;
 font-style: inherit;">face =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"bold"</span>),</span>
-<span id="cb7-37">    <span class="at" style="color: #657422;
+<span id="cb7-39">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">plot.subtitle =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -2201,7 +2217,7 @@ background-color: null;
 font-style: inherit;">size=</span><span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">10</span>),</span>
-<span id="cb7-38">    <span class="at" style="color: #657422;
+<span id="cb7-40">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">axis.title.x =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -2214,7 +2230,7 @@ background-color: null;
 font-style: inherit;">face =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"bold"</span>),</span>
-<span id="cb7-39">    <span class="at" style="color: #657422;
+<span id="cb7-41">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">axis.title.y =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -2227,12 +2243,12 @@ background-color: null;
 font-style: inherit;">face =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"bold"</span>),</span>
-<span id="cb7-40">    <span class="at" style="color: #657422;
+<span id="cb7-42">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">panel.grid.major =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">element_blank</span>(),</span>
-<span id="cb7-41">    <span class="at" style="color: #657422;
+<span id="cb7-43">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">legend.key.size =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -2241,7 +2257,7 @@ background-color: null;
 font-style: inherit;">0.75</span>, <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"cm"</span>),</span>
-<span id="cb7-42">    <span class="at" style="color: #657422;
+<span id="cb7-44">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">legend.title =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -2250,7 +2266,7 @@ background-color: null;
 font-style: inherit;">size=</span><span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">9</span>),</span>
-<span id="cb7-43">    <span class="at" style="color: #657422;
+<span id="cb7-45">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">legend.text =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -2259,19 +2275,19 @@ background-color: null;
 font-style: inherit;">size=</span><span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">8</span>),</span>
-<span id="cb7-44">    <span class="at" style="color: #657422;
+<span id="cb7-46">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">legend.position =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"none"</span>,</span>
-<span id="cb7-45">    <span class="at" style="color: #657422;
+<span id="cb7-47">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">plot.title.position =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"plot"</span></span>
-<span id="cb7-46">    )</span>
-<span id="cb7-47"></span>
-<span id="cb7-48">worst_treemap</span></code></pre></div></div>
+<span id="cb7-48">    )</span>
+<span id="cb7-49"></span>
+<span id="cb7-50">worst_treemap</span></code></pre></div></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -2281,7 +2297,7 @@ font-style: inherit;">"plot"</span></span>
 </div>
 </div>
 </div>
-<p>Analyzing underperforming teams is tricky, because since they earned fewer medals than they were expected to, the number of medals is significantly smaller than those countries who overperformed. Of course countries who only medaled once lack significantly in breadth. Though, underperforming countries can still be analyzed for their breadth. India relied heavily on Shooting and Mexico on Diving, though both countries medaled in four separated disciplines. Argentina was able to medal three times in three very separate disciplines, demonstrating impeccable breadth.</p>
+<p>Analyzing underperforming teams is tricky, because since they earned fewer medals than they were expected to, the number of medals is significantly smaller than those countries who overperformed. Of course countries who only medaled once lack significantly in breadth. Though, underperforming countries can still be analyzed for their breadth. India relied heavily on Shooting and Mexico on Diving, though both countries medaled in at least four separated disciplines. Turkey was able to medal in five disciplines, but relied on Boxing pretty heavily. Lastly, Argentina was able to medal three times in three very separate disciplines, demonstrating impeccable breadth.</p>
 <p>So, breadth is not a good measure of why countries who underperformed were unable to capitalize on their GDPs. However, one pattern that did emerge was countries with high populations tend to underperform. This was the case for both India and Pakistan. Both countries had the highest populations in their respective graphs and both emerged as one of the worst underperformers.</p>
 <p>While breadth may not be a good indicator of why certain countries exceeded expectations and others failed to reach their potential, using GDP and population is an accurate way to discover the countries who over and under performed at the Paris 2024 Olympic Games.</p>
 <p>Let’s zoom back out and discover which countries under and over performed according to their GDP at the Paris 2024 Olympic Games when we consider every country with GDP data.</p>
@@ -2678,23 +2694,23 @@ font-style: inherit;">1</span></span>
 <span id="cb8-74">  )</span></code></pre></div></div>
 </details>
 <div class="cell-output-display">
-<div id="kxqwbrxnnl" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#kxqwbrxnnl table {
+<div id="fmjedtxbtv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#fmjedtxbtv table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#kxqwbrxnnl thead, #kxqwbrxnnl tbody, #kxqwbrxnnl tfoot, #kxqwbrxnnl tr, #kxqwbrxnnl td, #kxqwbrxnnl th {
+#fmjedtxbtv thead, #fmjedtxbtv tbody, #fmjedtxbtv tfoot, #fmjedtxbtv tr, #fmjedtxbtv td, #fmjedtxbtv th {
   border-style: none;
 }
 
-#kxqwbrxnnl p {
+#fmjedtxbtv p {
   margin: 0;
   padding: 0;
 }
 
-#kxqwbrxnnl .gt_table {
+#fmjedtxbtv .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2720,12 +2736,12 @@ font-style: inherit;">1</span></span>
   border-left-color: #D3D3D3;
 }
 
-#kxqwbrxnnl .gt_caption {
+#fmjedtxbtv .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#kxqwbrxnnl .gt_title {
+#fmjedtxbtv .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2737,7 +2753,7 @@ font-style: inherit;">1</span></span>
   border-bottom-width: 0;
 }
 
-#kxqwbrxnnl .gt_subtitle {
+#fmjedtxbtv .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2749,7 +2765,7 @@ font-style: inherit;">1</span></span>
   border-top-width: 0;
 }
 
-#kxqwbrxnnl .gt_heading {
+#fmjedtxbtv .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2761,13 +2777,13 @@ font-style: inherit;">1</span></span>
   border-right-color: #D3D3D3;
 }
 
-#kxqwbrxnnl .gt_bottom_border {
+#fmjedtxbtv .gt_bottom_border {
   border-bottom-style: none;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#kxqwbrxnnl .gt_col_headings {
+#fmjedtxbtv .gt_col_headings {
   border-top-style: none;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2782,7 +2798,7 @@ font-style: inherit;">1</span></span>
   border-right-color: #D3D3D3;
 }
 
-#kxqwbrxnnl .gt_col_heading {
+#fmjedtxbtv .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2802,7 +2818,7 @@ font-style: inherit;">1</span></span>
   overflow-x: hidden;
 }
 
-#kxqwbrxnnl .gt_column_spanner_outer {
+#fmjedtxbtv .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2814,15 +2830,15 @@ font-style: inherit;">1</span></span>
   padding-right: 4px;
 }
 
-#kxqwbrxnnl .gt_column_spanner_outer:first-child {
+#fmjedtxbtv .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#kxqwbrxnnl .gt_column_spanner_outer:last-child {
+#fmjedtxbtv .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#kxqwbrxnnl .gt_column_spanner {
+#fmjedtxbtv .gt_column_spanner {
   border-bottom-style: none;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2834,11 +2850,11 @@ font-style: inherit;">1</span></span>
   width: 100%;
 }
 
-#kxqwbrxnnl .gt_spanner_row {
+#fmjedtxbtv .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#kxqwbrxnnl .gt_group_heading {
+#fmjedtxbtv .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2864,7 +2880,7 @@ font-style: inherit;">1</span></span>
   text-align: left;
 }
 
-#kxqwbrxnnl .gt_empty_group_heading {
+#fmjedtxbtv .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2879,15 +2895,15 @@ font-style: inherit;">1</span></span>
   vertical-align: middle;
 }
 
-#kxqwbrxnnl .gt_from_md > :first-child {
+#fmjedtxbtv .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#kxqwbrxnnl .gt_from_md > :last-child {
+#fmjedtxbtv .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#kxqwbrxnnl .gt_row {
+#fmjedtxbtv .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2906,7 +2922,7 @@ font-style: inherit;">1</span></span>
   overflow-x: hidden;
 }
 
-#kxqwbrxnnl .gt_stub {
+#fmjedtxbtv .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2919,7 +2935,7 @@ font-style: inherit;">1</span></span>
   padding-right: 5px;
 }
 
-#kxqwbrxnnl .gt_stub_row_group {
+#fmjedtxbtv .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2933,15 +2949,15 @@ font-style: inherit;">1</span></span>
   vertical-align: top;
 }
 
-#kxqwbrxnnl .gt_row_group_first td {
+#fmjedtxbtv .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#kxqwbrxnnl .gt_row_group_first th {
+#fmjedtxbtv .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#kxqwbrxnnl .gt_summary_row {
+#fmjedtxbtv .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2951,16 +2967,16 @@ font-style: inherit;">1</span></span>
   padding-right: 5px;
 }
 
-#kxqwbrxnnl .gt_first_summary_row {
+#fmjedtxbtv .gt_first_summary_row {
   border-top-style: none;
   border-top-color: #D3D3D3;
 }
 
-#kxqwbrxnnl .gt_first_summary_row.thick {
+#fmjedtxbtv .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#kxqwbrxnnl .gt_last_summary_row {
+#fmjedtxbtv .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2970,7 +2986,7 @@ font-style: inherit;">1</span></span>
   border-bottom-color: #D3D3D3;
 }
 
-#kxqwbrxnnl .gt_grand_summary_row {
+#fmjedtxbtv .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2980,7 +2996,7 @@ font-style: inherit;">1</span></span>
   padding-right: 5px;
 }
 
-#kxqwbrxnnl .gt_first_grand_summary_row {
+#fmjedtxbtv .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2990,7 +3006,7 @@ font-style: inherit;">1</span></span>
   border-top-color: #D3D3D3;
 }
 
-#kxqwbrxnnl .gt_last_grand_summary_row_top {
+#fmjedtxbtv .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3000,11 +3016,11 @@ font-style: inherit;">1</span></span>
   border-bottom-color: #D3D3D3;
 }
 
-#kxqwbrxnnl .gt_striped {
+#fmjedtxbtv .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#kxqwbrxnnl .gt_table_body {
+#fmjedtxbtv .gt_table_body {
   border-top-style: none;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3013,7 +3029,7 @@ font-style: inherit;">1</span></span>
   border-bottom-color: #D3D3D3;
 }
 
-#kxqwbrxnnl .gt_footnotes {
+#fmjedtxbtv .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3027,7 +3043,7 @@ font-style: inherit;">1</span></span>
   border-right-color: #D3D3D3;
 }
 
-#kxqwbrxnnl .gt_footnote {
+#fmjedtxbtv .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3036,7 +3052,7 @@ font-style: inherit;">1</span></span>
   padding-right: 5px;
 }
 
-#kxqwbrxnnl .gt_sourcenotes {
+#fmjedtxbtv .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3050,7 +3066,7 @@ font-style: inherit;">1</span></span>
   border-right-color: #D3D3D3;
 }
 
-#kxqwbrxnnl .gt_sourcenote {
+#fmjedtxbtv .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3058,72 +3074,72 @@ font-style: inherit;">1</span></span>
   padding-right: 5px;
 }
 
-#kxqwbrxnnl .gt_left {
+#fmjedtxbtv .gt_left {
   text-align: left;
 }
 
-#kxqwbrxnnl .gt_center {
+#fmjedtxbtv .gt_center {
   text-align: center;
 }
 
-#kxqwbrxnnl .gt_right {
+#fmjedtxbtv .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#kxqwbrxnnl .gt_font_normal {
+#fmjedtxbtv .gt_font_normal {
   font-weight: normal;
 }
 
-#kxqwbrxnnl .gt_font_bold {
+#fmjedtxbtv .gt_font_bold {
   font-weight: bold;
 }
 
-#kxqwbrxnnl .gt_font_italic {
+#fmjedtxbtv .gt_font_italic {
   font-style: italic;
 }
 
-#kxqwbrxnnl .gt_super {
+#fmjedtxbtv .gt_super {
   font-size: 65%;
 }
 
-#kxqwbrxnnl .gt_footnote_marks {
+#fmjedtxbtv .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#kxqwbrxnnl .gt_asterisk {
+#fmjedtxbtv .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#kxqwbrxnnl .gt_indent_1 {
+#fmjedtxbtv .gt_indent_1 {
   text-indent: 5px;
 }
 
-#kxqwbrxnnl .gt_indent_2 {
+#fmjedtxbtv .gt_indent_2 {
   text-indent: 10px;
 }
 
-#kxqwbrxnnl .gt_indent_3 {
+#fmjedtxbtv .gt_indent_3 {
   text-indent: 15px;
 }
 
-#kxqwbrxnnl .gt_indent_4 {
+#fmjedtxbtv .gt_indent_4 {
   text-indent: 20px;
 }
 
-#kxqwbrxnnl .gt_indent_5 {
+#fmjedtxbtv .gt_indent_5 {
   text-indent: 25px;
 }
 
-#kxqwbrxnnl .katex-display {
+#fmjedtxbtv .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#kxqwbrxnnl div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#fmjedtxbtv div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
