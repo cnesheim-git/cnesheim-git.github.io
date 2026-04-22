@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://cnesheim-git.github.io/index.html</loc>
-    <lastmod>2026-04-01T23:23:31.420Z</lastmod>
+    <loc>https://cnesheim-git.github.io/about.html</loc>
+    <lastmod>2026-04-02T22:46:01.565Z</lastmod>
   </url>
   <url>
     <loc>https://cnesheim-git.github.io/posts/olympics-gdp-population-medals/index.html</loc>
-    <lastmod>2026-04-21T17:47:30.096Z</lastmod>
+    <lastmod>2026-04-22T21:49:29.924Z</lastmod>
+  </url>
+  <url>
+    <loc>https://cnesheim-git.github.io/posts/sec-gymnastics-scoring-home-away/index.html</loc>
+    <lastmod>2026-04-10T19:34:11.762Z</lastmod>
+  </url>
+  <url>
+    <loc>https://cnesheim-git.github.io/index.html</loc>
+    <lastmod>2026-04-01T23:23:31.420Z</lastmod>
   </url>
 </urlset>
