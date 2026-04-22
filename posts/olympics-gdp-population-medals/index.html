@@ -425,7 +425,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">country =</span> <span class="fu">recode</span>(country, <span class="st">"Türkiye"</span> <span class="ot">=</span> <span class="st">"Turkey"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<p>Most everyone knows that the United States tends to dominate medal count at each Olympics, usually landing within the top three countries, if not the top country. This includes leading in gold medals earned and the greater total medals earned. China also typically finds itself in the top countries. What do these countries have in common? Massive GDPs (gross domestic product). Meaning, these countries have large economies, and, in theory, more resources to be able to compete well in Olympic games.</p>
+<p>Most everyone knows that the United States tends to dominate medal count at each Olympics, usually landing within the top three countries, if not the top country. This includes leading in gold medals earned and the greater total medals earned. China also typically finds themselves in the top countries. What do these countries have in common? Massive GDPs (gross domestic product). Meaning, these countries have large economies, and, in theory, more resources to be able to compete well in Olympic games.</p>
 <p>Looking at total medals compared to GDP, it is clear that the US and China are in a league of their own. All the other countries end up in a small corner in the bottom left of the graph, signifying that the US and China have such large GDPs and totals medals earned they overcome the others. So, it is difficult to see how any other countries performed at the Paris 2024 Olympic Games compared to their GDP produced.</p>
 <div class="cell">
 <details class="code-fold">
@@ -537,7 +537,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">resids_less1 =</span> <span class="fu">residuals</span>(gdp_less_1_tril_model), <span class="at">fitted_less1 =</span> <span class="fu">fitted</span>(gdp_less_1_tril_model))</span>
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>top3_less1_countries <span class="ot">&lt;-</span> medal_gdp_pop_less_1_tril <span class="sc">|&gt;</span> <span class="fu">slice_max</span>(<span class="at">order_by=</span>resids_less1, <span class="at">n=</span><span class="dv">3</span>)</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>bottom3_less1_countries <span class="ot">&lt;-</span> medal_gdp_pop_less_1_tril <span class="sc">|&gt;</span> <span class="fu">slice_min</span>(<span class="at">order_by=</span>resids_less1, <span class="at">n=</span><span class="dv">3</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>bottom3_less1_countries <span class="ot">&lt;-</span> medal_gdp_pop_less_1_tril <span class="sc">|&gt;</span> <span class="fu">slice_min</span>(<span class="at">order_by=</span>resids_less1, <span class="at">n=</span><span class="dv">4</span>)</span>
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>labeled_countries_less1 <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(top3_less1_countries, bottom3_less1_countries)</span>
 <span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>medals_gdp_less_1_tril <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
@@ -580,7 +580,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>Analyzing the only the countries with GDPs under $1 trillion and predicting their total medals at the Olympics by their GDPs, it is revealed that New Zealand, Hungary, and Uzbekistan were the lower economies able to capitalize on their resources most. Interestingly, these three countries do not seem to have too high of populations, at least in comparison to the other lower GDP countries. On the contrary, Pakistan is one of the lower economies who underperformed most significantly at the Paris Games, and they have the largest population. So, not only was Pakistan unable to turn its GDP into medals, they also were not able to capitalize on their larger population.</p>
+<p>Analyzing the only the countries with GDPs under $1 trillion and predicting their total medals at the Olympics by their GDPs, it is revealed that New Zealand, Hungary, and Uzbekistan were the lower economies able to capitalize on their resources most. Interestingly, these three countries do not seem to have too high of populations, at least in comparison to the other lower GDP countries. On the contrary, Pakistan is one of the lower economies who underperformed most significantly at the Paris Games, and they have the largest population. So, not only was Pakistan unable to turn their GDP into medals, they also were not able to capitalize on their larger population.</p>
 <p>What about other countries of the lower GDP outputs? How do other countries stack up?</p>
 <div class="cell">
 <details class="code-fold">
@@ -590,7 +590,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>dumbbell_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>dumbbell_data, <span class="fu">aes</span>(<span class="at">y=</span><span class="fu">reorder</span>(country, Total), <span class="at">yend=</span>country, <span class="at">x=</span>fitted_less1, <span class="at">xend=</span>Total), <span class="at">color=</span><span class="st">"grey"</span>, <span class="at">linewidth =</span> <span class="fl">1.5</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>dumbbell_data, <span class="fu">aes</span>(<span class="at">y=</span><span class="fu">reorder</span>(country, Total), <span class="at">yend=</span>country, <span class="at">x=</span>fitted_less1, <span class="at">xend=</span>Total), <span class="at">color=</span><span class="st">"grey"</span>, <span class="at">linewidth =</span> <span class="dv">1</span></span>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  )  <span class="sc">+</span> </span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>dumbbell_data, <span class="fu">aes</span>(<span class="at">y=</span><span class="fu">reorder</span>(country, Total), <span class="at">x=</span>fitted_less1, <span class="at">color=</span><span class="st">"Expected"</span>), <span class="at">size=</span><span class="dv">2</span></span>
@@ -598,13 +598,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
 <span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>dumbbell_data, <span class="fu">aes</span>(<span class="at">y=</span><span class="fu">reorder</span>(country, Total), <span class="at">x=</span>Total, <span class="at">color=</span><span class="st">"Actual"</span>), <span class="at">size=</span><span class="dv">2</span></span>
 <span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">name=</span><span class="st">""</span>, <span class="at">values=</span><span class="fu">c</span>(<span class="st">"Expected"</span><span class="ot">=</span><span class="st">"blue"</span>, <span class="st">"Actual"</span><span class="ot">=</span><span class="st">"purple"</span>)) <span class="sc">+</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">name=</span><span class="st">""</span>, <span class="at">values=</span><span class="fu">c</span>(<span class="st">"Expected"</span><span class="ot">=</span><span class="st">"steelblue"</span>, <span class="st">"Actual"</span><span class="ot">=</span><span class="st">"magenta3"</span>)) <span class="sc">+</span></span>
 <span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"segment"</span>, <span class="at">x=</span><span class="dv">0</span>, <span class="at">xend=</span><span class="fl">20.5</span>, <span class="at">y=</span><span class="fl">9.5</span>, <span class="at">yend=</span><span class="fl">9.5</span>, <span class="at">linetype=</span><span class="st">"solid"</span>, <span class="at">color=</span><span class="st">"black"</span>, <span class="at">linewidth=</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
 <span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x=</span><span class="dv">17</span>, <span class="at">y=</span><span class="dv">10</span>, <span class="at">label=</span><span class="st">"Overperformed"</span>, <span class="at">hjust=</span><span class="dv">0</span>, <span class="at">size=</span><span class="dv">3</span>, <span class="at">color=</span><span class="st">"black"</span>) <span class="sc">+</span></span>
 <span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x=</span><span class="dv">17</span>, <span class="at">y=</span><span class="dv">9</span>, <span class="at">label=</span><span class="st">"Underperformed"</span>, <span class="at">hjust=</span><span class="dv">0</span>, <span class="at">size=</span><span class="dv">3</span>, <span class="at">color=</span><span class="st">"black"</span>) <span class="sc">+</span></span>
 <span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Hungary and New Zealand made the most of limited resources."</span>, </span>
 <span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle=</span><span class="st">"Among coutnries with under $1 trillion in GDP, the gap between the blue dot (expected medals) and </span><span class="sc">\n</span><span class="st">purple dot (actual medals) shows how much each country over or underperformed their GDP prediction.*"</span>, </span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>       <span class="at">y=</span> <span class="st">"Country"</span>, </span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">""</span>,</span>
 <span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Total Medals Earned"</span>,</span>
 <span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption=</span><span class="st">"*Note: Only the 15 countries with the largest gap between expected and actual are shown. </span><span class="sc">\n</span><span class="st">Source: World Bank Group and Petro Ivaniuk via Olympics.com | By: Cassie Nesheim"</span></span>
 <span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
@@ -647,37 +647,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>best_events <span class="ot">&lt;-</span> best_events <span class="sc">|&gt;</span></span>
 <span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(country) <span class="sc">|&gt;</span></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">proportion =</span> country_dis_count<span class="sc">/</span><span class="fu">sum</span>(country_dis_count)) <span class="sc">|&gt;</span></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">|&gt;</span></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">percentage =</span> <span class="fu">paste0</span>(<span class="fu">round</span>(proportion<span class="sc">*</span><span class="dv">100</span>, <span class="dv">2</span>), <span class="st">"%"</span>),</span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="fu">paste</span>(discipline, percentage, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>best_treemap <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(best_events, <span class="fu">aes</span>(<span class="at">area=</span>country_dis_count, <span class="at">fill=</span>country_dis_count, <span class="at">label=</span>label)) <span class="sc">+</span></span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_treemap</span>(<span class="at">color=</span><span class="st">"black"</span>, <span class="at">linewidth=</span><span class="fl">0.1</span>) <span class="sc">+</span></span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>country) <span class="sc">+</span></span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_treemap_text</span>(<span class="at">color=</span><span class="st">"gray32"</span>, <span class="at">place=</span><span class="st">"center"</span>) <span class="sc">+</span></span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low=</span><span class="st">"#CFEFE8"</span>, <span class="at">high=</span><span class="st">"#57C4AD"</span>) <span class="sc">+</span></span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Most countries who overperform use breadth to their advantage."</span>, </span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle=</span><span class="st">"Most countries that punch above their GDP weight earn their medals across many disciplines. </span><span class="sc">\n</span><span class="st">The U.S. and Australia are the exception, relying heavily on one or two sports."</span>, </span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption=</span><span class="st">"Source: Petro Ivaniuk via Olympics.com | By: Cassie Nesheim"</span></span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
-<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
-<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">10</span>),</span>
-<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">9</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
-<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">9</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
-<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.major =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.key.size =</span> <span class="fu">unit</span>(<span class="fl">0.75</span>, <span class="st">"cm"</span>),</span>
-<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">9</span>),</span>
-<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">8</span>),</span>
-<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
-<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title.position =</span> <span class="st">"plot"</span></span>
-<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a>best_treemap</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">proportion =</span> country_dis_count<span class="sc">/</span><span class="fu">sum</span>(country_dis_count),</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">country_max_prop =</span> <span class="fu">max</span>(proportion)</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">|&gt;</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">percentage =</span> <span class="fu">paste0</span>(<span class="fu">round</span>(proportion<span class="sc">*</span><span class="dv">100</span>, <span class="dv">2</span>), <span class="st">"%"</span>),</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="fu">paste</span>(discipline, percentage, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>),</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">country =</span> <span class="fu">reorder</span>(country, <span class="sc">-</span>country_max_prop)</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>best_treemap <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(best_events, <span class="fu">aes</span>(<span class="at">area=</span>country_dis_count, <span class="at">fill=</span>country_dis_count, <span class="at">label=</span>label)) <span class="sc">+</span></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_treemap</span>(<span class="at">color=</span><span class="st">"black"</span>, <span class="at">linewidth=</span><span class="fl">0.1</span>) <span class="sc">+</span></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>country) <span class="sc">+</span></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_treemap_text</span>(<span class="at">color=</span><span class="st">"gray32"</span>, <span class="at">place=</span><span class="st">"center"</span>) <span class="sc">+</span></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low=</span><span class="st">"#CFEFE8"</span>, <span class="at">high=</span><span class="st">"#57C4AD"</span>) <span class="sc">+</span></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Some countries who overperform use breadth to their advantage, some leverage specialties."</span>, </span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle=</span><span class="st">"Most countries that punch above their GDP weight earn their medals across many disciplines. </span><span class="sc">\n</span><span class="st">Australia and Hungary are the exception, with each relying heavily on one sport."</span>, </span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption=</span><span class="st">"Source: Petro Ivaniuk via Olympics.com | By: Cassie Nesheim"</span></span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">10</span>),</span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">9</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">9</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.major =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.key.size =</span> <span class="fu">unit</span>(<span class="fl">0.75</span>, <span class="st">"cm"</span>),</span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">9</span>),</span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">8</span>),</span>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
+<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title.position =</span> <span class="st">"plot"</span></span>
+<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a>best_treemap</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -687,13 +691,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>While the United States relied on Track and Field and Swimming and Australia relied on Swimming, all the other overperforming teams were able to do so by competing and medaling in a variety of disciplines. This breadth demonstrates how important it is for countries to be able to use their resources to diversify and provide ample opportunities to their people to train and compete in many, many disciplines. While not every country can outperform expectations, those countries who are able to qualify and compete athletes across disciplines seem to do better than their GDP expects them to.</p>
-<p>Now, does this principle hold for underperforming teams? In theory, teams who underperformed expectations did so because they were unable to take advantage of resources. If the idea that breadth is a key to success is true, then those teams who underperformed lacked diversity in the disciplines they medaled in.</p>
+<p>While the Australia relied on Swimming and Hungary relied on Canoe Sprint, all the other overperforming teams were able to do so by competing and medaling in a variety of disciplines. This breadth demonstrates how important it is for countries to be able to use their resources to diversify and provide ample opportunities to their people to train and compete in many, many disciplines. While not every country can outperform expectations, those countries who are able to qualify and compete athletes across disciplines seem to do better than their GDP expects them to.</p>
+<p>Now, does this principle hold for underperforming teams? In theory, teams who underperformed expectations did so because they were unable to take advantage of resources. If the idea that breadth is a key to success is true, then those teams who underperformed lacked diversity in the disciplines they medaled in. Let’s examine the breadth of the underperforming teams who took home at least two medals. If a country only took home one medal, their breadth is obviously zero as their only medal could have only come from one discipline.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#CHANGE INTO TREE MAP</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>worst_underperformers <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"India"</span>, <span class="st">"Mexico"</span>, <span class="st">"Turkey"</span>, <span class="st">"Peru"</span>, <span class="st">"Pakistan"</span>, <span class="st">"Singapore"</span>, <span class="st">"Argentina"</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>worst_underperformers <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"India"</span>, <span class="st">"Mexico"</span>, <span class="st">"Turkey"</span>, <span class="st">"Argentina"</span>)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>worst_events <span class="ot">&lt;-</span> event_medals <span class="sc">|&gt;</span></span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(country <span class="sc">%in%</span> worst_underperformers) <span class="sc">|&gt;</span></span>
@@ -707,37 +711,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>worst_events <span class="ot">&lt;-</span> worst_events <span class="sc">|&gt;</span></span>
 <span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(country) <span class="sc">|&gt;</span></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">proportion =</span> country_dis_count<span class="sc">/</span><span class="fu">sum</span>(country_dis_count)) <span class="sc">|&gt;</span></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">|&gt;</span></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">percentage =</span> <span class="fu">paste0</span>(<span class="fu">round</span>(proportion<span class="sc">*</span><span class="dv">100</span>, <span class="dv">2</span>), <span class="st">"%"</span>),</span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="fu">paste</span>(discipline, percentage, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>worst_treemap <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(worst_events, <span class="fu">aes</span>(<span class="at">area=</span>country_dis_count, <span class="at">fill=</span>country_dis_count, <span class="at">label=</span>label)) <span class="sc">+</span></span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_treemap</span>(<span class="at">color=</span><span class="st">"black"</span>, <span class="at">linewidth=</span><span class="fl">0.1</span>) <span class="sc">+</span></span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>country) <span class="sc">+</span></span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_treemap_text</span>(<span class="at">color=</span><span class="st">"gray32"</span>, <span class="at">place=</span><span class="st">"center"</span>) <span class="sc">+</span></span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low=</span><span class="st">"#F4A6A1"</span>, <span class="at">high=</span><span class="st">"#DB4235"</span>) <span class="sc">+</span></span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Countries who fail to live up to expectations also lack balance."</span>, </span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle=</span><span class="st">"While those countries with only 1 medal are tougher to criticize, </span><span class="sc">\n</span><span class="st">India and Mexico fail to deliever and also fail to diversify."</span>, </span>
-<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption=</span><span class="st">"Source: Petro Ivaniuk via Olympics.com | By: Cassie Nesheim"</span></span>
-<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
-<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
-<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">10</span>),</span>
-<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">9</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
-<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">9</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
-<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.major =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.key.size =</span> <span class="fu">unit</span>(<span class="fl">0.75</span>, <span class="st">"cm"</span>),</span>
-<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">9</span>),</span>
-<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">8</span>),</span>
-<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
-<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title.position =</span> <span class="st">"plot"</span></span>
-<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a>worst_treemap</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">proportion =</span> country_dis_count<span class="sc">/</span><span class="fu">sum</span>(country_dis_count),</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>         <span class="at">country_max_prop =</span> <span class="fu">max</span>(proportion)) <span class="sc">|&gt;</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">|&gt;</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">percentage =</span> <span class="fu">paste0</span>(<span class="fu">round</span>(proportion<span class="sc">*</span><span class="dv">100</span>, <span class="dv">2</span>), <span class="st">"%"</span>),</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="fu">paste</span>(discipline, percentage, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>),</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">country =</span> <span class="fu">reorder</span>(country, <span class="sc">-</span>country_max_prop)</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>worst_treemap <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(worst_events, <span class="fu">aes</span>(<span class="at">area=</span>country_dis_count, <span class="at">fill=</span>country_dis_count, <span class="at">label=</span>label)) <span class="sc">+</span></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_treemap</span>(<span class="at">color=</span><span class="st">"black"</span>, <span class="at">linewidth=</span><span class="fl">0.1</span>) <span class="sc">+</span></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>country) <span class="sc">+</span></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_treemap_text</span>(<span class="at">color=</span><span class="st">"gray32"</span>, <span class="at">place=</span><span class="st">"center"</span>) <span class="sc">+</span></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low=</span><span class="st">"#F4A6A1"</span>, <span class="at">high=</span><span class="st">"#DB4235"</span>) <span class="sc">+</span></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Countries who fail to live up to expectations also lack balance."</span>, </span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle=</span><span class="st">"India and Mexico fail to deliever and also fail to diversify, though Argentina did diversity well."</span>, </span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption=</span><span class="st">"Source: Petro Ivaniuk via Olympics.com | By: Cassie Nesheim"</span></span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">10</span>),</span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">9</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">9</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.major =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.key.size =</span> <span class="fu">unit</span>(<span class="fl">0.75</span>, <span class="st">"cm"</span>),</span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">9</span>),</span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">8</span>),</span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
+<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title.position =</span> <span class="st">"plot"</span></span>
+<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a>worst_treemap</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -747,12 +753,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>Analyzing underperforming teams is tricky, because since they earned fewer medals than they were expected to, the number of medals is significantly smaller than those countries who overperformed. Of course countries who only medaled once lack significantly in breadth. These countries (like Singapore) have only one discipline. Though, underperforming countries can still be analyzed for their breadth. India and Mexico both earned fewer medals than they were expected to. Interestingly, though, they were both rather diversified in their disciplines. While India relied slightly on Archery and Mexico on Diving, both countries medaled in four separated disciplines.</p>
+<p>Analyzing underperforming teams is tricky, because since they earned fewer medals than they were expected to, the number of medals is significantly smaller than those countries who overperformed. Of course countries who only medaled once lack significantly in breadth. Though, underperforming countries can still be analyzed for their breadth. India relied heavily on Shooting and Mexico on Diving, though both countries medaled in four separated disciplines. Argentina was able to medal three times in three very separate disciplines, demonstrating impeccable breadth.</p>
 <p>So, breadth is not a good measure of why countries who underperformed were unable to capitalize on their GDPs. However, one pattern that did emerge was countries with high populations tend to underperform. This was the case for both India and Pakistan. Both countries had the highest populations in their respective graphs and both emerged as one of the worst underperformers.</p>
 <p>While breadth may not be a good indicator of why certain countries exceeded expectations and others failed to reach their potential, using GDP and population is an accurate way to discover the countries who over and under performed at the Paris 2024 Olympic Games.</p>
 <p>Let’s zoom back out and discover which countries under and over performed according to their GDP at the Paris 2024 Olympic Games when we consider every country with GDP data.</p>
-<p>After fitting all of the countries to a linear regression model, we find that France overperformed the most, earning about 42 more medals than they should have according to its GDP. Again, this is with a caveat that France had more opportunities to medal than typical as they were the host country. And, on the other end, India underperformed the most, earning about 19 fewer medals than they should have according to their GDP.</p>
-<p>Notably, though, when the United States is included, it comes out as a UNDER performing country. Yes, that’s right. Even though the U.S. came out on top and earned the most medals in across all countries in Paris, according to its GDP, they should have earned about 13 more medals than they did. However, because the U.S. GDP is so high, and their medal output is also so high, the expected medals earned is significantly higher than any other country. According to GDP, the U.S. should have earned 139 medals at the Paris Games. 139 medals would have put them even further ahead of all other countries than they already were. So, while the United States technically underperformed, since they are already so far ahead of all other countries, this finding is less impactful than the other countries who under and over performed.</p>
+<p>After fitting all of the countries to a linear regression model, we find that France overperformed the most, earning about 42 more medals than they should have according to their GDP. Again, this is with a caveat that France had more opportunities to medal than typical as they were the host country. And, on the other end, India underperformed the most, earning about 19 fewer medals than they should have according to their GDP.</p>
+<p>Notably, though, when the United States is included, they come out as a UNDER performing country. Yes, that’s right. Even though the U.S. came out on top and earned the most medals in across all countries in Paris, according to GDP, they should have earned about 13 more medals than they did. However, because the U.S. GDP is so high, and their medal output is also so high, the expected medals earned is significantly higher than any other country. According to GDP, the U.S. should have earned 139 medals at the Paris Games. 139 medals would have put them even further ahead of all other countries than they already were. So, while the United States technically underperformed, since they are already so far ahead of all other countries, this finding is less impactful than the other countries who under and over performed.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -832,23 +838,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-74"><a href="#cb8-74" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
-<div id="dxifadaoco" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#dxifadaoco table {
+<div id="nzpkbkluwb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#nzpkbkluwb table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#dxifadaoco thead, #dxifadaoco tbody, #dxifadaoco tfoot, #dxifadaoco tr, #dxifadaoco td, #dxifadaoco th {
+#nzpkbkluwb thead, #nzpkbkluwb tbody, #nzpkbkluwb tfoot, #nzpkbkluwb tr, #nzpkbkluwb td, #nzpkbkluwb th {
   border-style: none;
 }
 
-#dxifadaoco p {
+#nzpkbkluwb p {
   margin: 0;
   padding: 0;
 }
 
-#dxifadaoco .gt_table {
+#nzpkbkluwb .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -874,12 +880,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#dxifadaoco .gt_caption {
+#nzpkbkluwb .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#dxifadaoco .gt_title {
+#nzpkbkluwb .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -891,7 +897,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#dxifadaoco .gt_subtitle {
+#nzpkbkluwb .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -903,7 +909,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#dxifadaoco .gt_heading {
+#nzpkbkluwb .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -915,13 +921,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#dxifadaoco .gt_bottom_border {
+#nzpkbkluwb .gt_bottom_border {
   border-bottom-style: none;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#dxifadaoco .gt_col_headings {
+#nzpkbkluwb .gt_col_headings {
   border-top-style: none;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -936,7 +942,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#dxifadaoco .gt_col_heading {
+#nzpkbkluwb .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -956,7 +962,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#dxifadaoco .gt_column_spanner_outer {
+#nzpkbkluwb .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -968,15 +974,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#dxifadaoco .gt_column_spanner_outer:first-child {
+#nzpkbkluwb .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#dxifadaoco .gt_column_spanner_outer:last-child {
+#nzpkbkluwb .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#dxifadaoco .gt_column_spanner {
+#nzpkbkluwb .gt_column_spanner {
   border-bottom-style: none;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -988,11 +994,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#dxifadaoco .gt_spanner_row {
+#nzpkbkluwb .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#dxifadaoco .gt_group_heading {
+#nzpkbkluwb .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1018,7 +1024,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#dxifadaoco .gt_empty_group_heading {
+#nzpkbkluwb .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1033,15 +1039,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#dxifadaoco .gt_from_md > :first-child {
+#nzpkbkluwb .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#dxifadaoco .gt_from_md > :last-child {
+#nzpkbkluwb .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#dxifadaoco .gt_row {
+#nzpkbkluwb .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1060,7 +1066,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#dxifadaoco .gt_stub {
+#nzpkbkluwb .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1073,7 +1079,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#dxifadaoco .gt_stub_row_group {
+#nzpkbkluwb .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1087,15 +1093,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#dxifadaoco .gt_row_group_first td {
+#nzpkbkluwb .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#dxifadaoco .gt_row_group_first th {
+#nzpkbkluwb .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#dxifadaoco .gt_summary_row {
+#nzpkbkluwb .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1105,16 +1111,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#dxifadaoco .gt_first_summary_row {
+#nzpkbkluwb .gt_first_summary_row {
   border-top-style: none;
   border-top-color: #D3D3D3;
 }
 
-#dxifadaoco .gt_first_summary_row.thick {
+#nzpkbkluwb .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#dxifadaoco .gt_last_summary_row {
+#nzpkbkluwb .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1124,7 +1130,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#dxifadaoco .gt_grand_summary_row {
+#nzpkbkluwb .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1134,7 +1140,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#dxifadaoco .gt_first_grand_summary_row {
+#nzpkbkluwb .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1144,7 +1150,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#dxifadaoco .gt_last_grand_summary_row_top {
+#nzpkbkluwb .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1154,11 +1160,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#dxifadaoco .gt_striped {
+#nzpkbkluwb .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#dxifadaoco .gt_table_body {
+#nzpkbkluwb .gt_table_body {
   border-top-style: none;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1167,7 +1173,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#dxifadaoco .gt_footnotes {
+#nzpkbkluwb .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1181,7 +1187,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#dxifadaoco .gt_footnote {
+#nzpkbkluwb .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1190,7 +1196,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#dxifadaoco .gt_sourcenotes {
+#nzpkbkluwb .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1204,7 +1210,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#dxifadaoco .gt_sourcenote {
+#nzpkbkluwb .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1212,72 +1218,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#dxifadaoco .gt_left {
+#nzpkbkluwb .gt_left {
   text-align: left;
 }
 
-#dxifadaoco .gt_center {
+#nzpkbkluwb .gt_center {
   text-align: center;
 }
 
-#dxifadaoco .gt_right {
+#nzpkbkluwb .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#dxifadaoco .gt_font_normal {
+#nzpkbkluwb .gt_font_normal {
   font-weight: normal;
 }
 
-#dxifadaoco .gt_font_bold {
+#nzpkbkluwb .gt_font_bold {
   font-weight: bold;
 }
 
-#dxifadaoco .gt_font_italic {
+#nzpkbkluwb .gt_font_italic {
   font-style: italic;
 }
 
-#dxifadaoco .gt_super {
+#nzpkbkluwb .gt_super {
   font-size: 65%;
 }
 
-#dxifadaoco .gt_footnote_marks {
+#nzpkbkluwb .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#dxifadaoco .gt_asterisk {
+#nzpkbkluwb .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#dxifadaoco .gt_indent_1 {
+#nzpkbkluwb .gt_indent_1 {
   text-indent: 5px;
 }
 
-#dxifadaoco .gt_indent_2 {
+#nzpkbkluwb .gt_indent_2 {
   text-indent: 10px;
 }
 
-#dxifadaoco .gt_indent_3 {
+#nzpkbkluwb .gt_indent_3 {
   text-indent: 15px;
 }
 
-#dxifadaoco .gt_indent_4 {
+#nzpkbkluwb .gt_indent_4 {
   text-indent: 20px;
 }
 
-#dxifadaoco .gt_indent_5 {
+#nzpkbkluwb .gt_indent_5 {
   text-indent: 25px;
 }
 
-#dxifadaoco .katex-display {
+#nzpkbkluwb .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#dxifadaoco div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#nzpkbkluwb div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1347,7 +1353,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>When all is said and done, GDP ends up accounting for about 75% of the variation in country medal earnings. This is pretty significant. This means that we can use a country’s GDP to predict how many medals they will earn at future Olympic Games at a pretty accurate rate. Now, as we saw with countries under and over performing, this is not always accurate. However, we can definitely say that GDP has an effect on how many medals countries are able to earn.</p>
+<p>When all is said and done, GDP ends up accounting for about 75% of the variation in country medal earnings. This is pretty significant. This means that we can use a country’s GDP to predict how many medals they will earn at future Olympic Games pretty well with just using each country’s GDP. Now, as we saw with countries under and over performing, this is not always accurate. However, we can definitely say that GDP has an effect on how many medals countries are able to earn.</p>
 <p>Overall, using GDP to discover which countries over- and under-performed at the Paris Games revealed India and the United States as the biggest losers, earning fewer medals than their GDP predicted, and France and Great Britain as the biggest winners, earning significantly more medals than their GDP predicted.</p>
 
 
