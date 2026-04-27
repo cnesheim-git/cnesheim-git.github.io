@@ -335,8 +335,8 @@ background-color: null;
 font-style: inherit;">"Turkey"</span>))</span></code></pre></div></div>
 </details>
 </div>
-<p>Most everyone knows that the United States tends to dominate medal count at each Summer Olympics, usually placing within the top three countries, if not the very top. This includes leading in gold medals earned and overall total medals earned. China also typically finds themselves in the top countries. What do these countries have in common? Massive GDPs (gross domestic product). Meaning, these countries have large economies, and, in theory, more resources to be able to compete well in Olympic games.</p>
-<p>Looking at total medals compared to GDP, it is clear that the US and China are in a league of their own. All the other countries end up in a small corner in the bottom left of the graph, signifying that the US and China have such large GDPs and totals medals earned they overcome the others. So, it is difficult to see how any other countries performed at the Paris 2024 Olympic Games compared to their GDP.</p>
+<p>Most everyone knows that the United States tends to dominate medal count at each Summer Olympics, usually placing within the top three countries, if not the very top. This includes leading in gold medals earned and overall total medals earned. China also consistently ranks among the top countries. What do these countries have in common? Massive GDP (gross domestic product). This means these countries have large economies, and, in theory, more resources to be able to compete well in Olympic games.</p>
+<p>Looking at total medals compared to GDP, it is clear that the U.S. and China are in a league of their own. All the other countries end up in a small corner in the bottom left of the graph, signifying that the U.S. and China have such large GDPs and total medals earned that they overshadow the others. So, it is difficult to see how any other countries performed at the Paris 2024 Olympic Games compared to their GDP.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -391,7 +391,7 @@ font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">title=</span><span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"US and China own the rest of the world in GDP."</span>, </span>
+font-style: inherit;">"U.S. and China own the rest of the world in GDP and Olympic medals."</span>, </span>
 <span id="cb2-5">       <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">subtitle=</span><span class="st" style="color: #20794D;
@@ -525,8 +525,8 @@ font-style: inherit;">"plot"</span></span>
 </div>
 </div>
 </div>
-<p>While it is difficult to see any trends in the other countries, there is slight evidence of a linear relationship between GDP and total medals earned at the Olympics.</p>
-<p>When China and the US are removed from the dataset, this linear trend becomes even more noticeable. This trend reveals that having a higher GDP generally means countries will earn more medals at the Olympics. Using this trend, a linear regression line (the blue line) reveals how many medals each country is expected to earn at the Olympics given their GDP.</p>
+<p>While it is difficult to see any trends in the other countries, there is some evidence of a linear relationship between GDP and total medals earned at the Olympics.</p>
+<p>When China and the U.S. are removed from the dataset, this linear trend becomes even more noticeable. This trend reveals that having a higher GDP generally means countries will earn more medals at the Olympics. Using this trend, a linear regression line (the blue line) reveals how many medals each country is expected to earn at the Olympics given their GDP.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -730,7 +730,7 @@ font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">title=</span><span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"Some countries capitalized at paris, some failed to meet their mark."</span>, </span>
+font-style: inherit;">"Some countries capitalized at Paris, some failed to meet their mark."</span>, </span>
 <span id="cb3-24">       <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">subtitle=</span><span class="st" style="color: #20794D;
@@ -877,8 +877,8 @@ font-style: inherit;">"plot"</span></span>
 </div>
 </div>
 </div>
-<p>Looking at this graph, two things are clear. One, GDP and total medals earned are related. The other, some countries were able to capitalize on their resources and wildly outperform expectations. While others failed to utilize their resources to their potential, earning significantly fewer medals at the Paris Games than they could have.</p>
-<p>When the U.S. and China are removed, India, Mexico, and Turkey were the biggest losers in Paris. Aka, thye performed the worst compared to how many medals their GDPs predicted them to earn. They failed to turn their GDP and resources into medals on the biggest stage. Something to note is that India had the biggest population of these countries, so they were unable to capitalize on GDP, and they were not able to use their larger population to their advantage.</p>
+<p>Looking at this graph, two things are clear. One, GDP and total medals earned are related. Two, some countries were able to capitalize on their resources and wildly outperform expectations. While others failed to utilize their resources to their potential, earning significantly fewer medals than expected.</p>
+<p>When the U.S. and China are removed, India, Mexico, and Turkey were the biggest losers in Paris. In other words, they performed the worst compared to how many medals their GDP predicted them to earn. They failed to turn their GDP and resources into medals on the biggest stage. Something to note is that India had the biggest population of these countries, so they were unable to capitalize on GDP, and they were not able to use their larger population to their advantage.</p>
 <p>On the other hand, Australia, France, and Great Britain were able to take their resources and explode. They earned significantly more medals than their GDP predicted they would earn. One thing to note, since France was the host country, they had automatic bids in some disciplines that they might not traditionally qualify athletes in. In other words, they had more opportunities to medal than they normally might.</p>
 <p>While this model does reduce the data and exclude the extreme outliers like the U.S. and China, it is clear there are still several countries that are below $1 trillion GDP that are being squished to the sidelines. By further analyzing smaller economies, we can see which countries were able to do more with less.</p>
 <div class="cell">
@@ -1224,8 +1224,9 @@ font-style: inherit;">"plot"</span></span>
 </div>
 </div>
 </div>
-<p>Analyzing the only the countries with GDPs under $1 trillion and predicting their total medals at the Olympics by their GDPs, we find that New Zealand, Hungary, and Uzbekistan were the lower economies able to capitalize on their resources most. Interestingly, these three countries do not seem to have too high of populations, at least in comparison to the other lower GDP countries. On the contrary, Pakistan was one of the lower economies who underperformed most significantly at the Paris Games, and they had the largest population of these countries. So, not only was Pakistan unable to turn their GDP into medals, they were also unable to capitalize on their larger population, similar to India above.</p>
-<p>What about other countries of the lower GDP outputs? How do other countries stack up? And how far apart were the medals each country was expected to earn compared to their actual medal output?</p>
+<p>Analyzing only the countries with a GDP under $1 trillion and predicting their total medals at the Olympics based on GDP, we find that New Zealand, Hungary, and Uzbekistan were the lower-GDP countries that capitalized on their resources most. While Peru, Pakistan, Singapore, and Argentina were the countries that missed their mark most severely.</p>
+<p>Interestingly, these three overperformers have relatively small populations, at least in comparison to the other lower-GDP countries. On the contrary, Pakistan was one of the lower economies who underperformed most significantly at the Paris Games, and they had the largest population of these countries. So, not only was Pakistan unable to turn their GDP into medals, they were also unable to capitalize on their larger population, similar to India above.</p>
+<p>What about other countries with lower GDP? How do other countries stack up? And how far apart were the medals each country was expected to earn compared to their actual medal output?</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -1465,7 +1466,7 @@ font-style: inherit;">"Hungary and New Zealand made the most of limited resource
 background-color: null;
 font-style: inherit;">subtitle=</span><span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"Among coutnries with under $1 trillion in GDP, the gap between the blue dot (expected medals) and </span><span class="sc" style="color: #5E5E5E;
+font-style: inherit;">"Among countries with under $1 trillion in GDP, the gap between the blue dot (expected medals) and </span><span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">\n</span><span class="st" style="color: #20794D;
 background-color: null;
@@ -1569,10 +1570,10 @@ font-style: inherit;">"plot"</span></span>
 </div>
 </div>
 </div>
-<p>Looking at this graph, we can see that of the 15 countries who underperformed or overperformed most significantly of the lower-income economies, only 6 countries overperformed expectations. Hungary and New Zealand jump out, as they overperformed and earned significantly more medals in Paris than their GDP predicted. The other countries either overperformed expectations less significantly or they underperformed and earned less medals than they were expected to based on GDP.</p>
-<p>Let’s zoom back out and discover which countries under and over performed according to their GDP at the Paris 2024 Olympic Games when we consider every country with GDP data.</p>
-<p>After fitting all of the countries to a model, we find that France overperformed the most, earning about 42 more medals than they should have according to their GDP. Again, this is with a caveat that France had more opportunities to medal than typical as they were the host country. And, on the other end, India underperformed the most, earning about 19 fewer medals than they should have according to their GDP.</p>
-<p>Notably, though, when the United States is included, they come out as an UNDER performing country. Yes, that’s right. Even though the U.S. came out on top and earned the most medals across all countries in Paris, according to GDP, they should have earned about 13 more medals than they did. However, because the U.S. GDP is so high, and their medal output is also so high, the expected medals earned is significantly higher than any other country. According to GDP, the U.S. should have earned 139 medals at the Paris Games. 139 medals would have put them even further ahead of all other countries than they already were. So, while the United States technically underperformed, since they are already so far ahead of all other countries, this finding is less impactful than the other countries who under and over performed.</p>
+<p>Looking at this graph, we can see that of the 15 countries who underperformed or overperformed most significantly among lower-GDP economies, only 6 countries overperformed expectations. Hungary and New Zealand jump out, as they overperformed and earned significantly more medals in Paris than their GDP predicted. The other countries either overperformed expectations less significantly or they underperformed and earned fewer medals than they were expected to based on GDP.</p>
+<p>Let’s zoom back out and discover which countries underperformed and overperformed according to their GDP at the Paris 2024 Olympic Games when considering all countries with GDP data.</p>
+<p>After fitting all of the countries to a model, we find that France overperformed the most, earning about 42 more medals than they should have according to their GDP. And, on the other end, India underperformed the most, earning about 19 fewer medals than they should have according to their GDP.</p>
+<p>Notably, though, when the United States is included, they come out as an UNDERperforming country. Yes, that’s right. Even though the U.S. came out on top and earned the most medals across all countries in Paris, according to GDP, they should have earned about 13 more medals than they did. However, because the U.S. GDP is so high, and their medal output is also so high, the expected medals earned is significantly higher than any other country. According to GDP, the U.S. should have earned 139 medals at the Paris Games. 139 medals would have put them even further ahead of all other countries than they already were. So, while the United States technically underperformed, since they are already so far ahead of all other countries, this finding is less impactful than the other countries who underperformed and overperformed.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -1690,11 +1691,7 @@ font-style: inherit;">"The United States actually underperformed at Paris 2024 a
 background-color: null;
 font-style: inherit;">subtitle =</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"The top 5 overperformers from Paris (earned more medals than predicted) in green. </span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\n</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">The bottom 5 underperformers from Paris (earned fewer medals than predicted) in red."</span></span>
+font-style: inherit;">"Top 5 overperformers (green) and bottom 5 underperformers (red) by medals earned vs. GDP prediction."</span></span>
 <span id="cb6-22">  ) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> <span class="fu" style="color: #4758AB;
@@ -1964,23 +1961,23 @@ font-style: inherit;">1</span></span>
 <span id="cb6-74">  )</span></code></pre></div></div>
 </details>
 <div class="cell-output-display">
-<div id="yctrruyewt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#yctrruyewt table {
+<div id="zakaeqfegs" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#zakaeqfegs table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#yctrruyewt thead, #yctrruyewt tbody, #yctrruyewt tfoot, #yctrruyewt tr, #yctrruyewt td, #yctrruyewt th {
+#zakaeqfegs thead, #zakaeqfegs tbody, #zakaeqfegs tfoot, #zakaeqfegs tr, #zakaeqfegs td, #zakaeqfegs th {
   border-style: none;
 }
 
-#yctrruyewt p {
+#zakaeqfegs p {
   margin: 0;
   padding: 0;
 }
 
-#yctrruyewt .gt_table {
+#zakaeqfegs .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2006,12 +2003,12 @@ font-style: inherit;">1</span></span>
   border-left-color: #D3D3D3;
 }
 
-#yctrruyewt .gt_caption {
+#zakaeqfegs .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#yctrruyewt .gt_title {
+#zakaeqfegs .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2023,7 +2020,7 @@ font-style: inherit;">1</span></span>
   border-bottom-width: 0;
 }
 
-#yctrruyewt .gt_subtitle {
+#zakaeqfegs .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2035,7 +2032,7 @@ font-style: inherit;">1</span></span>
   border-top-width: 0;
 }
 
-#yctrruyewt .gt_heading {
+#zakaeqfegs .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2047,13 +2044,13 @@ font-style: inherit;">1</span></span>
   border-right-color: #D3D3D3;
 }
 
-#yctrruyewt .gt_bottom_border {
+#zakaeqfegs .gt_bottom_border {
   border-bottom-style: none;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#yctrruyewt .gt_col_headings {
+#zakaeqfegs .gt_col_headings {
   border-top-style: none;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2068,7 +2065,7 @@ font-style: inherit;">1</span></span>
   border-right-color: #D3D3D3;
 }
 
-#yctrruyewt .gt_col_heading {
+#zakaeqfegs .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2088,7 +2085,7 @@ font-style: inherit;">1</span></span>
   overflow-x: hidden;
 }
 
-#yctrruyewt .gt_column_spanner_outer {
+#zakaeqfegs .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2100,15 +2097,15 @@ font-style: inherit;">1</span></span>
   padding-right: 4px;
 }
 
-#yctrruyewt .gt_column_spanner_outer:first-child {
+#zakaeqfegs .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#yctrruyewt .gt_column_spanner_outer:last-child {
+#zakaeqfegs .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#yctrruyewt .gt_column_spanner {
+#zakaeqfegs .gt_column_spanner {
   border-bottom-style: none;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2120,11 +2117,11 @@ font-style: inherit;">1</span></span>
   width: 100%;
 }
 
-#yctrruyewt .gt_spanner_row {
+#zakaeqfegs .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#yctrruyewt .gt_group_heading {
+#zakaeqfegs .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2150,7 +2147,7 @@ font-style: inherit;">1</span></span>
   text-align: left;
 }
 
-#yctrruyewt .gt_empty_group_heading {
+#zakaeqfegs .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2165,15 +2162,15 @@ font-style: inherit;">1</span></span>
   vertical-align: middle;
 }
 
-#yctrruyewt .gt_from_md > :first-child {
+#zakaeqfegs .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#yctrruyewt .gt_from_md > :last-child {
+#zakaeqfegs .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#yctrruyewt .gt_row {
+#zakaeqfegs .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2192,7 +2189,7 @@ font-style: inherit;">1</span></span>
   overflow-x: hidden;
 }
 
-#yctrruyewt .gt_stub {
+#zakaeqfegs .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2205,7 +2202,7 @@ font-style: inherit;">1</span></span>
   padding-right: 5px;
 }
 
-#yctrruyewt .gt_stub_row_group {
+#zakaeqfegs .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2219,15 +2216,15 @@ font-style: inherit;">1</span></span>
   vertical-align: top;
 }
 
-#yctrruyewt .gt_row_group_first td {
+#zakaeqfegs .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#yctrruyewt .gt_row_group_first th {
+#zakaeqfegs .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#yctrruyewt .gt_summary_row {
+#zakaeqfegs .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2237,16 +2234,16 @@ font-style: inherit;">1</span></span>
   padding-right: 5px;
 }
 
-#yctrruyewt .gt_first_summary_row {
+#zakaeqfegs .gt_first_summary_row {
   border-top-style: none;
   border-top-color: #D3D3D3;
 }
 
-#yctrruyewt .gt_first_summary_row.thick {
+#zakaeqfegs .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#yctrruyewt .gt_last_summary_row {
+#zakaeqfegs .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2256,7 +2253,7 @@ font-style: inherit;">1</span></span>
   border-bottom-color: #D3D3D3;
 }
 
-#yctrruyewt .gt_grand_summary_row {
+#zakaeqfegs .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2266,7 +2263,7 @@ font-style: inherit;">1</span></span>
   padding-right: 5px;
 }
 
-#yctrruyewt .gt_first_grand_summary_row {
+#zakaeqfegs .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2276,7 +2273,7 @@ font-style: inherit;">1</span></span>
   border-top-color: #D3D3D3;
 }
 
-#yctrruyewt .gt_last_grand_summary_row_top {
+#zakaeqfegs .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2286,11 +2283,11 @@ font-style: inherit;">1</span></span>
   border-bottom-color: #D3D3D3;
 }
 
-#yctrruyewt .gt_striped {
+#zakaeqfegs .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#yctrruyewt .gt_table_body {
+#zakaeqfegs .gt_table_body {
   border-top-style: none;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2299,7 +2296,7 @@ font-style: inherit;">1</span></span>
   border-bottom-color: #D3D3D3;
 }
 
-#yctrruyewt .gt_footnotes {
+#zakaeqfegs .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2313,7 +2310,7 @@ font-style: inherit;">1</span></span>
   border-right-color: #D3D3D3;
 }
 
-#yctrruyewt .gt_footnote {
+#zakaeqfegs .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2322,7 +2319,7 @@ font-style: inherit;">1</span></span>
   padding-right: 5px;
 }
 
-#yctrruyewt .gt_sourcenotes {
+#zakaeqfegs .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2336,7 +2333,7 @@ font-style: inherit;">1</span></span>
   border-right-color: #D3D3D3;
 }
 
-#yctrruyewt .gt_sourcenote {
+#zakaeqfegs .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2344,72 +2341,72 @@ font-style: inherit;">1</span></span>
   padding-right: 5px;
 }
 
-#yctrruyewt .gt_left {
+#zakaeqfegs .gt_left {
   text-align: left;
 }
 
-#yctrruyewt .gt_center {
+#zakaeqfegs .gt_center {
   text-align: center;
 }
 
-#yctrruyewt .gt_right {
+#zakaeqfegs .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#yctrruyewt .gt_font_normal {
+#zakaeqfegs .gt_font_normal {
   font-weight: normal;
 }
 
-#yctrruyewt .gt_font_bold {
+#zakaeqfegs .gt_font_bold {
   font-weight: bold;
 }
 
-#yctrruyewt .gt_font_italic {
+#zakaeqfegs .gt_font_italic {
   font-style: italic;
 }
 
-#yctrruyewt .gt_super {
+#zakaeqfegs .gt_super {
   font-size: 65%;
 }
 
-#yctrruyewt .gt_footnote_marks {
+#zakaeqfegs .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#yctrruyewt .gt_asterisk {
+#zakaeqfegs .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#yctrruyewt .gt_indent_1 {
+#zakaeqfegs .gt_indent_1 {
   text-indent: 5px;
 }
 
-#yctrruyewt .gt_indent_2 {
+#zakaeqfegs .gt_indent_2 {
   text-indent: 10px;
 }
 
-#yctrruyewt .gt_indent_3 {
+#zakaeqfegs .gt_indent_3 {
   text-indent: 15px;
 }
 
-#yctrruyewt .gt_indent_4 {
+#zakaeqfegs .gt_indent_4 {
   text-indent: 20px;
 }
 
-#yctrruyewt .gt_indent_5 {
+#zakaeqfegs .gt_indent_5 {
   text-indent: 25px;
 }
 
-#yctrruyewt .katex-display {
+#zakaeqfegs .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#yctrruyewt div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#zakaeqfegs div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2420,7 +2417,7 @@ font-style: inherit;">1</span></span>
 <td colspan="2" class="gt_heading gt_title gt_font_normal" style="text-align: left; color: #000000; font-weight: bold;">The United States actually underperformed at Paris 2024 according to GDP.</td>
 </tr>
 <tr class="gt_heading even">
-<td colspan="2" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style="text-align: left; color: #000000;">The top 5 overperformers from Paris (earned more medals than predicted) in green. The bottom 5 underperformers from Paris (earned fewer medals than predicted) in red.</td>
+<td colspan="2" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style="text-align: left; color: #000000;">Top 5 overperformers (green) and bottom 5 underperformers (red) by medals earned vs. GDP prediction.</td>
 </tr>
 <tr class="gt_col_headings header">
 <th id="country" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: #000000; font-size: 12; font-weight: bold" scope="col">Country</th>
@@ -2480,8 +2477,8 @@ font-style: inherit;">1</span></span>
 </div>
 </div>
 <p>So, we have seen that GDP is an indicator of how well countries will do at the Games. While some countries are able to use their resources to their full potential, and even earn more medals than they are “supposed to”, others fail to rise to the occasion and perform worse than they should.</p>
-<p>But what about how do countries who overperform do it? Do countries who overperform tend to rely on one or two disciplines (sports) to do so? Or do countries who underperform do so because they specialize in only one or two disciplines and fail to compete in other disciplines?</p>
-<p>An analysis of which disciplines the overperforming countries medaled in revealed that, aside from Australia, many countries used breadth to their advantage and medaled across many disciplines.</p>
+<p>But what makes overperforming countries succeed? Do countries who overperform tend to rely on one or two disciplines (sports) to do so? Or do countries who underperform do so because they specialize in only one or two disciplines and fail to compete in other disciplines?</p>
+<p>An analysis of which disciplines the overperforming countries medaled in revealed that, aside from Australia and Hungary, many countries used breadth to their advantage and medaled across many disciplines.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -2843,7 +2840,7 @@ font-style: inherit;">"plot"</span></span>
 </div>
 </div>
 </div>
-<p>While the Australia relied on Swimming and Hungary relied on Canoe Sprint, all the other overperforming teams were able to do so by competing and medaling in a variety of disciplines. This breadth demonstrates how important it is for countries to be able to use their resources to diversify and provide ample opportunities to their people to train and compete in many, many disciplines. While not every country can outperform expectations, those countries who are able to qualify and compete athletes across disciplines seem to do better than their GDP expects them to.</p>
+<p>While Australia relied on Swimming and Hungary relied on Canoe Sprint, all the other overperforming teams were able to do so by competing and medaling in a variety of disciplines. This breadth demonstrates how important it is for countries to be able to use their resources to diversify and provide ample opportunities to their people to train and compete in many, many disciplines. While not every country can outperform expectations, those countries who are able to qualify and compete athletes across disciplines seem to do better than their GDP expects them to.</p>
 <p>Now, does this principle hold for underperforming teams? In theory, teams who underperformed expectations did so because they were unable to take advantage of resources. If the idea that breadth is a key to success is true, then those teams who underperformed should lack diversity in the disciplines they medaled in. Let’s examine the breadth of the underperforming teams who took home at least two medals.</p>
 <p>One thing to note, if a country only took home one medal, their breadth is obviously zero as their only medal could have only come from one discipline. So, these countries were excluded from breadth analysis.</p>
 <div class="cell">
@@ -3097,12 +3094,12 @@ font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">title=</span><span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"Countries who fail to live up to expectations also lack balance."</span>, </span>
+font-style: inherit;">"Underperforming countries show mixed discipline diversity."</span>, </span>
 <span id="cb8-34">       <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">subtitle=</span><span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"India, Mexico, and Turkey fail to deliever and also fail to diversify."</span>, </span>
+font-style: inherit;">"India, Mexico, Turkey, and the U.S. fail to deliver and also fail to diversify."</span>, </span>
 <span id="cb8-35">       <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">caption=</span><span class="st" style="color: #20794D;
@@ -3221,12 +3218,12 @@ font-style: inherit;">"plot"</span></span>
 </div>
 </div>
 </div>
-<p>Analyzing underperforming teams is tricky, because since they earned fewer medals than they were expected to, the number of medals is significantly smaller than those countries who overperformed. Though, underperforming countries can still be analyzed for their breadth. India relied heavily on Shooting and Mexico on Diving, though both countries medaled in at least four separated disciplines. Turkey medaled in five disciplines, but relied on Boxing pretty heavily. The United States, who took home the most medals in all of the games, relied heavily on Track and Field and Swimming, but also medaled in a variety of other disciplines. Lastly, Argentina was able to medal three times in three very separate disciplines, demonstrating impeccable breadth.</p>
+<p>Analyzing underperforming teams is tricky, because since they earned fewer medals than they were expected to, the number of medals is significantly smaller than those countries who overperformed. Though, underperforming countries can still be analyzed for their breadth. India relied heavily on Shooting and Mexico on Diving, though both countries medaled in at least four separate disciplines. Turkey medaled in five disciplines, but relied on Boxing pretty heavily. The United States, who took home the most medals in all of the games, relied heavily on Track and Field and Swimming, but also medaled in a variety of other disciplines. Lastly, Argentina was able to medal three times in three very separate disciplines, demonstrating impeccable breadth.</p>
 <p>So, while underperforming countries did rely on certain disciplines more than overperforming countries did, the results are rather mixed and inconclusive. We can make some hypotheses on breadth, like more breadth is better, but overall there doesn’t appear to be a clear trend or pattern here.</p>
-<p>While breadth may not be a good indicator of why certain countries exceeded expectations and others failed to reach their potential, using GDP is a rather accurate way to discover the countries who over and under performed at the Paris 2024 Olympic Games.</p>
-<p>When all is said and done, GDP ends up accounting for about 75% of the variation in country medal earnings. This is pretty significant. This means that we can use a country’s GDP to predict how many medals they will earn at future Olympic Games pretty well with just using each country’s GDP. Now, as we saw with countries under and over performing, this is not always accurate. However, we can definitely say that GDP has an effect on how many medals countries earns.</p>
-<p>We also saw an interesting pattern. Countries with higher populations tended to underperform. This was the case for the U.S., India, and Pakistan. All countries had the highest populations in their respective economy sectors and all emerged as one of the worst underperformers. So, while higher GDP indicates higher medal output, it seems that higher population may not have the same effect. This could be do to overcrowding and the need to allocate resources elsewhere, or it could be an extraneous factor. Either way, it is interesting that countries with higher populations ended up underperforming relative to their GDP expectations.</p>
-<p>Overall, using GDP to discover which countries over and under performed at the Paris Games revealed India and the United States as the biggest losers, earning fewer medals than their GDP predicted, and France and Great Britain as the biggest winners, earning significantly more medals than their GDP predicted.</p>
+<p>While breadth may not be a good indicator of why certain countries exceeded expectations and others failed to reach their potential, using GDP is a rather accurate way to discover the countries who underperformed and overperformed at the Paris 2024 Olympic Games.</p>
+<p>When all is said and done, GDP ends up accounting for about 75% of the variation in country medal earnings. This is pretty significant. This means that we can use a country’s GDP to predict how many medals they will earn at future Olympic Games reasonably well using just each country’s GDP. Now, as we saw, countries can underperform and overperform, so this prediction is not always accurate. However, we can definitely say that GDP has a relationship with how many medals each country earns.</p>
+<p>We also saw an interesting pattern. In this analysis, some high-population countries tended to underperform. This was the case for the U.S., India, and Pakistan. All of these countries had the highest populations in their respective GDP groups and all emerged as one of the worst underperformers. So, while higher GDP indicates higher medal output, it seems that higher population may not have the same effect. This could be due to overcrowding and the need to allocate resources elsewhere, or it could be an extraneous factor. Either way, it is interesting that countries with higher populations ended up underperforming relative to their GDP expectations.</p>
+<p>Overall, using GDP to discover which countries underperformed and overperformed at the Paris Games revealed India and the United States as the biggest losers, earning fewer medals than expected, and France and Great Britain as the biggest winners, earning significantly more medals than expected.</p>
 
 
 
