@@ -368,63 +368,64 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggalt)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(treemapify)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>event_medals <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/medals.csv"</span>)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>medal_totals <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/medals_total.csv"</span>)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>gdp_pop <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/gdp_pop.csv"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span> (</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">year =</span> Time,</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">country_name =</span> <span class="st">`</span><span class="at">Country Name</span><span class="st">`</span>,</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">country_code =</span> <span class="st">`</span><span class="at">Country Code</span><span class="st">`</span>,</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">gdp_current_usd =</span> <span class="st">`</span><span class="at">GDP (current US$) [NY.GDP.MKTP.CD]</span><span class="st">`</span>,</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">gdp_per_capita =</span> <span class="st">`</span><span class="at">GDP per capita (current US$) [NY.GDP.PCAP.CD]</span><span class="st">`</span>,</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">population =</span> <span class="st">`</span><span class="at">Population, total [SP.POP.TOTL]</span><span class="st">`</span>,</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">gdp_growth_annpct =</span> <span class="st">`</span><span class="at">GDP growth (annual %) [NY.GDP.MKTP.KD.ZG]</span><span class="st">`</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">gdp_current_usd =</span> <span class="fu">na_if</span>(gdp_current_usd, <span class="st">".."</span>),</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">gdp_per_capita =</span> <span class="fu">na_if</span>(gdp_per_capita, <span class="st">".."</span>),</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">population =</span> <span class="fu">na_if</span>(population, <span class="st">".."</span>),</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">gdp_growth_annpct =</span> <span class="fu">na_if</span>(gdp_growth_annpct, <span class="st">".."</span>)</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(year, country_code, gdp_current_usd, gdp_per_capita, population, gdp_growth_annpct) <span class="sc">|&gt;</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">gdp_current_usd =</span> <span class="fu">as.numeric</span>(gdp_current_usd),</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">gdp_per_capita =</span> <span class="fu">as.numeric</span>(gdp_per_capita),</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">population =</span> <span class="fu">as.numeric</span>(population),</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">gdp_growth_annpct =</span> <span class="fu">as.numeric</span>(gdp_growth_annpct)</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_row</span>(</span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">country_code =</span> <span class="st">"TPE"</span>,</span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">gdp_current_usd =</span> <span class="dv">797000000000</span>,</span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">gdp_per_capita =</span> <span class="dv">34060</span>,</span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">population =</span> <span class="dv">23400000</span>,</span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">gdp_growth_annpct =</span> <span class="fl">4.8</span></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_row</span>(</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">country_code =</span> <span class="st">"PRK"</span>,</span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">gdp_current_usd =</span> <span class="cn">NA</span>,</span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">gdp_per_capita =</span> <span class="cn">NA</span>,</span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">population =</span> <span class="dv">26498823</span>,</span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">gdp_growth_annpct =</span> <span class="cn">NA</span></span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>medal_gdp_pop_data <span class="ot">&lt;-</span> <span class="fu">left_join</span>(medal_totals, gdp_pop, <span class="at">by=</span><span class="st">"country_code"</span>) </span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>event_medals <span class="ot">&lt;-</span> event_medals <span class="sc">|&gt;</span></span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">discipline =</span> <span class="fu">recode</span>(discipline, <span class="st">"Athletics"</span> <span class="ot">=</span> <span class="st">"Track &amp; Field"</span>))</span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>medal_gdp_pop_scaled <span class="ot">&lt;-</span> medal_gdp_pop_data <span class="sc">|&gt;</span></span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>    <span class="at">tril_gdp =</span> gdp_current_usd <span class="sc">/</span> <span class="dv">1000000000000</span>,</span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>    <span class="at">mil_pop =</span> population <span class="sc">/</span> <span class="dv">1000000</span></span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(tril_gdp)) <span class="sc">|&gt;</span></span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">country =</span> <span class="fu">recode</span>(country, <span class="st">"Türkiye"</span> <span class="ot">=</span> <span class="st">"Turkey"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggalt)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>event_medals <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/medals.csv"</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>medal_totals <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/medals_total.csv"</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>gdp_pop <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/gdp_pop.csv"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span> (</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">year =</span> Time,</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">country_name =</span> <span class="st">`</span><span class="at">Country Name</span><span class="st">`</span>,</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">country_code =</span> <span class="st">`</span><span class="at">Country Code</span><span class="st">`</span>,</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">gdp_current_usd =</span> <span class="st">`</span><span class="at">GDP (current US$) [NY.GDP.MKTP.CD]</span><span class="st">`</span>,</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">gdp_per_capita =</span> <span class="st">`</span><span class="at">GDP per capita (current US$) [NY.GDP.PCAP.CD]</span><span class="st">`</span>,</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">population =</span> <span class="st">`</span><span class="at">Population, total [SP.POP.TOTL]</span><span class="st">`</span>,</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">gdp_growth_annpct =</span> <span class="st">`</span><span class="at">GDP growth (annual %) [NY.GDP.MKTP.KD.ZG]</span><span class="st">`</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">gdp_current_usd =</span> <span class="fu">na_if</span>(gdp_current_usd, <span class="st">".."</span>),</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">gdp_per_capita =</span> <span class="fu">na_if</span>(gdp_per_capita, <span class="st">".."</span>),</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">population =</span> <span class="fu">na_if</span>(population, <span class="st">".."</span>),</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">gdp_growth_annpct =</span> <span class="fu">na_if</span>(gdp_growth_annpct, <span class="st">".."</span>)</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(year, country_code, gdp_current_usd, gdp_per_capita, population, gdp_growth_annpct) <span class="sc">|&gt;</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">gdp_current_usd =</span> <span class="fu">as.numeric</span>(gdp_current_usd),</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">gdp_per_capita =</span> <span class="fu">as.numeric</span>(gdp_per_capita),</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">population =</span> <span class="fu">as.numeric</span>(population),</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">gdp_growth_annpct =</span> <span class="fu">as.numeric</span>(gdp_growth_annpct)</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_row</span>(</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">country_code =</span> <span class="st">"TPE"</span>,</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">gdp_current_usd =</span> <span class="dv">797000000000</span>,</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">gdp_per_capita =</span> <span class="dv">34060</span>,</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">population =</span> <span class="dv">23400000</span>,</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">gdp_growth_annpct =</span> <span class="fl">4.8</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_row</span>(</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">country_code =</span> <span class="st">"PRK"</span>,</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">gdp_current_usd =</span> <span class="cn">NA</span>,</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">gdp_per_capita =</span> <span class="cn">NA</span>,</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">population =</span> <span class="dv">26498823</span>,</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">gdp_growth_annpct =</span> <span class="cn">NA</span></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>medal_gdp_pop_data <span class="ot">&lt;-</span> <span class="fu">left_join</span>(medal_totals, gdp_pop, <span class="at">by=</span><span class="st">"country_code"</span>) </span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>event_medals <span class="ot">&lt;-</span> event_medals <span class="sc">|&gt;</span></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">discipline =</span> <span class="fu">recode</span>(discipline, <span class="st">"Athletics"</span> <span class="ot">=</span> <span class="st">"Track &amp; Field"</span>))</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>medal_gdp_pop_scaled <span class="ot">&lt;-</span> medal_gdp_pop_data <span class="sc">|&gt;</span></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>    <span class="at">tril_gdp =</span> gdp_current_usd <span class="sc">/</span> <span class="dv">1000000000000</span>,</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>    <span class="at">mil_pop =</span> population <span class="sc">/</span> <span class="dv">1000000</span></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(tril_gdp)) <span class="sc">|&gt;</span></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">country =</span> <span class="fu">recode</span>(country, <span class="st">"Türkiye"</span> <span class="ot">=</span> <span class="st">"Turkey"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<p>Most everyone knows that the United States tends to dominate medal count at each Summer Olympics, usually placing within the top three countries, if not the very top. This includes leading in gold medals earned and overall total medals earned. China also consistently ranks among the top countries. What do these countries have in common? Massive GDP (gross domestic product). This means these countries have large economies, and, in theory, more resources to be able to compete well in Olympic games.</p>
+<p>Most everyone knows that the United States tends to dominate medal count at each Summer Olympics, usually placing within the top three countries, if not at the very top. This includes leading in gold medals earned and overall total medals earned. China also consistently ranks among the top countries. What do these countries have in common? Massive GDP (gross domestic product). This means these countries have large economies, and, in theory, more resources to be able to compete well in Olympic games.</p>
 <p>Looking at total medals compared to GDP, it is clear that the U.S. and China are in a league of their own. All the other countries end up in a small corner in the bottom left of the graph, signifying that the U.S. and China have such large GDPs and total medals earned that they overshadow the others. So, it is difficult to see how any other countries performed at the Paris 2024 Olympic Games compared to their GDP.</p>
 <div class="cell">
 <details class="code-fold">
@@ -521,7 +522,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Looking at this graph, two things are clear. One, GDP and total medals earned are related. Two, some countries were able to capitalize on their resources and wildly outperform expectations. While others failed to utilize their resources to their potential, earning significantly fewer medals than expected.</p>
-<p>When the U.S. and China are removed, India, Mexico, and Turkey were the biggest losers in Paris. In other words, they performed the worst compared to how many medals their GDP predicted them to earn. They failed to turn their GDP and resources into medals on the biggest stage. Something to note is that India had the biggest population of these countries, so they were unable to capitalize on GDP, and they were not able to use their larger population to their advantage.</p>
+<p>When the U.S. and China are removed, India, Mexico, and Turkey emerge as the biggest losers in Paris. In other words, they performed the worst compared to how many medals their GDP predicted them to earn. They failed to turn their GDP and resources into medals on the biggest stage. Something to note is that India had the biggest population of these countries, not only were they unable to capitalize on GDP, they were also unable to capitalize on their larger population.</p>
 <p>On the other hand, Australia, France, and Great Britain were able to take their resources and explode. They earned significantly more medals than their GDP predicted they would earn. One thing to note, since France was the host country, they had automatic bids in some disciplines that they might not traditionally qualify athletes in. In other words, they had more opportunities to medal than they normally might.</p>
 <p>While this model does reduce the data and exclude the extreme outliers like the U.S. and China, it is clear there are still several countries that are below $1 trillion GDP that are being squished to the sidelines. By further analyzing smaller economies, we can see which countries were able to do more with less.</p>
 <div class="cell">
@@ -580,8 +581,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Analyzing only the countries with a GDP under $1 trillion and predicting their total medals at the Olympics based on GDP, we find that New Zealand, Hungary, and Uzbekistan were the lower-GDP countries that capitalized on their resources most. While Peru, Pakistan, Singapore, and Argentina were the countries that missed their mark most severely.</p>
-<p>Interestingly, these three overperformers have relatively small populations, at least in comparison to the other lower-GDP countries. On the contrary, Pakistan was one of the lower economies who underperformed most significantly at the Paris Games, and they had the largest population of these countries. So, not only was Pakistan unable to turn their GDP into medals, they were also unable to capitalize on their larger population, similar to India above.</p>
+<p>Interestingly, these three overperformers have relatively small populations, at least in comparison to the other lower-GDP countries. On the contrary, Pakistan was one of the lower economies who underperformed most significantly at the Paris Games, and it had the largest population of these countries. So, not only was Pakistan unable to turn their GDP into medals, they were also unable to capitalize on their larger population, similar to India above.</p>
 <p>What about other countries with lower GDP? How do other countries stack up? And how far apart were the medals each country was expected to earn compared to their actual medal output?</p>
+<p>Looking at this graph, we can see that of the 15 countries who under or overperformed most significantly among lower-GDP economies, only 6 countries overperformed expectations. Hungary and New Zealand jump out, as they overperformed and earned significantly more medals in Paris than their GDP predicted. The other countries either overperformed expectations less significantly or they underperformed and earned fewer medals than they were expected to based on GDP.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -603,7 +605,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x=</span><span class="dv">17</span>, <span class="at">y=</span><span class="dv">10</span>, <span class="at">label=</span><span class="st">"Overperformed"</span>, <span class="at">hjust=</span><span class="dv">0</span>, <span class="at">size=</span><span class="dv">3</span>, <span class="at">color=</span><span class="st">"black"</span>) <span class="sc">+</span></span>
 <span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x=</span><span class="dv">17</span>, <span class="at">y=</span><span class="dv">9</span>, <span class="at">label=</span><span class="st">"Underperformed"</span>, <span class="at">hjust=</span><span class="dv">0</span>, <span class="at">size=</span><span class="dv">3</span>, <span class="at">color=</span><span class="st">"black"</span>) <span class="sc">+</span></span>
 <span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Hungary and New Zealand made the most of limited resources."</span>, </span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle=</span><span class="st">"Among countries with under $1 trillion in GDP, the gap between the blue dot (expected medals) and </span><span class="sc">\n</span><span class="st">purple dot (actual medals) shows how much each country over or underperformed their GDP prediction.*"</span>, </span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle=</span><span class="st">"Among countries with under $1 trillion in GDP, the gap between expected medals (blue dot) and </span><span class="sc">\n</span><span class="st">actual medals (purple dot) shows how much each country over or underperformed their GDP prediction.*"</span>, </span>
 <span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">""</span>,</span>
 <span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Total Medals Earned"</span>,</span>
 <span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption=</span><span class="st">"*Note: Only the 15 countries with the largest gap between expected and actual are shown. </span><span class="sc">\n</span><span class="st">Source: World Bank Group and Petro Ivaniuk via Olympics.com | By: Cassie Nesheim"</span></span>
@@ -627,8 +629,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>Looking at this graph, we can see that of the 15 countries who underperformed or overperformed most significantly among lower-GDP economies, only 6 countries overperformed expectations. Hungary and New Zealand jump out, as they overperformed and earned significantly more medals in Paris than their GDP predicted. The other countries either overperformed expectations less significantly or they underperformed and earned fewer medals than they were expected to based on GDP.</p>
-<p>Let’s zoom back out and discover which countries underperformed and overperformed according to their GDP at the Paris 2024 Olympic Games when considering all countries with GDP data.</p>
+<p>Now, let’s zoom back out and discover which countries underperformed and overperformed according to their GDP at the Paris 2024 Olympic Games when considering all countries.</p>
 <p>After fitting all of the countries to a model, we find that France overperformed the most, earning about 42 more medals than they should have according to their GDP. And, on the other end, India underperformed the most, earning about 19 fewer medals than they should have according to their GDP.</p>
 <p>Notably, though, when the United States is included, they come out as an UNDERperforming country. Yes, that’s right. Even though the U.S. came out on top and earned the most medals across all countries in Paris, according to GDP, they should have earned about 13 more medals than they did. However, because the U.S. GDP is so high, and their medal output is also so high, the expected medals earned is significantly higher than any other country. According to GDP, the U.S. should have earned 139 medals at the Paris Games. 139 medals would have put them even further ahead of all other countries than they already were. So, while the United States technically underperformed, since they are already so far ahead of all other countries, this finding is less impactful than the other countries who underperformed and overperformed.</p>
 <div class="cell">
@@ -710,23 +711,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-74"><a href="#cb6-74" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
-<div id="zakaeqfegs" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#zakaeqfegs table {
+<div id="btnipgbjbt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#btnipgbjbt table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#zakaeqfegs thead, #zakaeqfegs tbody, #zakaeqfegs tfoot, #zakaeqfegs tr, #zakaeqfegs td, #zakaeqfegs th {
+#btnipgbjbt thead, #btnipgbjbt tbody, #btnipgbjbt tfoot, #btnipgbjbt tr, #btnipgbjbt td, #btnipgbjbt th {
   border-style: none;
 }
 
-#zakaeqfegs p {
+#btnipgbjbt p {
   margin: 0;
   padding: 0;
 }
 
-#zakaeqfegs .gt_table {
+#btnipgbjbt .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -752,12 +753,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#zakaeqfegs .gt_caption {
+#btnipgbjbt .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#zakaeqfegs .gt_title {
+#btnipgbjbt .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -769,7 +770,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#zakaeqfegs .gt_subtitle {
+#btnipgbjbt .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -781,7 +782,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#zakaeqfegs .gt_heading {
+#btnipgbjbt .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -793,13 +794,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#zakaeqfegs .gt_bottom_border {
+#btnipgbjbt .gt_bottom_border {
   border-bottom-style: none;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#zakaeqfegs .gt_col_headings {
+#btnipgbjbt .gt_col_headings {
   border-top-style: none;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -814,7 +815,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#zakaeqfegs .gt_col_heading {
+#btnipgbjbt .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -834,7 +835,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#zakaeqfegs .gt_column_spanner_outer {
+#btnipgbjbt .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -846,15 +847,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#zakaeqfegs .gt_column_spanner_outer:first-child {
+#btnipgbjbt .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#zakaeqfegs .gt_column_spanner_outer:last-child {
+#btnipgbjbt .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#zakaeqfegs .gt_column_spanner {
+#btnipgbjbt .gt_column_spanner {
   border-bottom-style: none;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -866,11 +867,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#zakaeqfegs .gt_spanner_row {
+#btnipgbjbt .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#zakaeqfegs .gt_group_heading {
+#btnipgbjbt .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -896,7 +897,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#zakaeqfegs .gt_empty_group_heading {
+#btnipgbjbt .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -911,15 +912,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#zakaeqfegs .gt_from_md > :first-child {
+#btnipgbjbt .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#zakaeqfegs .gt_from_md > :last-child {
+#btnipgbjbt .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#zakaeqfegs .gt_row {
+#btnipgbjbt .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -938,7 +939,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#zakaeqfegs .gt_stub {
+#btnipgbjbt .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -951,7 +952,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#zakaeqfegs .gt_stub_row_group {
+#btnipgbjbt .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -965,15 +966,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#zakaeqfegs .gt_row_group_first td {
+#btnipgbjbt .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#zakaeqfegs .gt_row_group_first th {
+#btnipgbjbt .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#zakaeqfegs .gt_summary_row {
+#btnipgbjbt .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -983,16 +984,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#zakaeqfegs .gt_first_summary_row {
+#btnipgbjbt .gt_first_summary_row {
   border-top-style: none;
   border-top-color: #D3D3D3;
 }
 
-#zakaeqfegs .gt_first_summary_row.thick {
+#btnipgbjbt .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#zakaeqfegs .gt_last_summary_row {
+#btnipgbjbt .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1002,7 +1003,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#zakaeqfegs .gt_grand_summary_row {
+#btnipgbjbt .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1012,7 +1013,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#zakaeqfegs .gt_first_grand_summary_row {
+#btnipgbjbt .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1022,7 +1023,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#zakaeqfegs .gt_last_grand_summary_row_top {
+#btnipgbjbt .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1032,11 +1033,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#zakaeqfegs .gt_striped {
+#btnipgbjbt .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#zakaeqfegs .gt_table_body {
+#btnipgbjbt .gt_table_body {
   border-top-style: none;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1045,7 +1046,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#zakaeqfegs .gt_footnotes {
+#btnipgbjbt .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1059,7 +1060,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#zakaeqfegs .gt_footnote {
+#btnipgbjbt .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1068,7 +1069,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#zakaeqfegs .gt_sourcenotes {
+#btnipgbjbt .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1082,7 +1083,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#zakaeqfegs .gt_sourcenote {
+#btnipgbjbt .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1090,72 +1091,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#zakaeqfegs .gt_left {
+#btnipgbjbt .gt_left {
   text-align: left;
 }
 
-#zakaeqfegs .gt_center {
+#btnipgbjbt .gt_center {
   text-align: center;
 }
 
-#zakaeqfegs .gt_right {
+#btnipgbjbt .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#zakaeqfegs .gt_font_normal {
+#btnipgbjbt .gt_font_normal {
   font-weight: normal;
 }
 
-#zakaeqfegs .gt_font_bold {
+#btnipgbjbt .gt_font_bold {
   font-weight: bold;
 }
 
-#zakaeqfegs .gt_font_italic {
+#btnipgbjbt .gt_font_italic {
   font-style: italic;
 }
 
-#zakaeqfegs .gt_super {
+#btnipgbjbt .gt_super {
   font-size: 65%;
 }
 
-#zakaeqfegs .gt_footnote_marks {
+#btnipgbjbt .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#zakaeqfegs .gt_asterisk {
+#btnipgbjbt .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#zakaeqfegs .gt_indent_1 {
+#btnipgbjbt .gt_indent_1 {
   text-indent: 5px;
 }
 
-#zakaeqfegs .gt_indent_2 {
+#btnipgbjbt .gt_indent_2 {
   text-indent: 10px;
 }
 
-#zakaeqfegs .gt_indent_3 {
+#btnipgbjbt .gt_indent_3 {
   text-indent: 15px;
 }
 
-#zakaeqfegs .gt_indent_4 {
+#btnipgbjbt .gt_indent_4 {
   text-indent: 20px;
 }
 
-#zakaeqfegs .gt_indent_5 {
+#btnipgbjbt .gt_indent_5 {
   text-indent: 25px;
 }
 
-#zakaeqfegs .katex-display {
+#btnipgbjbt .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#zakaeqfegs div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#btnipgbjbt div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1290,8 +1291,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>While Australia relied on Swimming and Hungary relied on Canoe Sprint, all the other overperforming teams were able to do so by competing and medaling in a variety of disciplines. This breadth demonstrates how important it is for countries to be able to use their resources to diversify and provide ample opportunities to their people to train and compete in many, many disciplines. While not every country can outperform expectations, those countries who are able to qualify and compete athletes across disciplines seem to do better than their GDP expects them to.</p>
-<p>Now, does this principle hold for underperforming teams? In theory, teams who underperformed expectations did so because they were unable to take advantage of resources. If the idea that breadth is a key to success is true, then those teams who underperformed should lack diversity in the disciplines they medaled in. Let’s examine the breadth of the underperforming teams who took home at least two medals.</p>
-<p>One thing to note, if a country only took home one medal, their breadth is obviously zero as their only medal could have only come from one discipline. So, these countries were excluded from breadth analysis.</p>
+<p>Now, does this principle hold for underperforming teams? In theory, teams who underperformed expectations did so because they were unable to take advantage of resources. If the idea that breadth is a key to success is true, then those teams who underperformed should lack diversity in the disciplines they medaled in.</p>
+<p>One thing to note, if a country only took home one medal, their breadth is obviously zero as their only medal could have only come from one discipline. So, these countries were excluded from breadth analysis. Let’s examine the breadth of the underperforming teams who took home at least two medals.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -1359,7 +1360,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>So, while underperforming countries did rely on certain disciplines more than overperforming countries did, the results are rather mixed and inconclusive. We can make some hypotheses on breadth, like more breadth is better, but overall there doesn’t appear to be a clear trend or pattern here.</p>
 <p>While breadth may not be a good indicator of why certain countries exceeded expectations and others failed to reach their potential, using GDP is a rather accurate way to discover the countries who underperformed and overperformed at the Paris 2024 Olympic Games.</p>
 <p>When all is said and done, GDP ends up accounting for about 75% of the variation in country medal earnings. This is pretty significant. This means that we can use a country’s GDP to predict how many medals they will earn at future Olympic Games reasonably well using just each country’s GDP. Now, as we saw, countries can underperform and overperform, so this prediction is not always accurate. However, we can definitely say that GDP has a relationship with how many medals each country earns.</p>
-<p>We also saw an interesting pattern. In this analysis, some high-population countries tended to underperform. This was the case for the U.S., India, and Pakistan. All of these countries had the highest populations in their respective GDP groups and all emerged as one of the worst underperformers. So, while higher GDP indicates higher medal output, it seems that higher population may not have the same effect. This could be due to overcrowding and the need to allocate resources elsewhere, or it could be an extraneous factor. Either way, it is interesting that countries with higher populations ended up underperforming relative to their GDP expectations.</p>
+<p>We also saw an interesting pattern. In this analysis, some high-population countries tended to underperform. This was the case for the U.S., India, and Pakistan. All of these countries had the highest populations in their respective GDP groups and all emerged as some of the worst underperformers. So, while higher GDP indicates higher medal output, it seems that higher population may not have the same effect. This could be due to overcrowding and the need to allocate resources elsewhere, or it could be an extraneous factor. Either way, it is interesting that countries with higher populations ended up underperforming relative to their GDP expectations.</p>
 <p>Overall, using GDP to discover which countries underperformed and overperformed at the Paris Games revealed India and the United States as the biggest losers, earning fewer medals than expected, and France and Great Britain as the biggest winners, earning significantly more medals than expected.</p>
 
 
